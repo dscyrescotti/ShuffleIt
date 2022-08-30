@@ -1,5 +1,5 @@
 import XCTest
-@testable import ShuffleIt
+@testable import ShuffleStack
 
 final class ShuffleItTests: XCTestCase {
     func testExample() throws {
