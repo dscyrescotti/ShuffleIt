@@ -16,6 +16,10 @@ let package = Package(
             name: "ShuffleIt",
             targets: ["ShuffleStack"]
         ),
+        .library(
+            name: "ShuffleStack",
+            targets: ["ShuffleStack"]
+        )
     ],
     dependencies: [],
     targets: [
