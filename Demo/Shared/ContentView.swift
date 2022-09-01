@@ -28,6 +28,7 @@ struct ContentView: View {
             }
             .frame(height: 200)
             .padding(.horizontal, 20)
+            .shuffleStackStyle(.rotateOut)
         }
     }
 }
