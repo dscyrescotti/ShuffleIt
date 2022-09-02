@@ -27,6 +27,35 @@ struct ContentView: View {
                 }
             }
             .padding(.horizontal, 20)
+            ShuffleStack(colors) { color in
+                Group {
+                    if isNothing {
+                        CardView(color: color)
+                    } else {
+                        CardView(color: color)
+                            .overlay(Text("Nothing"))
+                    }
+                }
+                .onTapGesture {
+                    isNothing.toggle()
+                }
+            }
+            .padding(.horizontal, 20)
+            .shuffleStackStyle(.rotateIn)
+            ShuffleStack(colors) { color in
+                Group {
+                    if isNothing {
+                        CardView(color: color)
+                    } else {
+                        CardView(color: color)
+                            .overlay(Text("Nothing"))
+                    }
+                }
+                .onTapGesture {
+                    isNothing.toggle()
+                }
+            }
+            .padding(.horizontal, 20)
             .shuffleStackStyle(.rotateOut)
         }
     }
@@ -45,6 +74,8 @@ struct CardView: View {
             Text("Hello")
                 .padding(100)
         }
+        .frame(maxWidth: .infinity)
+        .frame(height: 200)
         .background(color)
         .cornerRadius(10)
     }

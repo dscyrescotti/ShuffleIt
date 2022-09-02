@@ -7,7 +7,7 @@ import SwiftUI
  3. shuffle to next (left/right)
  4. animation
  5. height
- 6. default position = 15
+ 6. default position = 15 [done]
  7. shuffle disable
 */
 
@@ -29,22 +29,20 @@ public struct ShuffleStack<Data: RandomAccessCollection, StackContent: View>: Vi
     internal let stackContent: (Data.Element) -> StackContent
     
     public var body: some View {
-        GeometryReader { proxy in
-            ZStack {
-                Group {
-                    leftContent(proxy)
-                    rightContent(proxy)
-                    mainContent(proxy)
-                }
-                .background {
-                    GeometryReader { proxy in
-                        Color.clear
-                            .preference(key: SizePreferenceKey.self, value: proxy.size)
-                    }
+        ZStack {
+            Group {
+                leftContent
+                rightContent
+                mainContent
+            }
+            .background {
+                GeometryReader { proxy in
+                    Color.clear
+                        .preference(key: SizePreferenceKey.self, value: proxy.size)
                 }
             }
-            .frame(width: proxy.size.width, height: proxy.size.height)
         }
+        .frame(maxWidth: .infinity)
         .frame(height: size.height)
         .onPreferenceChange(SizePreferenceKey.self) { size in
             DispatchQueue.main.async {
