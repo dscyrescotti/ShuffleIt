@@ -2,7 +2,7 @@ import SwiftUI
 
 // MARK: - Gesture
 extension ShuffleStack {
-    internal func dragGesture(_ proxy: GeometryProxy) -> some Gesture {
+    internal var dragGesture: some Gesture {
         DragGesture()
             .onChanged({ value in
                 xPosition = value.translation.width / 2.3
@@ -13,9 +13,10 @@ extension ShuffleStack {
                 }
             })
             .onEnded({ value in
-                let midX = proxy.size.width * 0.5
+                let midX = size.width * 0.5
+                let maxSwipeDistance = size.width * 0.25
                 if xPosition > 0 {
-                    if xPosition < 100 {
+                    if xPosition < maxSwipeDistance {
                         withAnimation(.linear(duration: 0.15)) {
                             xPosition = 0
                         }
@@ -37,7 +38,7 @@ extension ShuffleStack {
                         }
                     }
                 } else if xPosition < 0 {
-                    if xPosition > -100 {
+                    if xPosition > -maxSwipeDistance {
                         withAnimation(.linear(duration: 0.15)) {
                             xPosition = 0
                         }
