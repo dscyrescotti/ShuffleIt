@@ -9,7 +9,7 @@ import SwiftUI
 import ShuffleStack
 
 struct ContentView: View {
-    let colors: [Color] = [.red, .blue, .yellow, .green, .blue, Color(.systemIndigo)]
+    let colors: [Color] = [.red, .blue, .yellow, .green, .gray, Color(.systemIndigo)]
     @State private var isNothing = true
     var body: some View {
         ScrollView {
@@ -26,7 +26,6 @@ struct ContentView: View {
                     isNothing.toggle()
                 }
             }
-            .frame(height: 200)
             .padding(.horizontal, 20)
             .shuffleStackStyle(.rotateOut)
         }
@@ -42,9 +41,12 @@ struct ContentView_Previews: PreviewProvider {
 struct CardView: View {
     let color: Color
     var body: some View {
-        color
-            .frame(height: 200)
-            .cornerRadius(10)
+        VStack {
+            Text("Hello")
+                .padding(100)
+        }
+        .background(color)
+        .cornerRadius(10)
     }
 }
 

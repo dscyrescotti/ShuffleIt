@@ -22,6 +22,7 @@ public struct ShuffleStack<Data: RandomAccessCollection, StackContent: View>: Vi
     @State internal var direction: Direction = .left
     @State internal var isLockedLeft: Bool = false
     @State internal var isLockedRight: Bool = false
+    @State internal var size: CGSize = .zero
     
     // MARK: - Properties
     internal let data: Data
@@ -30,11 +31,25 @@ public struct ShuffleStack<Data: RandomAccessCollection, StackContent: View>: Vi
     public var body: some View {
         GeometryReader { proxy in
             ZStack {
-                leftContent(proxy)
-                rightContent(proxy)
-                mainContent(proxy)
+                Group {
+                    leftContent(proxy)
+                    rightContent(proxy)
+                    mainContent(proxy)
+                }
+                .background {
+                    GeometryReader { proxy in
+                        Color.clear
+                            .preference(key: SizePreferenceKey.self, value: proxy.size)
+                    }
+                }
             }
             .frame(width: proxy.size.width, height: proxy.size.height)
+        }
+        .frame(height: size.height)
+        .onPreferenceChange(SizePreferenceKey.self) { size in
+            DispatchQueue.main.async {
+                self.size = size
+            }
         }
     }
 }
