@@ -27,6 +27,22 @@ struct ContentView: View {
                 }
             }
             .padding(.horizontal, 20)
+            .shuffleStackAnimation(.easeInOut)
+            ShuffleStack(colors) { color in
+                Group {
+                    if isNothing {
+                        CardView(color: color)
+                    } else {
+                        CardView(color: color)
+                            .overlay(Text("Nothing"))
+                    }
+                }
+                .onTapGesture {
+                    isNothing.toggle()
+                }
+            }
+            .padding(.horizontal, 20)
+            .swipeDisabled(true)
             ShuffleStack(colors) { color in
                 Group {
                     if isNothing {
@@ -42,6 +58,7 @@ struct ContentView: View {
             }
             .padding(.horizontal, 20)
             .shuffleStackStyle(.rotateIn)
+            .shuffleStackAnimation(.easeIn)
             ShuffleStack(colors) { color in
                 Group {
                     if isNothing {

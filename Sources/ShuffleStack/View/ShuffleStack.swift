@@ -2,19 +2,17 @@ import SwiftUI
 
 /*
  MARK: - Environment Values
- 1. style - slide, rotateIn, rotateOut [done]
- 2. auto shuffling
- 3. shuffle to next (left/right)
- 4. animation
- 5. height
- 6. default position = 15 [done]
- 7. shuffle disable
+ 1. auto shuffling
+ 2. shuffle to next (left/right)
+ 3. default position = 15
 */
 
 // MARK: - ShuffleStack
 public struct ShuffleStack<Data: RandomAccessCollection, StackContent: View>: View where Data.Element: Identifiable, Data.Index == Int {
     // MARK: - Environments
     @Environment(\.shuffleStackStyle) internal var style
+    @Environment(\.shuffleStackAnimation) internal var animation
+    @Environment(\.swipeDisabled) internal var disabled
     
     // MARK: - States
     @State internal var index: Data.Index
@@ -33,7 +31,12 @@ public struct ShuffleStack<Data: RandomAccessCollection, StackContent: View>: Vi
             Group {
                 leftContent
                 rightContent
-                mainContent
+                if disabled {
+                    mainContent
+                } else {
+                    mainContent
+                        .gesture(dragGesture)
+                }
             }
             .background {
                 GeometryReader { proxy in

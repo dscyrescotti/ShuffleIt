@@ -1,5 +1,11 @@
 import SwiftUI
 
+public enum ShuffleStackStyle {
+    case slide
+    case rotateIn
+    case rotateOut
+}
+
 struct ShuffleStackStyleKey: EnvironmentKey {
     static var defaultValue: ShuffleStackStyle = .slide
 }

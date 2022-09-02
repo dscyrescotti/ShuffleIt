@@ -17,11 +17,11 @@ extension ShuffleStack {
                 let maxSwipeDistance = size.width * 0.25
                 if xPosition > 0 {
                     if xPosition < maxSwipeDistance {
-                        withAnimation(.linear(duration: 0.15)) {
+                        withAnimation(animation.timing(duration: 0.15)) {
                             xPosition = 0
                         }
                     } else {
-                        withAnimation(.linear(duration: 0.15)) {
+                        withAnimation(animation.timing(duration: 0.15)) {
                             xPosition = midX
                         }
                         DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
@@ -31,7 +31,7 @@ extension ShuffleStack {
                             isLockedLeft = true
                         }
                         DispatchQueue.main.asyncAfter(deadline: .now() + 0.25) {
-                            withAnimation(.linear(duration: 0.2)) {
+                            withAnimation(animation.timing(duration: 0.2)) {
                                 xPosition = 0
                                 isLockedLeft = false
                             }
@@ -39,11 +39,11 @@ extension ShuffleStack {
                     }
                 } else if xPosition < 0 {
                     if xPosition > -maxSwipeDistance {
-                        withAnimation(.linear(duration: 0.15)) {
+                        withAnimation(animation.timing(duration: 0.15)) {
                             xPosition = 0
                         }
                     } else {
-                        withAnimation(.linear(duration: 0.15)) {
+                        withAnimation(animation.timing(duration: 0.15)) {
                             xPosition = -midX
                         }
                         DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
@@ -53,7 +53,7 @@ extension ShuffleStack {
                             isLockedRight = true
                         }
                         DispatchQueue.main.asyncAfter(deadline: .now() + 0.25) {
-                            withAnimation(.linear(duration: 0.2)) {
+                            withAnimation(animation.timing(duration: 0.2)) {
                                 xPosition = 0
                                 isLockedRight = false
                             }
