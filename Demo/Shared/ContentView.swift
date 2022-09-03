@@ -6,28 +6,51 @@
 //
 
 import SwiftUI
+import Combine
 import ShuffleStack
 
 struct ContentView: View {
-    let colors: [Color] = [.red, .blue, .yellow, .green, .blue, Color(.systemIndigo)]
-    @State private var isNothing = true
+    let colors: [Color] = [.red, .blue, .yellow, .green, .gray, Color(.systemIndigo)]
+    let sufflingPublisher = PassthroughSubject<Direction, Never>()
     var body: some View {
         ScrollView {
             ShuffleStack(colors) { color in
-                Group {
-                    if isNothing {
-                        CardView(color: color)
-                    } else {
-                        CardView(color: color)
-                            .overlay(Text("Nothing"))
+                CardView(color: color)
+                    .onTapGesture {
+                        sufflingPublisher.send(.right)
                     }
-                }
-                .onTapGesture {
-                    isNothing.toggle()
-                }
             }
-            .frame(height: 200)
             .padding(.horizontal, 20)
+            .shuffleStackAnimation(.easeInOut)
+            .onTriggerShuffling(sufflingPublisher)
+            ShuffleStack(colors) { color in
+                CardView(color: color)
+                    .onTapGesture {
+                        sufflingPublisher.send(.right)
+                    }
+            }
+            .padding(.horizontal, 20)
+            .swipeDisabled(true)
+            .onTriggerShuffling(sufflingPublisher)
+            ShuffleStack(colors) { color in
+                CardView(color: color)
+                    .onTapGesture {
+                        sufflingPublisher.send(.right)
+                    }
+            }
+            .padding(.horizontal, 20)
+            .shuffleStackStyle(.rotateIn)
+            .shuffleStackAnimation(.easeIn)
+            .onTriggerShuffling(sufflingPublisher)
+            ShuffleStack(colors) { color in
+                CardView(color: color)
+                    .onTapGesture {
+                        sufflingPublisher.send(.right)
+                    }
+            }
+            .padding(.horizontal, 20)
+            .shuffleStackStyle(.rotateOut)
+            .onTriggerShuffling(sufflingPublisher)
         }
     }
 }
@@ -41,9 +64,14 @@ struct ContentView_Previews: PreviewProvider {
 struct CardView: View {
     let color: Color
     var body: some View {
-        color
-            .frame(height: 200)
-            .cornerRadius(10)
+        VStack {
+            Text("Hello")
+                .padding(100)
+        }
+        .frame(maxWidth: .infinity)
+        .frame(height: 200)
+        .background(color)
+        .cornerRadius(10)
     }
 }
 
