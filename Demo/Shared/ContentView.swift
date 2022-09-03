@@ -6,57 +6,51 @@
 //
 
 import SwiftUI
+import Combine
 import ShuffleStack
 
 struct ContentView: View {
     let colors: [Color] = [.red, .blue, .yellow, .green, .gray, Color(.systemIndigo)]
-    @State private var isNothing = true
+    let sufflingPublisher = PassthroughSubject<Direction, Never>()
     var body: some View {
         ScrollView {
             ShuffleStack(colors) { color in
-                Group {
-                    if isNothing {
-                        CardView(color: color)
-                    } else {
-                        CardView(color: color)
-                            .overlay(Text("Nothing"))
+                CardView(color: color)
+                    .onTapGesture {
+                        sufflingPublisher.send(.right)
                     }
-                }
-                .onTapGesture {
-                    isNothing.toggle()
-                }
             }
             .padding(.horizontal, 20)
+            .shuffleStackAnimation(.easeInOut)
+            .onTriggerShuffling(sufflingPublisher)
             ShuffleStack(colors) { color in
-                Group {
-                    if isNothing {
-                        CardView(color: color)
-                    } else {
-                        CardView(color: color)
-                            .overlay(Text("Nothing"))
+                CardView(color: color)
+                    .onTapGesture {
+                        sufflingPublisher.send(.right)
                     }
-                }
-                .onTapGesture {
-                    isNothing.toggle()
-                }
+            }
+            .padding(.horizontal, 20)
+            .swipeDisabled(true)
+            .onTriggerShuffling(sufflingPublisher)
+            ShuffleStack(colors) { color in
+                CardView(color: color)
+                    .onTapGesture {
+                        sufflingPublisher.send(.right)
+                    }
             }
             .padding(.horizontal, 20)
             .shuffleStackStyle(.rotateIn)
+            .shuffleStackAnimation(.easeIn)
+            .onTriggerShuffling(sufflingPublisher)
             ShuffleStack(colors) { color in
-                Group {
-                    if isNothing {
-                        CardView(color: color)
-                    } else {
-                        CardView(color: color)
-                            .overlay(Text("Nothing"))
+                CardView(color: color)
+                    .onTapGesture {
+                        sufflingPublisher.send(.right)
                     }
-                }
-                .onTapGesture {
-                    isNothing.toggle()
-                }
             }
             .padding(.horizontal, 20)
             .shuffleStackStyle(.rotateOut)
+            .onTriggerShuffling(sufflingPublisher)
         }
     }
 }

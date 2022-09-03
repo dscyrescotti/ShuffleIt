@@ -1,20 +1,12 @@
 import SwiftUI
 
-/*
- MARK: - Environment Values
- 1. style - slide, rotateIn, rotateOut [done]
- 2. auto shuffling
- 3. shuffle to next (left/right)
- 4. animation
- 5. height
- 6. default position = 15 [done]
- 7. shuffle disable
-*/
-
 // MARK: - ShuffleStack
 public struct ShuffleStack<Data: RandomAccessCollection, StackContent: View>: View where Data.Element: Identifiable, Data.Index == Int {
     // MARK: - Environments
     @Environment(\.shuffleStackStyle) internal var style
+    @Environment(\.shuffleStackAnimation) internal var animation
+    @Environment(\.swipeDisabled) internal var disabled
+    @Environment(\.shufflingPublisher) internal var shufflingPublisher
     
     // MARK: - States
     @State internal var index: Data.Index
@@ -23,6 +15,7 @@ public struct ShuffleStack<Data: RandomAccessCollection, StackContent: View>: Vi
     @State internal var isLockedLeft: Bool = false
     @State internal var isLockedRight: Bool = false
     @State internal var size: CGSize = .zero
+    @State internal var autoShuffling: Bool = false
     
     // MARK: - Properties
     internal let data: Data
@@ -33,7 +26,12 @@ public struct ShuffleStack<Data: RandomAccessCollection, StackContent: View>: Vi
             Group {
                 leftContent
                 rightContent
-                mainContent
+                if disabled {
+                    mainContent
+                } else {
+                    mainContent
+                        .gesture(dragGesture)
+                }
             }
             .background {
                 GeometryReader { proxy in
@@ -49,6 +47,12 @@ public struct ShuffleStack<Data: RandomAccessCollection, StackContent: View>: Vi
                 self.size = size
             }
         }
+        .onReceive(shufflingPublisher) { direction in
+            if !autoShuffling && xPosition == 0 {
+                performShuffling(direction)
+            }
+        }
+        .disabled(autoShuffling)
     }
 }
 

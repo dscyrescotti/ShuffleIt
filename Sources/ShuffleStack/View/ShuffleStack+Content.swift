@@ -67,7 +67,6 @@ extension ShuffleStack {
             stackContent(data[index])
                 .zIndex(4)
                 .offset(x: xPosition, y: 0)
-                .gesture(dragGesture)
         case .rotateIn:
             stackContent(data[index])
                 .zIndex(4)
@@ -76,7 +75,6 @@ extension ShuffleStack {
                     .degrees(0 + Double(-xPosition) / 15),
                     axis: (x: 0.0, y: 1.0, z: 0.0)
                 )
-                .gesture(dragGesture)
         case .rotateOut:
             stackContent(data[index])
                 .zIndex(4)
@@ -85,7 +83,6 @@ extension ShuffleStack {
                     .degrees(0 - Double(-xPosition) / 15),
                     axis: (x: 0.0, y: 1.0, z: 0.0)
                 )
-                .gesture(dragGesture)
         }
     }
 }
