@@ -7,6 +7,7 @@ public struct ShuffleStack<Data: RandomAccessCollection, StackContent: View>: Vi
     @Environment(\.shuffleStackAnimation) internal var animation
     @Environment(\.swipeDisabled) internal var disabled
     @Environment(\.shufflingPublisher) internal var shufflingPublisher
+    @Environment(\.shuffleStackOffset) internal var offset
     
     // MARK: - States
     @State internal var index: Data.Index

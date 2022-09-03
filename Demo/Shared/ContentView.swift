@@ -20,8 +20,8 @@ struct ContentView: View {
                         sufflingPublisher.send(.right)
                     }
             }
-            .padding(.horizontal, 20)
             .shuffleStackAnimation(.easeInOut)
+            .shuffleStackOffset(30)
             .onTriggerShuffling(sufflingPublisher)
             ShuffleStack(colors) { color in
                 CardView(color: color)
@@ -29,7 +29,6 @@ struct ContentView: View {
                         sufflingPublisher.send(.right)
                     }
             }
-            .padding(.horizontal, 20)
             .swipeDisabled(true)
             .onTriggerShuffling(sufflingPublisher)
             ShuffleStack(colors) { color in
@@ -38,7 +37,6 @@ struct ContentView: View {
                         sufflingPublisher.send(.right)
                     }
             }
-            .padding(.horizontal, 20)
             .shuffleStackStyle(.rotateIn)
             .shuffleStackAnimation(.easeIn)
             .onTriggerShuffling(sufflingPublisher)
@@ -48,8 +46,8 @@ struct ContentView: View {
                         sufflingPublisher.send(.right)
                     }
             }
-            .padding(.horizontal, 20)
             .shuffleStackStyle(.rotateOut)
+            .shuffleStackOffset(20)
             .onTriggerShuffling(sufflingPublisher)
         }
     }

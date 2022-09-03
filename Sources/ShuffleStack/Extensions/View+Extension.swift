@@ -17,4 +17,8 @@ public extension View {
     func onTriggerShuffling<P: Publisher>(_ publisher: P) -> some View where P.Output == Direction, P.Failure == Never {
         environment(\.shufflingPublisher, publisher.eraseToAnyPublisher())
     }
+    
+    func shuffleStackOffset(_ offset: CGFloat) -> some View {
+        environment(\.shuffleStackOffset, offset)
+    }
 }
