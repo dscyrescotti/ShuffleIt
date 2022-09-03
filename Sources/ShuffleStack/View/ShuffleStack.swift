@@ -1,18 +1,12 @@
 import SwiftUI
 
-/*
- MARK: - Environment Values
- 1. auto shuffling
- 2. shuffle to next (left/right)
- 3. default position = 15
-*/
-
 // MARK: - ShuffleStack
 public struct ShuffleStack<Data: RandomAccessCollection, StackContent: View>: View where Data.Element: Identifiable, Data.Index == Int {
     // MARK: - Environments
     @Environment(\.shuffleStackStyle) internal var style
     @Environment(\.shuffleStackAnimation) internal var animation
     @Environment(\.swipeDisabled) internal var disabled
+    @Environment(\.shufflingPublisher) internal var shufflingPublisher
     
     // MARK: - States
     @State internal var index: Data.Index
@@ -21,6 +15,7 @@ public struct ShuffleStack<Data: RandomAccessCollection, StackContent: View>: Vi
     @State internal var isLockedLeft: Bool = false
     @State internal var isLockedRight: Bool = false
     @State internal var size: CGSize = .zero
+    @State internal var autoShuffling: Bool = false
     
     // MARK: - Properties
     internal let data: Data
@@ -52,6 +47,12 @@ public struct ShuffleStack<Data: RandomAccessCollection, StackContent: View>: Vi
                 self.size = size
             }
         }
+        .onReceive(shufflingPublisher) { direction in
+            if !autoShuffling && xPosition == 0 {
+                performShuffling(direction)
+            }
+        }
+        .disabled(autoShuffling)
     }
 }
 

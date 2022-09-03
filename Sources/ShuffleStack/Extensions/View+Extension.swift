@@ -1,4 +1,5 @@
 import SwiftUI
+import Combine
 
 public extension View {
     func shuffleStackStyle(_ style: ShuffleStackStyle) -> some View {
@@ -11,5 +12,9 @@ public extension View {
     
     func swipeDisabled(_ disabled: Bool) -> some View {
         environment(\.swipeDisabled, disabled)
+    }
+    
+    func onTriggerShuffling<P: Publisher>(_ publisher: P) -> some View where P.Output == Direction, P.Failure == Never {
+        environment(\.shufflingPublisher, publisher.eraseToAnyPublisher())
     }
 }
