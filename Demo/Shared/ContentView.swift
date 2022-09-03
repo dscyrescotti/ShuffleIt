@@ -1,10 +1,3 @@
-//
-//  ContentView.swift
-//  Shared
-//
-//  Created by Scotti on 8/30/22.
-//
-
 import SwiftUI
 import Combine
 import ShuffleStack
@@ -23,7 +16,10 @@ struct ContentView: View {
             .shuffleAnimation(.easeInOut)
             .stackOffset(30)
             .stackPadding(30)
-            .onShuffle(sufflingPublisher)
+            .shuffleTrigger(on: sufflingPublisher)
+            .onShuffle { context in
+                print(context.index, context.previousIndex, context.direction)
+            }
             ShuffleStack(colors) { color in
                 CardView(color: color)
                     .onTapGesture {
@@ -31,7 +27,7 @@ struct ContentView: View {
                     }
             }
             .swipeDisabled(true)
-            .onShuffle(sufflingPublisher)
+            .shuffleTrigger(on: sufflingPublisher)
             ShuffleStack(colors) { color in
                 CardView(color: color)
                     .onTapGesture {
@@ -40,7 +36,7 @@ struct ContentView: View {
             }
             .shuffleStyle(.rotateIn)
             .shuffleAnimation(.easeIn)
-            .onShuffle(sufflingPublisher)
+            .shuffleTrigger(on: sufflingPublisher)
             ShuffleStack(colors) { color in
                 CardView(color: color)
                     .onTapGesture {
@@ -49,7 +45,7 @@ struct ContentView: View {
             }
             .shuffleStyle(.rotateOut)
             .stackOffset(20)
-            .onShuffle(sufflingPublisher)
+            .shuffleTrigger(on: sufflingPublisher)
         }
     }
 }

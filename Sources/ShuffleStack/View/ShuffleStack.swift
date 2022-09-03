@@ -6,10 +6,11 @@ public struct ShuffleStack<Data: RandomAccessCollection, StackContent: View>: Vi
     @Environment(\.shuffleStyle) internal var style
     @Environment(\.shuffleAnimation) internal var animation
     @Environment(\.shuffleDisabled) internal var disabled
-    @Environment(\.shuffleTrigger) internal var shuffeTrigger
+    @Environment(\.shuffleTrigger) internal var shuffleTrigger
     @Environment(\.stackOffset) internal var offset
     @Environment(\.stackPadding) internal var padding
     @Environment(\.stackScale) internal var scale
+    @Environment(\.shuffleListener) internal var shuffleListener
     
     // MARK: - States
     @State internal var index: Data.Index
@@ -51,7 +52,7 @@ public struct ShuffleStack<Data: RandomAccessCollection, StackContent: View>: Vi
                 self.size = size
             }
         }
-        .onReceive(shuffeTrigger) { direction in
+        .onReceive(shuffleTrigger) { direction in
             if !autoShuffling && xPosition == 0 {
                 performShuffling(direction)
             }

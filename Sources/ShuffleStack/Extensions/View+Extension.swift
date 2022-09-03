@@ -14,7 +14,7 @@ public extension View {
         environment(\.shuffleDisabled, disabled)
     }
     
-    func onShuffle<P: Publisher>(_ publisher: P) -> some View where P.Output == Direction, P.Failure == Never {
+    func shuffleTrigger<P: Publisher>(on publisher: P) -> some View where P.Output == Direction, P.Failure == Never {
         environment(\.shuffleTrigger, publisher.eraseToAnyPublisher())
     }
     
@@ -28,5 +28,9 @@ public extension View {
     
     func stackScale(_ scale: CGFloat) -> some View {
         environment(\.stackScale, scale)
+    }
+    
+    func onShuffle(_ action: @escaping (ShuffleContext) -> Void) -> some View {
+        environment(\.shuffleListener, action)
     }
 }
