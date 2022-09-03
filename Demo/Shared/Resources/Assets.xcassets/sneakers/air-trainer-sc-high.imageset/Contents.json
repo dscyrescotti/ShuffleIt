@@ -1,0 +1,12 @@
+{
+  "images" : [
+    {
+      "filename" : "air-trainer-sc-high.png",
+      "idiom" : "universal"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}

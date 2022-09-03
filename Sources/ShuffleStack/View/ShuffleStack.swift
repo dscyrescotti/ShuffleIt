@@ -3,10 +3,15 @@ import SwiftUI
 // MARK: - ShuffleStack
 public struct ShuffleStack<Data: RandomAccessCollection, StackContent: View>: View where Data.Element: Identifiable, Data.Index == Int {
     // MARK: - Environments
-    @Environment(\.shuffleStackStyle) internal var style
-    @Environment(\.shuffleStackAnimation) internal var animation
-    @Environment(\.swipeDisabled) internal var disabled
-    @Environment(\.shufflingPublisher) internal var shufflingPublisher
+    @Environment(\.shuffleStyle) internal var style
+    @Environment(\.shuffleAnimation) internal var animation
+    @Environment(\.shuffleDisabled) internal var disabled
+    @Environment(\.shuffleTrigger) internal var shuffleTrigger
+    @Environment(\.stackOffset) internal var offset
+    @Environment(\.stackPadding) internal var padding
+    @Environment(\.stackScale) internal var scale
+    @Environment(\.shuffleContext) internal var shuffleContext
+    @Environment(\.shuffleTranslation) internal var shuffleTranslation
     
     // MARK: - States
     @State internal var index: Data.Index
@@ -19,7 +24,7 @@ public struct ShuffleStack<Data: RandomAccessCollection, StackContent: View>: Vi
     
     // MARK: - Properties
     internal let data: Data
-    internal let stackContent: (Data.Element) -> StackContent
+    internal let stackContent: (Data.Element, CGFloat) -> StackContent
     
     public var body: some View {
         ZStack {
@@ -41,16 +46,20 @@ public struct ShuffleStack<Data: RandomAccessCollection, StackContent: View>: Vi
             }
         }
         .frame(maxWidth: .infinity)
+        .padding(.horizontal, padding)
         .frame(height: size.height)
         .onPreferenceChange(SizePreferenceKey.self) { size in
             DispatchQueue.main.async {
                 self.size = size
             }
         }
-        .onReceive(shufflingPublisher) { direction in
+        .onReceive(shuffleTrigger) { direction in
             if !autoShuffling && xPosition == 0 {
                 performShuffling(direction)
             }
+        }
+        .onChange(of: xPosition) { position in
+            shuffleTranslation?(abs(position) / size.width * 2)
         }
         .disabled(autoShuffling)
     }
@@ -62,6 +71,18 @@ extension ShuffleStack {
         _ data: Data,
         initialIndex: Int = 0,
         @ViewBuilder stackContent: @escaping (Data.Element) -> StackContent
+    ) {
+        self.data = data
+        self._index = State(initialValue: initialIndex)
+        self.stackContent = { element, _ in
+            stackContent(element)
+        }
+    }
+    
+    public init(
+        _ data: Data,
+        initialIndex: Int = 0,
+        @ViewBuilder stackContent: @escaping (Data.Element, CGFloat) -> StackContent
     ) {
         self.data = data
         self._index = State(initialValue: initialIndex)
