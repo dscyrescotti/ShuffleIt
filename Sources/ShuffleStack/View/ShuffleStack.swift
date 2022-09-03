@@ -3,11 +3,11 @@ import SwiftUI
 // MARK: - ShuffleStack
 public struct ShuffleStack<Data: RandomAccessCollection, StackContent: View>: View where Data.Element: Identifiable, Data.Index == Int {
     // MARK: - Environments
-    @Environment(\.shuffleStackStyle) internal var style
-    @Environment(\.shuffleStackAnimation) internal var animation
-    @Environment(\.swipeDisabled) internal var disabled
-    @Environment(\.shufflingPublisher) internal var shufflingPublisher
-    @Environment(\.shuffleStackOffset) internal var offset
+    @Environment(\.shuffleStyle) internal var style
+    @Environment(\.shuffleAnimation) internal var animation
+    @Environment(\.shuffleDisabled) internal var disabled
+    @Environment(\.shuffleTrigger) internal var shuffeTrigger
+    @Environment(\.stackOffset) internal var offset
     
     // MARK: - States
     @State internal var index: Data.Index
@@ -48,7 +48,7 @@ public struct ShuffleStack<Data: RandomAccessCollection, StackContent: View>: Vi
                 self.size = size
             }
         }
-        .onReceive(shufflingPublisher) { direction in
+        .onReceive(shuffeTrigger) { direction in
             if !autoShuffling && xPosition == 0 {
                 performShuffling(direction)
             }

@@ -2,23 +2,23 @@ import SwiftUI
 import Combine
 
 public extension View {
-    func shuffleStackStyle(_ style: ShuffleStackStyle) -> some View {
-        environment(\.shuffleStackStyle, style)
+    func shuffleStyle(_ style: ShuffleStyle) -> some View {
+        environment(\.shuffleStyle, style)
     }
     
-    func shuffleStackAnimation(_ animation: ShuffleStackAnimation) -> some View {
-        environment(\.shuffleStackAnimation, animation)
+    func shuffleAnimation(_ animation: ShuffleAnimation) -> some View {
+        environment(\.shuffleAnimation, animation)
     }
     
     func swipeDisabled(_ disabled: Bool) -> some View {
-        environment(\.swipeDisabled, disabled)
+        environment(\.shuffleDisabled, disabled)
     }
     
-    func onTriggerShuffling<P: Publisher>(_ publisher: P) -> some View where P.Output == Direction, P.Failure == Never {
-        environment(\.shufflingPublisher, publisher.eraseToAnyPublisher())
+    func onShuffle<P: Publisher>(_ publisher: P) -> some View where P.Output == Direction, P.Failure == Never {
+        environment(\.shuffleTrigger, publisher.eraseToAnyPublisher())
     }
     
     func shuffleStackOffset(_ offset: CGFloat) -> some View {
-        environment(\.shuffleStackOffset, offset)
+        environment(\.stackOffset, offset)
     }
 }

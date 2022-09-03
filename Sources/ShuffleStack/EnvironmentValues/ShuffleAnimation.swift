@@ -1,6 +1,6 @@
 import SwiftUI
 
-public enum ShuffleStackAnimation {
+public enum ShuffleAnimation {
     case linear
     case easeIn
     case easeOut
@@ -20,13 +20,13 @@ public enum ShuffleStackAnimation {
     }
 }
 
-struct ShuffleStackAnimationKey: EnvironmentKey {
-    static var defaultValue: ShuffleStackAnimation = .linear
+struct ShuffleAnimationKey: EnvironmentKey {
+    static var defaultValue: ShuffleAnimation = .linear
 }
 
 extension EnvironmentValues {
-    var shuffleStackAnimation: ShuffleStackAnimation {
-        get { self[ShuffleStackAnimationKey.self] }
-        set { self[ShuffleStackAnimationKey.self] = newValue }
+    var shuffleAnimation: ShuffleAnimation {
+        get { self[ShuffleAnimationKey.self] }
+        set { self[ShuffleAnimationKey.self] = newValue }
     }
 }
