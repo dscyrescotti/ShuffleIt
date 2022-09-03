@@ -30,7 +30,11 @@ public extension View {
         environment(\.stackScale, scale)
     }
     
-    func onShuffle(_ action: @escaping (ShuffleContext) -> Void) -> some View {
-        environment(\.shuffleListener, action)
+    func onShuffle(_ perform: @escaping (ShuffleContext) -> Void) -> some View {
+        environment(\.shuffleContext, perform)
+    }
+    
+    func onTranslate(_ perform: @escaping (CGFloat) -> Void) -> some View {
+        environment(\.shuffleTranslation, perform)
     }
 }

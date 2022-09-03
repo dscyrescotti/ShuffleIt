@@ -6,12 +6,12 @@ extension ShuffleStack {
     internal var leftContent: some View {
         switch style {
         case .slide:
-            stackContent(leftDataElement)
+            stackContent(leftDataElement, translation)
                 .offset(x: xPosition > 0 ? -offset - xPosition : -offset, y: 0)
                 .scaleEffect(xPosition > 0 ? scale + (xPosition / size.width * 0.01) : scale)
                 .zIndex(direction == .right ? 1 : 3)
         case .rotateIn:
-            stackContent(leftDataElement)
+            stackContent(leftDataElement, translation)
                 .offset(x: xPosition > 0 ? -offset - xPosition : -offset, y: 0)
                 .scaleEffect(xPosition > 0 ? 1 : scale)
                 .rotation3DEffect(
@@ -20,7 +20,7 @@ extension ShuffleStack {
                 )
                 .zIndex(direction == .right ? 1 : 3)
         case .rotateOut:
-            stackContent(leftDataElement)
+            stackContent(leftDataElement, translation)
                 .offset(x: xPosition > 0 ? -offset - xPosition : -offset, y: 0)
                 .scaleEffect(xPosition > 0 ? 1 : scale)
                 .rotation3DEffect(
@@ -35,12 +35,12 @@ extension ShuffleStack {
     internal var rightContent: some View {
         switch style {
         case .slide:
-            stackContent(rightDataElement)
+            stackContent(rightDataElement, translation)
                 .offset(x: xPosition < 0 ? offset - xPosition : offset, y: 0)
                 .scaleEffect(xPosition < 0 ? scale + (-xPosition / size.width * 0.01) : scale)
                 .zIndex(direction == .left ? 1 : 3)
         case .rotateIn:
-            stackContent(rightDataElement)
+            stackContent(rightDataElement, translation)
                 .offset(x: xPosition < 0 ? offset - xPosition : offset, y: 0)
                 .scaleEffect(xPosition < 0 ? 1 : scale)
                 .rotation3DEffect(
@@ -49,7 +49,7 @@ extension ShuffleStack {
                 )
                 .zIndex(direction == .left ? 1 : 3)
         case .rotateOut:
-            stackContent(rightDataElement)
+            stackContent(rightDataElement, translation)
                 .offset(x: xPosition < 0 ? offset - xPosition : offset, y: 0)
                 .scaleEffect(xPosition < 0 ? 1 : scale)
                 .rotation3DEffect(
@@ -64,11 +64,11 @@ extension ShuffleStack {
     internal var mainContent: some View {
         switch style {
         case .slide:
-            stackContent(data[index])
+            stackContent(data[index], translation)
                 .zIndex(4)
                 .offset(x: xPosition, y: 0)
         case .rotateIn:
-            stackContent(data[index])
+            stackContent(data[index], translation)
                 .zIndex(4)
                 .offset(x: xPosition, y: 0)
                 .rotation3DEffect(
@@ -76,7 +76,7 @@ extension ShuffleStack {
                     axis: (x: 0.0, y: 1.0, z: 0.0)
                 )
         case .rotateOut:
-            stackContent(data[index])
+            stackContent(data[index], translation)
                 .zIndex(4)
                 .offset(x: xPosition, y: 0)
                 .rotation3DEffect(

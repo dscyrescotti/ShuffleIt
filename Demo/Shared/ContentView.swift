@@ -7,8 +7,8 @@ struct ContentView: View {
     let sufflingPublisher = PassthroughSubject<Direction, Never>()
     var body: some View {
         ScrollView {
-            ShuffleStack(colors) { color in
-                CardView(color: color)
+            ShuffleStack(colors) { color, translation in
+                CardView(color: color, translation: translation)
                     .onTapGesture {
                         sufflingPublisher.send(.right)
                     }
@@ -17,9 +17,8 @@ struct ContentView: View {
             .stackOffset(30)
             .stackPadding(30)
             .shuffleTrigger(on: sufflingPublisher)
-            .onShuffle { context in
-                print(context.index, context.previousIndex, context.direction)
-            }
+            .onShuffle { context in }
+            .onTranslate { translation in }
             ShuffleStack(colors) { color in
                 CardView(color: color)
                     .onTapGesture {
@@ -58,9 +57,11 @@ struct ContentView_Previews: PreviewProvider {
 
 struct CardView: View {
     let color: Color
+    var translation: CGFloat = 0
     var body: some View {
         VStack {
             Text("Hello")
+                .rotationEffect(.degrees(translation * 20))
                 .padding(100)
         }
         .frame(maxWidth: .infinity)

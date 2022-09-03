@@ -10,7 +10,8 @@ public struct ShuffleStack<Data: RandomAccessCollection, StackContent: View>: Vi
     @Environment(\.stackOffset) internal var offset
     @Environment(\.stackPadding) internal var padding
     @Environment(\.stackScale) internal var scale
-    @Environment(\.shuffleListener) internal var shuffleListener
+    @Environment(\.shuffleContext) internal var shuffleContext
+    @Environment(\.shuffleTranslation) internal var shuffleTranslation
     
     // MARK: - States
     @State internal var index: Data.Index
@@ -23,7 +24,7 @@ public struct ShuffleStack<Data: RandomAccessCollection, StackContent: View>: Vi
     
     // MARK: - Properties
     internal let data: Data
-    internal let stackContent: (Data.Element) -> StackContent
+    internal let stackContent: (Data.Element, CGFloat) -> StackContent
     
     public var body: some View {
         ZStack {
@@ -57,6 +58,9 @@ public struct ShuffleStack<Data: RandomAccessCollection, StackContent: View>: Vi
                 performShuffling(direction)
             }
         }
+        .onChange(of: xPosition) { position in
+            shuffleTranslation?(abs(position) / size.width * 2)
+        }
         .disabled(autoShuffling)
     }
 }
@@ -67,6 +71,18 @@ extension ShuffleStack {
         _ data: Data,
         initialIndex: Int = 0,
         @ViewBuilder stackContent: @escaping (Data.Element) -> StackContent
+    ) {
+        self.data = data
+        self._index = State(initialValue: initialIndex)
+        self.stackContent = { element, _ in
+            stackContent(element)
+        }
+    }
+    
+    public init(
+        _ data: Data,
+        initialIndex: Int = 0,
+        @ViewBuilder stackContent: @escaping (Data.Element, CGFloat) -> StackContent
     ) {
         self.data = data
         self._index = State(initialValue: initialIndex)

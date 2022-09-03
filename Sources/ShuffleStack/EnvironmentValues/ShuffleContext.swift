@@ -6,13 +6,13 @@ public struct ShuffleContext {
     public let direction: Direction
 }
 
-struct ShuffleListener: EnvironmentKey {
+struct ShuffleContextKey: EnvironmentKey {
     static var defaultValue: ((ShuffleContext) -> Void)? = nil
 }
 
 extension EnvironmentValues {
-    var shuffleListener: ((ShuffleContext) -> Void)? {
-        get { self[ShuffleListener.self] }
-        set { self[ShuffleListener.self] = newValue }
+    var shuffleContext: ((ShuffleContext) -> Void)? {
+        get { self[ShuffleContextKey.self] }
+        set { self[ShuffleContextKey.self] = newValue }
     }
 }

@@ -90,6 +90,10 @@ extension ShuffleStack {
     }
     
     private func notifyListener(context: ShuffleContext) {
-        shuffleListener?(context)
+        shuffleContext?(context)
+    }
+    
+    internal var translation: CGFloat {
+        size.width > 0 ? xPosition / size.width * 2 : 0
     }
 }
