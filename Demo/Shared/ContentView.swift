@@ -21,7 +21,8 @@ struct ContentView: View {
                     }
             }
             .shuffleAnimation(.easeInOut)
-            .shuffleStackOffset(30)
+            .stackOffset(30)
+            .stackPadding(30)
             .onShuffle(sufflingPublisher)
             ShuffleStack(colors) { color in
                 CardView(color: color)
@@ -37,7 +38,7 @@ struct ContentView: View {
                         sufflingPublisher.send(.right)
                     }
             }
-            .shuffleStackStyle(.rotateIn)
+            .shuffleStyle(.rotateIn)
             .shuffleAnimation(.easeIn)
             .onShuffle(sufflingPublisher)
             ShuffleStack(colors) { color in
@@ -46,8 +47,8 @@ struct ContentView: View {
                         sufflingPublisher.send(.right)
                     }
             }
-            .shuffleStackStyle(.rotateOut)
-            .shuffleStackOffset(20)
+            .shuffleStyle(.rotateOut)
+            .stackOffset(20)
             .onShuffle(sufflingPublisher)
         }
     }

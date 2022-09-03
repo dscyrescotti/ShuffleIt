@@ -18,7 +18,11 @@ public extension View {
         environment(\.shuffleTrigger, publisher.eraseToAnyPublisher())
     }
     
-    func shuffleStackOffset(_ offset: CGFloat) -> some View {
+    func stackOffset(_ offset: CGFloat) -> some View {
         environment(\.stackOffset, offset)
+    }
+    
+    func stackPadding(_ padding: CGFloat) -> some View {
+        environment(\.stackPadding, padding)
     }
 }
