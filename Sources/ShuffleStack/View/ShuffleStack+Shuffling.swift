@@ -36,9 +36,16 @@ extension ShuffleStack {
                 }
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
                     xPosition = -xPosition
+                    let previousIndex = index
                     index = data.previousIndex(index, offset: 1)
                     direction = .right
                     isLockedLeft = true
+                    let context = ShuffleContext(
+                        index: index,
+                        previousIndex: previousIndex,
+                        direction: .left
+                    )
+                    notifyListener(context: context)
                 }
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.25) {
                     withAnimation(animation.timing(duration: 0.2)) {
@@ -59,9 +66,16 @@ extension ShuffleStack {
                 }
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
                     xPosition = -xPosition
+                    let previousIndex = index
                     index = data.nextIndex(index, offset: 1)
                     direction = .left
                     isLockedRight = true
+                    let context = ShuffleContext(
+                        index: index,
+                        previousIndex: previousIndex,
+                        direction: .right
+                    )
+                    notifyListener(context: context)
                 }
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.25) {
                     withAnimation(animation.timing(duration: 0.2)) {
@@ -73,5 +87,13 @@ extension ShuffleStack {
                 
             }
         }
+    }
+    
+    private func notifyListener(context: ShuffleContext) {
+        shuffleContext?(context)
+    }
+    
+    internal var translation: CGFloat {
+        size.width > 0 ? xPosition / size.width * 2 : 0
     }
 }

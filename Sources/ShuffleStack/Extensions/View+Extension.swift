@@ -2,19 +2,39 @@ import SwiftUI
 import Combine
 
 public extension View {
-    func shuffleStackStyle(_ style: ShuffleStackStyle) -> some View {
-        environment(\.shuffleStackStyle, style)
+    func shuffleStyle(_ style: ShuffleStyle) -> some View {
+        environment(\.shuffleStyle, style)
     }
     
-    func shuffleStackAnimation(_ animation: ShuffleStackAnimation) -> some View {
-        environment(\.shuffleStackAnimation, animation)
+    func shuffleAnimation(_ animation: ShuffleAnimation) -> some View {
+        environment(\.shuffleAnimation, animation)
     }
     
     func swipeDisabled(_ disabled: Bool) -> some View {
-        environment(\.swipeDisabled, disabled)
+        environment(\.shuffleDisabled, disabled)
     }
     
-    func onTriggerShuffling<P: Publisher>(_ publisher: P) -> some View where P.Output == Direction, P.Failure == Never {
-        environment(\.shufflingPublisher, publisher.eraseToAnyPublisher())
+    func shuffleTrigger<P: Publisher>(on publisher: P) -> some View where P.Output == Direction, P.Failure == Never {
+        environment(\.shuffleTrigger, publisher.eraseToAnyPublisher())
+    }
+    
+    func stackOffset(_ offset: CGFloat) -> some View {
+        environment(\.stackOffset, offset)
+    }
+    
+    func stackPadding(_ padding: CGFloat) -> some View {
+        environment(\.stackPadding, padding)
+    }
+    
+    func stackScale(_ scale: CGFloat) -> some View {
+        environment(\.stackScale, scale)
+    }
+    
+    func onShuffle(_ perform: @escaping (ShuffleContext) -> Void) -> some View {
+        environment(\.shuffleContext, perform)
+    }
+    
+    func onTranslate(_ perform: @escaping (CGFloat) -> Void) -> some View {
+        environment(\.shuffleTranslation, perform)
     }
 }
