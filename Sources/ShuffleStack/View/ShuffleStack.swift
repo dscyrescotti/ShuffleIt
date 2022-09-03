@@ -9,6 +9,7 @@ public struct ShuffleStack<Data: RandomAccessCollection, StackContent: View>: Vi
     @Environment(\.shuffleTrigger) internal var shuffeTrigger
     @Environment(\.stackOffset) internal var offset
     @Environment(\.stackPadding) internal var padding
+    @Environment(\.stackScale) internal var scale
     
     // MARK: - States
     @State internal var index: Data.Index
