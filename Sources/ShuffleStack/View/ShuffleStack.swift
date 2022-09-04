@@ -22,6 +22,9 @@ public struct ShuffleStack<Data: RandomAccessCollection, StackContent: View>: Vi
     @State internal var size: CGSize = .zero
     @State internal var autoShuffling: Bool = false
     
+    // MARK: - GestureState
+    @GestureState internal var isActiveGesture: Bool = false
+    
     // MARK: - Properties
     internal let data: Data
     internal let stackContent: (Data.Element, CGFloat) -> StackContent
@@ -62,6 +65,11 @@ public struct ShuffleStack<Data: RandomAccessCollection, StackContent: View>: Vi
             shuffleTranslation?(abs(position) / size.width * 2)
         }
         .disabled(autoShuffling)
+        .onChange(of: isActiveGesture) { value in
+            if !isActiveGesture {
+                performRestoring()
+            }
+        }
     }
 }
 

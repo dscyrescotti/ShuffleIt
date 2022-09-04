@@ -1,6 +1,6 @@
 import SwiftUI
 
-struct ContentView: View {
+struct MainView: View {
     @State private var route: Route? = nil
     var body: some View {
         NavigationView {
@@ -23,7 +23,7 @@ struct ContentView: View {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        MainView()
     }
 }
 
