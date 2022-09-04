@@ -27,6 +27,8 @@
 		EC67A96228BE69F800BDAB83 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EC67A94F28BE69F800BDAB83 /* Assets.xcassets */; };
 		EC7410B928C44DA3005EFC41 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC7410B828C44DA3005EFC41 /* MainView.swift */; };
 		EC7410BA28C44DA3005EFC41 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC7410B828C44DA3005EFC41 /* MainView.swift */; };
+		EC7410BD28C45605005EFC41 /* TimingShuffleStackDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC7410BC28C45605005EFC41 /* TimingShuffleStackDemoView.swift */; };
+		EC7410BE28C45605005EFC41 /* TimingShuffleStackDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC7410BC28C45605005EFC41 /* TimingShuffleStackDemoView.swift */; };
 		ECF6A7AC28BE6C360098E2BA /* ShuffleIt in Frameworks */ = {isa = PBXBuildFile; productRef = ECF6A7AB28BE6C360098E2BA /* ShuffleIt */; };
 		ECF6A7AE28BE6C3F0098E2BA /* ShuffleIt in Frameworks */ = {isa = PBXBuildFile; productRef = ECF6A7AD28BE6C3F0098E2BA /* ShuffleIt */; };
 /* End PBXBuildFile section */
@@ -45,6 +47,7 @@
 		EC67A95A28BE69F800BDAB83 /* Demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Demo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EC67A95C28BE69F800BDAB83 /* macOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = macOS.entitlements; sourceTree = "<group>"; };
 		EC7410B828C44DA3005EFC41 /* MainView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
+		EC7410BC28C45605005EFC41 /* TimingShuffleStackDemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimingShuffleStackDemoView.swift; sourceTree = "<group>"; };
 		ECF6A7A928BE6C280098E2BA /* ShuffleIt */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = ShuffleIt; path = ..; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -71,10 +74,10 @@
 		EC1D2D5F28C366A10000668C /* ShuffleStack */ = {
 			isa = PBXGroup;
 			children = (
+				EC7410BB28C455DB005EFC41 /* Scenes */,
 				EC1D2D7B28C3C8A80000668C /* ViewModifier */,
 				EC1D2D6F28C388170000668C /* Models */,
 				EC1D2D6528C368F30000668C /* Components */,
-				EC1D2D6228C366F80000668C /* ShuffleStackDemoView.swift */,
 			);
 			path = ShuffleStack;
 			sourceTree = "<group>";
@@ -175,6 +178,15 @@
 				EC67A95C28BE69F800BDAB83 /* macOS.entitlements */,
 			);
 			path = macOS;
+			sourceTree = "<group>";
+		};
+		EC7410BB28C455DB005EFC41 /* Scenes */ = {
+			isa = PBXGroup;
+			children = (
+				EC1D2D6228C366F80000668C /* ShuffleStackDemoView.swift */,
+				EC7410BC28C45605005EFC41 /* TimingShuffleStackDemoView.swift */,
+			);
+			path = Scenes;
 			sourceTree = "<group>";
 		};
 		ECF6A7A828BE6C280098E2BA /* Packages */ = {
@@ -303,6 +315,7 @@
 				EC1D2D7128C3882D0000668C /* Sneaker.swift in Sources */,
 				EC7410B928C44DA3005EFC41 /* MainView.swift in Sources */,
 				EC1D2D7D28C3C8B50000668C /* DragGestureViewModifier.swift in Sources */,
+				EC7410BD28C45605005EFC41 /* TimingShuffleStackDemoView.swift in Sources */,
 				EC1D2D7628C3A6EF0000668C /* SneakerItemRow.swift in Sources */,
 				EC1D2D6E28C382EF0000668C /* Color+Extension.swift in Sources */,
 				EC1D2D6328C366F80000668C /* ShuffleStackDemoView.swift in Sources */,
@@ -318,6 +331,7 @@
 				EC1D2D7328C388330000668C /* Color+Extension.swift in Sources */,
 				EC7410BA28C44DA3005EFC41 /* MainView.swift in Sources */,
 				EC1D2D7E28C3C8B50000668C /* DragGestureViewModifier.swift in Sources */,
+				EC7410BE28C45605005EFC41 /* TimingShuffleStackDemoView.swift in Sources */,
 				EC1D2D7728C3A6EF0000668C /* SneakerItemRow.swift in Sources */,
 				EC1D2D7228C3882D0000668C /* Sneaker.swift in Sources */,
 				EC1D2D6828C36AC50000668C /* ShuffleStackDemoView.swift in Sources */,

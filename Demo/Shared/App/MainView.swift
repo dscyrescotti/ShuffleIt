@@ -5,16 +5,31 @@ struct MainView: View {
     var body: some View {
         NavigationView {
             List {
-                Button("ShuffleStack Demo") {
-                    route = .shuffleStack
+                Section {
+                    Button(action: {
+                        route = .shuffleStack
+                    }) {
+                        Label("ShuffleStack (Simple)", systemImage: "square.stack.3d.down.forward.fill")
+                    }
+                    Button(action: {
+                        route = .timingShuffleStack
+                    }) {
+                        Label("ShuffleStack (with Timer)", systemImage: "deskclock.fill")
+                    }
+                } header: {
+                    Text("ShuffleStack")
                 }
+
             }
+            .listStyle(.insetGrouped)
             .foregroundColor(.black)
             .navigationTitle("ShuffleIt ✌️")
             .fullScreenCover(item: $route) { route in
                 switch route {
                 case .shuffleStack:
                     ShuffleStackDemoView()
+                case .timingShuffleStack:
+                    TimingShuffleStackDemoView()
                 }
             }
         }
@@ -29,10 +44,12 @@ struct ContentView_Previews: PreviewProvider {
 
 enum Route: Identifiable {
     case shuffleStack
+    case timingShuffleStack
     
     var id: String {
         switch self {
         case .shuffleStack: return "shuffle-stack"
+        case .timingShuffleStack: return "timing-shuffle-stack"
         }
     }
 }
