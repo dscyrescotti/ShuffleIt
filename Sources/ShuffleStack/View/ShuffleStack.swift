@@ -8,7 +8,6 @@ public struct ShuffleStack<Data: RandomAccessCollection, StackContent: View>: Vi
     @Environment(\.shuffleDisabled) internal var disabled
     @Environment(\.shuffleTrigger) internal var shuffleTrigger
     @Environment(\.stackOffset) internal var offset
-    @Environment(\.stackPadding) internal var padding
     @Environment(\.stackScale) internal var scale
     @Environment(\.shuffleContext) internal var shuffleContext
     @Environment(\.shuffleTranslation) internal var shuffleTranslation
@@ -49,7 +48,7 @@ public struct ShuffleStack<Data: RandomAccessCollection, StackContent: View>: Vi
             }
         }
         .frame(maxWidth: .infinity)
-        .padding(.horizontal, padding)
+        .padding(.horizontal, offset)
         .frame(height: size.height)
         .onPreferenceChange(SizePreferenceKey.self) { size in
             DispatchQueue.main.async {
