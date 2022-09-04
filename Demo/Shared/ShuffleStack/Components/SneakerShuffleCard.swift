@@ -3,23 +3,16 @@ import SwiftUI
 struct SneakerShuffleCard: View {
     let sneaker: Sneaker
     let translation: CGFloat
+    @Environment(\.horizontalSizeClass) var horizontalSizeClass
+    
     var body: some View {
-        VStack(spacing: 0) {
-            Image(sneaker.imageName)
-                .resizable()
-                .scaledToFit()
-                .frame(width: 180, height: 180)
-                .rotationEffect(.degrees(-40 * Double(1 - translation)))
-                .offset(x: -20 * Double(1 - translation))
-            Text(sneaker.title)
-                .font(.title.bold())
-                .offset(y: -15)
-                .padding(.bottom, -15)
-            Text(sneaker.slogan)
-                .font(.headline)
-                .lineLimit(1)
+        Group {
+            if horizontalSizeClass == .compact {
+                compactContent
+            } else {
+                regularContent
+            }
         }
-        .padding(.bottom)
         .frame(maxWidth: .infinity)
         .foregroundColor(Color(hex: sneaker.theme.foreground))
         .background {
@@ -43,6 +36,44 @@ struct SneakerShuffleCard: View {
         .background(Color(hex: sneaker.theme.background).opacity(0.4))
         .background(.white)
         .cornerRadius(16)
+    }
+    
+    var compactContent: some View {
+        VStack(spacing: 0) {
+            Image(sneaker.imageName)
+                .resizable()
+                .scaledToFit()
+                .frame(width: 180, height: 180)
+                .rotationEffect(.degrees(-40 * Double(1 - translation)))
+                .offset(x: -20 * Double(1 - translation))
+            Text(sneaker.title)
+                .font(.title.bold())
+                .offset(y: -15)
+                .padding(.bottom, -15)
+            Text(sneaker.slogan)
+                .font(.headline)
+                .lineLimit(1)
+        }
+        .padding(.bottom)
+    }
+    
+    var regularContent: some View {
+        HStack(spacing: 0) {
+            Image(sneaker.imageName)
+                .resizable()
+                .scaledToFit()
+                .frame(width: 300, height: 300)
+                .rotationEffect(.degrees(-40 * Double(1 - translation)))
+                .offset(x: -40 * Double(1 - translation))
+            VStack(alignment: .leading, spacing: 0) {
+                Text(sneaker.title)
+                    .font(.system(size: 60).bold())
+                Text(sneaker.slogan)
+                    .font(.title)
+            }
+            .padding(.trailing, 30)
+        }
+        .padding(20)
     }
 }
 
