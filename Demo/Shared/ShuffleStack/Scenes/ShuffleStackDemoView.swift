@@ -6,8 +6,10 @@ struct ShuffleStackDemoView: View {
     @Environment(\.dismiss) var dismiss
     @State private var sneakers = loadSneakers()
     @State private var sneaker: Sneaker?
-    @State private var isShowItems: Bool = true
+    @State private var isShowItems: Bool = false
     let shufflePublisher = PassthroughSubject<Direction, Never>()
+    @Environment(\.horizontalSizeClass) var horizontalSizeClass
+    let columns: [GridItem] = .init(repeating: GridItem(.flexible(), spacing: 20, alignment: .leading), count: 2)
     
     var body: some View {
         VStack(alignment: .leading, spacing: 16) {
@@ -17,8 +19,9 @@ struct ShuffleStackDemoView: View {
                     translation: abs(translation)
                 )
             }
+            .stackOffset(horizontalSizeClass == .compact ? 20 : 40)
+            .stackScale(horizontalSizeClass == .compact ? 0.5 : 0.4)
             .stackPadding(20)
-            .stackOffset(20)
             .onShuffle { context in
                 withAnimation(.easeInOut(duration: 0.2)) {
                     isShowItems = false
@@ -32,7 +35,7 @@ struct ShuffleStackDemoView: View {
             }
             .shuffleTrigger(on: shufflePublisher)
             .shuffleAnimation(.easeInOut)
-            .shuffleStyle(.rotateIn)
+            .shuffleStyle(horizontalSizeClass == .compact ? .rotateIn : .slide)
             if let sneaker = sneaker, isShowItems {
                 Text("Explore in \(sneaker.title)")
                     .font(.title.bold())
@@ -42,9 +45,19 @@ struct ShuffleStackDemoView: View {
             }
             if let sneaker = sneaker, isShowItems {
                 ScrollView {
-                    VStack(alignment: .leading) {
-                        ForEach(sneaker.items) { item in
-                            SneakerItemRow(item: item)
+                    Group {
+                        if horizontalSizeClass == .compact {
+                            LazyVStack(alignment: .leading) {
+                                ForEach(sneaker.items) { item in
+                                    SneakerItemRow(item: item)
+                                }
+                            }
+                        } else {
+                            LazyVGrid(columns: columns) {
+                                ForEach(sneaker.items) { item in
+                                    SneakerItemRow(item: item)
+                                }
+                            }
                         }
                     }
                     .padding(.horizontal, 20)
@@ -61,6 +74,7 @@ struct ShuffleStackDemoView: View {
                     default: break
                     }
                 }))
+                .padding(.bottom, 20)
             } else {
                 Spacer()
             }
@@ -85,9 +99,10 @@ struct ShuffleStackDemoView: View {
             }
         }
         .onAppear {
-            DispatchQueue.main.async {
+            sneaker = sneakers.first
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
                 withAnimation(.easeInOut(duration: 0.2)) {
-                    sneaker = sneakers.first
+                    isShowItems = true
                 }
             }
         }
