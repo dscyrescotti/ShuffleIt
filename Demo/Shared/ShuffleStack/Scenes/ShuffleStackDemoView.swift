@@ -72,7 +72,7 @@ struct ShuffleStackDemoView: View {
                         Circle()
                             .scale(1.1, anchor: .bottomTrailing)
                             .position(x: proxy.size.width, y: proxy.size.height / 2.5)
-                            .foregroundColor(Color(hex: sneaker.theme.primary).opacity(0.45))
+                            .foregroundColor(Color(hex: sneaker.theme.tertiary).opacity(0.3))
                         Circle()
                             .scale(0.7, anchor: .bottomTrailing)
                             .position(x: 0, y: proxy.size.height)
