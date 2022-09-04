@@ -22,6 +22,10 @@ public extension View {
         environment(\.stackOffset, offset)
     }
     
+    func stackPadding(_ padding: CGFloat) -> some View {
+        environment(\.stackPadding, padding)
+    }
+    
     func stackScale(_ scale: CGFloat) -> some View {
         environment(\.stackScale, scale)
     }
