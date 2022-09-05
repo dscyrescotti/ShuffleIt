@@ -9,28 +9,17 @@
 /* Begin PBXBuildFile section */
 		EC1D2D6328C366F80000668C /* ShuffleStackDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC1D2D6228C366F80000668C /* ShuffleStackDemoView.swift */; };
 		EC1D2D6728C36AC20000668C /* SneakerShuffleCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC1D2D6628C36AC20000668C /* SneakerShuffleCard.swift */; };
-		EC1D2D6828C36AC50000668C /* ShuffleStackDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC1D2D6228C366F80000668C /* ShuffleStackDemoView.swift */; };
-		EC1D2D6928C36AC90000668C /* SneakerShuffleCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC1D2D6628C36AC20000668C /* SneakerShuffleCard.swift */; };
 		EC1D2D6B28C37D280000668C /* Sneakers.json in Resources */ = {isa = PBXBuildFile; fileRef = EC1D2D6A28C37D280000668C /* Sneakers.json */; };
 		EC1D2D6E28C382EF0000668C /* Color+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC1D2D6D28C382EF0000668C /* Color+Extension.swift */; };
 		EC1D2D7128C3882D0000668C /* Sneaker.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC1D2D7028C3882D0000668C /* Sneaker.swift */; };
-		EC1D2D7228C3882D0000668C /* Sneaker.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC1D2D7028C3882D0000668C /* Sneaker.swift */; };
-		EC1D2D7328C388330000668C /* Color+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC1D2D6D28C382EF0000668C /* Color+Extension.swift */; };
-		EC1D2D7428C388360000668C /* Sneakers.json in Resources */ = {isa = PBXBuildFile; fileRef = EC1D2D6A28C37D280000668C /* Sneakers.json */; };
 		EC1D2D7628C3A6EF0000668C /* SneakerItemRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC1D2D7528C3A6EF0000668C /* SneakerItemRow.swift */; };
-		EC1D2D7728C3A6EF0000668C /* SneakerItemRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC1D2D7528C3A6EF0000668C /* SneakerItemRow.swift */; };
 		EC1D2D7D28C3C8B50000668C /* DragGestureViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC1D2D7C28C3C8B50000668C /* DragGestureViewModifier.swift */; };
-		EC1D2D7E28C3C8B50000668C /* DragGestureViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC1D2D7C28C3C8B50000668C /* DragGestureViewModifier.swift */; };
+		EC64DECA28C4EB4000C317A3 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EC64DEC928C4EB4000C317A3 /* Launch Screen.storyboard */; };
 		EC67A95D28BE69F800BDAB83 /* DemoApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC67A94D28BE69F700BDAB83 /* DemoApp.swift */; };
-		EC67A95E28BE69F800BDAB83 /* DemoApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC67A94D28BE69F700BDAB83 /* DemoApp.swift */; };
 		EC67A96128BE69F800BDAB83 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EC67A94F28BE69F800BDAB83 /* Assets.xcassets */; };
-		EC67A96228BE69F800BDAB83 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EC67A94F28BE69F800BDAB83 /* Assets.xcassets */; };
 		EC7410B928C44DA3005EFC41 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC7410B828C44DA3005EFC41 /* MainView.swift */; };
-		EC7410BA28C44DA3005EFC41 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC7410B828C44DA3005EFC41 /* MainView.swift */; };
 		EC7410BD28C45605005EFC41 /* TimingShuffleStackDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC7410BC28C45605005EFC41 /* TimingShuffleStackDemoView.swift */; };
-		EC7410BE28C45605005EFC41 /* TimingShuffleStackDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC7410BC28C45605005EFC41 /* TimingShuffleStackDemoView.swift */; };
 		ECF6A7AC28BE6C360098E2BA /* ShuffleIt in Frameworks */ = {isa = PBXBuildFile; productRef = ECF6A7AB28BE6C360098E2BA /* ShuffleIt */; };
-		ECF6A7AE28BE6C3F0098E2BA /* ShuffleIt in Frameworks */ = {isa = PBXBuildFile; productRef = ECF6A7AD28BE6C3F0098E2BA /* ShuffleIt */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -41,11 +30,10 @@
 		EC1D2D7028C3882D0000668C /* Sneaker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sneaker.swift; sourceTree = "<group>"; };
 		EC1D2D7528C3A6EF0000668C /* SneakerItemRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SneakerItemRow.swift; sourceTree = "<group>"; };
 		EC1D2D7C28C3C8B50000668C /* DragGestureViewModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DragGestureViewModifier.swift; sourceTree = "<group>"; };
+		EC64DEC928C4EB4000C317A3 /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		EC67A94D28BE69F700BDAB83 /* DemoApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoApp.swift; sourceTree = "<group>"; };
 		EC67A94F28BE69F800BDAB83 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		EC67A95428BE69F800BDAB83 /* ShuffleIt.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ShuffleIt.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		EC67A95A28BE69F800BDAB83 /* Demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Demo.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		EC67A95C28BE69F800BDAB83 /* macOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = macOS.entitlements; sourceTree = "<group>"; };
 		EC7410B828C44DA3005EFC41 /* MainView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		EC7410BC28C45605005EFC41 /* TimingShuffleStackDemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimingShuffleStackDemoView.swift; sourceTree = "<group>"; };
 		ECF6A7A928BE6C280098E2BA /* ShuffleIt */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = ShuffleIt; path = ..; sourceTree = "<group>"; };
@@ -57,14 +45,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				ECF6A7AC28BE6C360098E2BA /* ShuffleIt in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		EC67A95728BE69F800BDAB83 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				ECF6A7AE28BE6C3F0098E2BA /* ShuffleIt in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -96,6 +76,7 @@
 			children = (
 				EC1D2D6428C367E00000668C /* Json */,
 				EC67A94F28BE69F800BDAB83 /* Assets.xcassets */,
+				EC64DEC928C4EB4000C317A3 /* Launch Screen.storyboard */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -145,14 +126,13 @@
 			isa = PBXGroup;
 			children = (
 				ECF6A7A828BE6C280098E2BA /* Packages */,
-				EC67A94C28BE69F700BDAB83 /* Shared */,
-				EC67A95B28BE69F800BDAB83 /* macOS */,
+				EC67A94C28BE69F700BDAB83 /* Demo */,
 				EC67A95528BE69F800BDAB83 /* Products */,
 				ECF6A7AA28BE6C360098E2BA /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
-		EC67A94C28BE69F700BDAB83 /* Shared */ = {
+		EC67A94C28BE69F700BDAB83 /* Demo */ = {
 			isa = PBXGroup;
 			children = (
 				EC1D2D6C28C382D80000668C /* Extensions */,
@@ -160,24 +140,15 @@
 				EC1D2D6028C366AB0000668C /* App */,
 				EC1D2D5F28C366A10000668C /* ShuffleStack */,
 			);
-			path = Shared;
+			path = Demo;
 			sourceTree = "<group>";
 		};
 		EC67A95528BE69F800BDAB83 /* Products */ = {
 			isa = PBXGroup;
 			children = (
 				EC67A95428BE69F800BDAB83 /* ShuffleIt.app */,
-				EC67A95A28BE69F800BDAB83 /* Demo.app */,
 			);
 			name = Products;
-			sourceTree = "<group>";
-		};
-		EC67A95B28BE69F800BDAB83 /* macOS */ = {
-			isa = PBXGroup;
-			children = (
-				EC67A95C28BE69F800BDAB83 /* macOS.entitlements */,
-			);
-			path = macOS;
 			sourceTree = "<group>";
 		};
 		EC7410BB28C455DB005EFC41 /* Scenes */ = {
@@ -227,26 +198,6 @@
 			productReference = EC67A95428BE69F800BDAB83 /* ShuffleIt.app */;
 			productType = "com.apple.product-type.application";
 		};
-		EC67A95928BE69F800BDAB83 /* Demo (macOS) */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = EC67A96828BE69F800BDAB83 /* Build configuration list for PBXNativeTarget "Demo (macOS)" */;
-			buildPhases = (
-				EC67A95628BE69F800BDAB83 /* Sources */,
-				EC67A95728BE69F800BDAB83 /* Frameworks */,
-				EC67A95828BE69F800BDAB83 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = "Demo (macOS)";
-			packageProductDependencies = (
-				ECF6A7AD28BE6C3F0098E2BA /* ShuffleIt */,
-			);
-			productName = "Demo (macOS)";
-			productReference = EC67A95A28BE69F800BDAB83 /* Demo.app */;
-			productType = "com.apple.product-type.application";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -258,9 +209,6 @@
 				LastUpgradeCheck = 1330;
 				TargetAttributes = {
 					EC67A95328BE69F800BDAB83 = {
-						CreatedOnToolsVersion = 13.3.1;
-					};
-					EC67A95928BE69F800BDAB83 = {
 						CreatedOnToolsVersion = 13.3.1;
 					};
 				};
@@ -281,7 +229,6 @@
 			projectRoot = "";
 			targets = (
 				EC67A95328BE69F800BDAB83 /* Demo (iOS) */,
-				EC67A95928BE69F800BDAB83 /* Demo (macOS) */,
 			);
 		};
 /* End PBXProject section */
@@ -291,17 +238,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EC64DECA28C4EB4000C317A3 /* Launch Screen.storyboard in Resources */,
 				EC1D2D6B28C37D280000668C /* Sneakers.json in Resources */,
 				EC67A96128BE69F800BDAB83 /* Assets.xcassets in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		EC67A95828BE69F800BDAB83 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				EC67A96228BE69F800BDAB83 /* Assets.xcassets in Resources */,
-				EC1D2D7428C388360000668C /* Sneakers.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -321,22 +260,6 @@
 				EC1D2D6328C366F80000668C /* ShuffleStackDemoView.swift in Sources */,
 				EC67A95D28BE69F800BDAB83 /* DemoApp.swift in Sources */,
 				EC1D2D6728C36AC20000668C /* SneakerShuffleCard.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		EC67A95628BE69F800BDAB83 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				EC1D2D7328C388330000668C /* Color+Extension.swift in Sources */,
-				EC7410BA28C44DA3005EFC41 /* MainView.swift in Sources */,
-				EC1D2D7E28C3C8B50000668C /* DragGestureViewModifier.swift in Sources */,
-				EC7410BE28C45605005EFC41 /* TimingShuffleStackDemoView.swift in Sources */,
-				EC1D2D7728C3A6EF0000668C /* SneakerItemRow.swift in Sources */,
-				EC1D2D7228C3882D0000668C /* Sneaker.swift in Sources */,
-				EC1D2D6828C36AC50000668C /* ShuffleStackDemoView.swift in Sources */,
-				EC67A95E28BE69F800BDAB83 /* DemoApp.swift in Sources */,
-				EC1D2D6928C36AC90000668C /* SneakerShuffleCard.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -465,6 +388,7 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = "Launch Screen";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = UIInterfaceOrientationPortrait;
 				IPHONEOS_DEPLOYMENT_TARGET = 15.4;
@@ -495,6 +419,7 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = "Launch Screen";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = UIInterfaceOrientationPortrait;
 				IPHONEOS_DEPLOYMENT_TARGET = 15.4;
@@ -510,62 +435,6 @@
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
-			};
-			name = Release;
-		};
-		EC67A96928BE69F800BDAB83 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = macOS/macOS.entitlements;
-				CODE_SIGN_STYLE = Automatic;
-				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 9TYSSFKV5U;
-				ENABLE_HARDENED_RUNTIME = YES;
-				ENABLE_PREVIEWS = YES;
-				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_NSHumanReadableCopyright = "";
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/../Frameworks",
-				);
-				MACOSX_DEPLOYMENT_TARGET = 12.3;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.example.Demo;
-				PRODUCT_NAME = Demo;
-				SDKROOT = macosx;
-				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_VERSION = 5.0;
-			};
-			name = Debug;
-		};
-		EC67A96A28BE69F800BDAB83 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = macOS/macOS.entitlements;
-				CODE_SIGN_STYLE = Automatic;
-				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 9TYSSFKV5U;
-				ENABLE_HARDENED_RUNTIME = YES;
-				ENABLE_PREVIEWS = YES;
-				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_NSHumanReadableCopyright = "";
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/../Frameworks",
-				);
-				MACOSX_DEPLOYMENT_TARGET = 12.3;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.example.Demo;
-				PRODUCT_NAME = Demo;
-				SDKROOT = macosx;
-				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
 		};
@@ -590,23 +459,10 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		EC67A96828BE69F800BDAB83 /* Build configuration list for PBXNativeTarget "Demo (macOS)" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				EC67A96928BE69F800BDAB83 /* Debug */,
-				EC67A96A28BE69F800BDAB83 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
 /* End XCConfigurationList section */
 
 /* Begin XCSwiftPackageProductDependency section */
 		ECF6A7AB28BE6C360098E2BA /* ShuffleIt */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = ShuffleIt;
-		};
-		ECF6A7AD28BE6C3F0098E2BA /* ShuffleIt */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = ShuffleIt;
 		};

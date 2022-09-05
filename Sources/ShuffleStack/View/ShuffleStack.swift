@@ -49,7 +49,7 @@ public struct ShuffleStack<Data: RandomAccessCollection, StackContent: View>: Vi
             }
         }
         .frame(maxWidth: .infinity)
-        .padding(.horizontal, padding)
+        .padding(.horizontal, padding + offset)
         .frame(height: size.height)
         .onPreferenceChange(SizePreferenceKey.self) { size in
             DispatchQueue.main.async {
