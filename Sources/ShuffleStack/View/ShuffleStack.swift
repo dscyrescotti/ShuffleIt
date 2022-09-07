@@ -5,6 +5,8 @@ import SwiftUI
 ///
 /// `ShuffleStack` is built on top of `ZStack` but it only renders **three child views** which are visible on the screen and switches data to display based on the current index. As it renders three child views, it is **mandatory** to have **at least three elements** in data array. If not, it will end up with fatal error.
 ///
+/// `ShuffleStack` comes with various type of modifiers to override default behaviour of the stack view so that it is easy to tailor to view with custom values such as animation, style, offset, padding and scale factor. Moreover, it also provides the way of listening shuffling events and programmatically shuffling contents.
+///
 /// The following example provide the simple usage of `ShuffleStack` which creates a stack of color cards with default shuffle style and animation.
 ///
 /// ```
@@ -22,8 +24,6 @@ import SwiftUI
 ///     }
 /// }
 /// ```
-///
-/// `ShuffleStack` comes with various type of modifiers to override default behaviour of the stack view so that it is easy to tailor to view with custom values such as animation, style, offset, padding and scale factor. Besides, it also provides the way of listening shuffling events and programmatically shuffling contents. Read more about in Modifiers Section.
 public struct ShuffleStack<Data: RandomAccessCollection, StackContent: View>: View where Data.Index == Int {
     // MARK: - Environments
     @Environment(\.shuffleStyle) internal var style

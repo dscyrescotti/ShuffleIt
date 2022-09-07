@@ -2,9 +2,13 @@ import SwiftUI
 
 /// An enumeration of shuffle animation that maps to `SwiftUI` animation.
 public enum ShuffleAnimation {
+    /// A linear animation.
     case linear
+    /// An ease-in animation.
     case easeIn
+    /// An ease-out animation.
     case easeOut
+    /// An ease-in-out animation.
     case easeInOut
     
     func timing(duration: Double) -> Animation {
