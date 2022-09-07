@@ -1,5 +1,6 @@
 import SwiftUI
 
+/// An enumeration of shuffle animation that maps to `SwiftUI` animation.
 public enum ShuffleAnimation {
     case linear
     case easeIn
@@ -20,6 +21,7 @@ public enum ShuffleAnimation {
     }
 }
 
+/// An environment key for shuffle animation.
 struct ShuffleAnimationKey: EnvironmentKey {
     static var defaultValue: ShuffleAnimation = .linear
 }

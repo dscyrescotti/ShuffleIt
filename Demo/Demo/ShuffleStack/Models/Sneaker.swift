@@ -1,6 +1,6 @@
 import Foundation
 
-struct Sneaker: Decodable, Identifiable {
+struct Sneaker: Decodable {
     let id: String
     let title: String
     let slogan: String

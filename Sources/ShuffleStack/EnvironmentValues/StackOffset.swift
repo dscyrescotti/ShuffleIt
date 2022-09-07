@@ -1,5 +1,6 @@
 import SwiftUI
 
+/// An environment key for stack offset.
 struct StackOffsetKey: EnvironmentKey {
     static var defaultValue: CGFloat = 15
 }

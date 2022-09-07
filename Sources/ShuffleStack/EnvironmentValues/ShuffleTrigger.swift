@@ -1,8 +1,11 @@
 import SwiftUI
 import Combine
 
+/// An enumeration of shuffle direction.
 public enum Direction {
+    /// A shuffle direction to the left.
     case left
+    /// A shuffle direction to the right.
     case right
 }
 

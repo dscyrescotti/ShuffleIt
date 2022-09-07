@@ -1,5 +1,6 @@
 import SwiftUI
 
+/// An environment key for stack scale.
 struct StackScale: EnvironmentKey {
     static var defaultValue: CGFloat = 0.95
 }
