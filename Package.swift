@@ -15,10 +15,6 @@ let package = Package(
         .library(
             name: "ShuffleIt",
             targets: ["ShuffleIt"]
-        ),
-        .library(
-            name: "ShuffleStack",
-            targets: ["ShuffleStack"]
         )
     ],
     dependencies: [
@@ -27,17 +23,11 @@ let package = Package(
     targets: [
         .target(
             name: "ShuffleIt",
-            dependencies: [
-                "ShuffleStack"
-            ]
-        ),
-        .target(
-            name: "ShuffleStack",
             dependencies: []
         ),
         .testTarget(
             name: "ShuffleItTests",
-            dependencies: ["ShuffleStack"]
+            dependencies: ["ShuffleIt"]
         ),
     ],
     swiftLanguageVersions: [.v5]
