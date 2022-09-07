@@ -8,5 +8,13 @@ A UI element library for **SwiftUI**.
 
 !["logo"](ShuffleIt.png)
 
-## Features
-- [**ShuffleStack**](https://dscyrescotti.github.io/ShuffleIt/documentation/shufflestack/) - a customizable stack view with shuffling behaviour on its stacked child views.
+## Topics
+
+### Features
+- ``ShuffleStack``
+
+### ShuffleStack
+- ``Direction``
+- ``ShuffleAnimation``
+- ``ShuffleContext``
+- ``ShuffleStyle``
