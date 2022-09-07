@@ -14,7 +14,7 @@ let package = Package(
     products: [
         .library(
             name: "ShuffleIt",
-            targets: ["ShuffleStack"]
+            targets: ["ShuffleIt"]
         ),
         .library(
             name: "ShuffleStack",
@@ -24,9 +24,14 @@ let package = Package(
     dependencies: [],
     targets: [
         .target(
+            name: "ShuffleIt",
+            dependencies: [
+                "ShuffleStack"
+            ]
+        ),
+        .target(
             name: "ShuffleStack",
-            dependencies: [],
-            path: "Sources/ShuffleStack"
+            dependencies: []
         ),
         .testTarget(
             name: "ShuffleItTests",

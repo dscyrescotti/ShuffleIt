@@ -24,6 +24,8 @@ import SwiftUI
 ///     }
 /// }
 /// ```
+///
+/// 
 public struct ShuffleStack<Data: RandomAccessCollection, StackContent: View>: View where Data.Index == Int {
     // MARK: - Environments
     @Environment(\.shuffleStyle) internal var style

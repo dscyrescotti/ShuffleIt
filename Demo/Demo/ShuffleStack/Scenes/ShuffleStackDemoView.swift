@@ -1,6 +1,6 @@
 import Combine
 import SwiftUI
-import ShuffleStack
+import ShuffleIt
 
 struct ShuffleStackDemoView: View {
     @Environment(\.dismiss) var dismiss

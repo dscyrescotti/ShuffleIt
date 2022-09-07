@@ -1,6 +1,6 @@
 # ``ShuffleStack``
 
-**ShuffleStack** is a sub-module of **ShuffleIt** library - a user interface library for **SwiftUI** which delivers a collection of custom stack views with a wide range of elegant shuffling, sliding and swiping behaviours.
+**ShuffleStack** is a user interface library which is the part of the **ShuffleIt** library. 
 
 ## Overview
 

@@ -19,7 +19,7 @@
 		EC67A96128BE69F800BDAB83 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EC67A94F28BE69F800BDAB83 /* Assets.xcassets */; };
 		EC7410B928C44DA3005EFC41 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC7410B828C44DA3005EFC41 /* MainView.swift */; };
 		EC7410BD28C45605005EFC41 /* TimingShuffleStackDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC7410BC28C45605005EFC41 /* TimingShuffleStackDemoView.swift */; };
-		ECF6A7AC28BE6C360098E2BA /* ShuffleIt in Frameworks */ = {isa = PBXBuildFile; productRef = ECF6A7AB28BE6C360098E2BA /* ShuffleIt */; };
+		EC98DC2128C8E1E7000F3DD9 /* ShuffleIt in Frameworks */ = {isa = PBXBuildFile; productRef = EC98DC2028C8E1E7000F3DD9 /* ShuffleIt */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -33,10 +33,10 @@
 		EC64DEC928C4EB4000C317A3 /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		EC67A94D28BE69F700BDAB83 /* DemoApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoApp.swift; sourceTree = "<group>"; };
 		EC67A94F28BE69F800BDAB83 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		EC67A95428BE69F800BDAB83 /* ShuffleIt.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ShuffleIt.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		EC67A95428BE69F800BDAB83 /* ShuffleIt Demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ShuffleIt Demo.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		EC7410B828C44DA3005EFC41 /* MainView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		EC7410BC28C45605005EFC41 /* TimingShuffleStackDemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimingShuffleStackDemoView.swift; sourceTree = "<group>"; };
-		ECF6A7A928BE6C280098E2BA /* ShuffleIt */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = ShuffleIt; path = ..; sourceTree = "<group>"; };
+		EC98DC1F28C8E1D6000F3DD9 /* ShuffleIt */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = ShuffleIt; path = ..; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -44,7 +44,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				ECF6A7AC28BE6C360098E2BA /* ShuffleIt in Frameworks */,
+				EC98DC2128C8E1E7000F3DD9 /* ShuffleIt in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -125,7 +125,7 @@
 		EC67A94728BE69F700BDAB83 = {
 			isa = PBXGroup;
 			children = (
-				ECF6A7A828BE6C280098E2BA /* Packages */,
+				EC98DC1E28C8E1D6000F3DD9 /* Packages */,
 				EC67A94C28BE69F700BDAB83 /* Demo */,
 				EC67A95528BE69F800BDAB83 /* Products */,
 				ECF6A7AA28BE6C360098E2BA /* Frameworks */,
@@ -146,7 +146,7 @@
 		EC67A95528BE69F800BDAB83 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				EC67A95428BE69F800BDAB83 /* ShuffleIt.app */,
+				EC67A95428BE69F800BDAB83 /* ShuffleIt Demo.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -160,10 +160,10 @@
 			path = Scenes;
 			sourceTree = "<group>";
 		};
-		ECF6A7A828BE6C280098E2BA /* Packages */ = {
+		EC98DC1E28C8E1D6000F3DD9 /* Packages */ = {
 			isa = PBXGroup;
 			children = (
-				ECF6A7A928BE6C280098E2BA /* ShuffleIt */,
+				EC98DC1F28C8E1D6000F3DD9 /* ShuffleIt */,
 			);
 			name = Packages;
 			sourceTree = "<group>";
@@ -192,10 +192,10 @@
 			);
 			name = "Demo (iOS)";
 			packageProductDependencies = (
-				ECF6A7AB28BE6C360098E2BA /* ShuffleIt */,
+				EC98DC2028C8E1E7000F3DD9 /* ShuffleIt */,
 			);
 			productName = "Demo (iOS)";
-			productReference = EC67A95428BE69F800BDAB83 /* ShuffleIt.app */;
+			productReference = EC67A95428BE69F800BDAB83 /* ShuffleIt Demo.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -398,7 +398,7 @@
 				);
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.example.ShuffleIt;
-				PRODUCT_NAME = ShuffleIt;
+				PRODUCT_NAME = "ShuffleIt Demo";
 				SDKROOT = iphoneos;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -429,7 +429,7 @@
 				);
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.example.ShuffleIt;
-				PRODUCT_NAME = ShuffleIt;
+				PRODUCT_NAME = "ShuffleIt Demo";
 				SDKROOT = iphoneos;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -462,7 +462,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		ECF6A7AB28BE6C360098E2BA /* ShuffleIt */ = {
+		EC98DC2028C8E1E7000F3DD9 /* ShuffleIt */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = ShuffleIt;
 		};
