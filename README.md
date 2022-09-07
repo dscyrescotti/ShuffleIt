@@ -44,7 +44,7 @@ extension Color: Identifiable {
 ```
 <details>
 <summary>Preview</summary>
-<img src="https://github.com/dscyrescotti/ShuffleIt/blob/main/Assets/Previews/ShuffleStack-Preview.png?raw=true" alt="ShuffleStack-Preview"  width="40%"/>
+<img src="https://github.com/dscyrescotti/ShuffleIt/blob/main/Assets/Previews/ShuffleStack-Preview.png?raw=true" alt="ShuffleStack-Preview"  width="20%"/>
 </details>
 
 
