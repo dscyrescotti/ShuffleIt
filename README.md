@@ -2,14 +2,14 @@
 <img width="70%" src="https://github.com/dscyrescotti/ShuffleIt/blob/main/Assets/ShuffleIt.png?raw=true">
 </p>
 
-**ShuffleIt** is a user interface library for **SwiftUI** which delivers a collection of custom stack views with a wide range of elegant shuffling, sliding and swiping behaviours.
+**ShuffleIt** is a user interface library for **SwiftUI** which delivers a collection of customizable stack views with a wide range of elegant shuffling, sliding and swiping behaviours.
 
 <table>
 <tr>
 <th>ShuffleStack</th>
 </tr>
 <tr>
-<td><img src="https://github.com/dscyrescotti/ShuffleIt/blob/main/Assets/ShuffleIt-Demo.gif?raw=true" alt="ShuffleIt-Demo"  width="40%"/></td>
+<td align="center"><img src="https://github.com/dscyrescotti/ShuffleIt/blob/main/Assets/ShuffleIt-Demo.gif?raw=true" alt="ShuffleIt-Demo"  width="50%"/></td>
 </tr>
 </table>
 
@@ -18,33 +18,27 @@
 > For now, **ShuffleIt** only provides **ShuffleStack** view. (🚨 Spoiler Alert - There will be very soon various types of stack views coming.)
 
 ### ShuffleStack <a id="shufflestack"></a>
-**ShuffleStack** is a stack view with shuffling behaviour on the stack of content views which will be useful as a banner. Not like normal stack view, it only renders three content views visible on the screen and switches data on them based on the current index.
+**ShuffleStack** is a stack view with shuffling behaviour on the stack of content views which will be useful as a banner. Not like normal stack view, it only renders three content views visible on the screen and switches data of content views based on the current index.
 
 #### Usage
 ```swift
-struct ContentView: View {
-    let colors: [Color] = [.blue, .brown, .black, .cyan, .green, .indigo, .pink, .purple, .red, .orange, .yellow]
-    var body: some View {
-        ShuffleStack(
-            colors,
-            initialIndex: 0
-        ) { color in
-            color
-                .frame(height: 200)
-                .cornerRadius(16)
-        }
-    }
-}
-
-extension Color: Identifiable {
-    public var id: Int {
-        self.hashValue
+let colors: [Color] = [.blue, .brown, .black, .cyan, .green, .indigo, .pink, .purple, .red, .orange, .yellow]
+var body: some View {
+    ShuffleStack(
+        colors,
+        initialIndex: 0
+    ) { color in
+        color
+            .frame(height: 200)
+            .cornerRadius(16)
     }
 }
 ```
 <details>
 <summary>Preview</summary>
+<div style="background-color:#343434;" align="center">
 <img src="https://github.com/dscyrescotti/ShuffleIt/blob/main/Assets/Previews/ShuffleStack-Preview.gif?raw=true" alt="ShuffleStack-Preview"  width="30%"/>
+</div>
 </details>
 
 

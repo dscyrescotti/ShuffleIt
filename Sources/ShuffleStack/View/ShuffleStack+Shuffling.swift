@@ -1,6 +1,7 @@
 import SwiftUI
 
 extension ShuffleStack {
+    /// A method that mimics shuffling behaviour for the purpose of programmatic shuffling.
     internal func performShuffling(_ direction: Direction) {
         self.autoShuffling = true
         self.direction = direction
@@ -10,6 +11,7 @@ extension ShuffleStack {
         }
     }
     
+    /// A method that mimics shuffling behaviour of swiping view to left or right for the purpose of programmatic shuffling.
     internal func performSpreadingOut() {
         let maxSwipeDistance = size.width * 0.25
         withAnimation(animation.timing(duration: 0.1)) {
@@ -22,6 +24,7 @@ extension ShuffleStack {
         }
     }
     
+    /// A method that performs to restore content views, which have already spread out in the process of shuffling, to the original position.
     internal func performRestoring() {
         let midX = size.width * 0.5
         let maxSwipeDistance = size.width * 0.25
@@ -89,10 +92,12 @@ extension ShuffleStack {
         }
     }
     
+    /// A method that notifies an listener with context value after shuffling succeeds.
     private func notifyListener(context: ShuffleContext) {
         shuffleContext?(context)
     }
     
+    /// A property that calculates translation value of swiping content views.
     internal var translation: CGFloat {
         size.width > 0 ? xPosition / size.width * 2 : 0
     }

@@ -14,19 +14,26 @@ let package = Package(
     products: [
         .library(
             name: "ShuffleIt",
-            targets: ["ShuffleStack"]
+            targets: ["ShuffleIt"]
         ),
         .library(
             name: "ShuffleStack",
             targets: ["ShuffleStack"]
         )
     ],
-    dependencies: [],
+    dependencies: [
+        .package(url: "https://github.com/apple/swift-docc-plugin", from: "1.0.0"),
+    ],
     targets: [
         .target(
+            name: "ShuffleIt",
+            dependencies: [
+                "ShuffleStack"
+            ]
+        ),
+        .target(
             name: "ShuffleStack",
-            dependencies: [],
-            path: "Sources/ShuffleStack"
+            dependencies: []
         ),
         .testTarget(
             name: "ShuffleItTests",

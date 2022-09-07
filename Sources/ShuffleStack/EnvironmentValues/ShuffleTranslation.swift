@@ -1,5 +1,6 @@
 import SwiftUI
 
+/// An environment key for suffle translation.
 struct ShuffleTranslation: EnvironmentKey {
     static var defaultValue: ((CGFloat) -> Void)? = nil
 }

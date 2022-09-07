@@ -1,5 +1,6 @@
 import SwiftUI
 
+/// An environment key for stack padding.
 struct StackPaddingKey: EnvironmentKey {
     static var defaultValue: CGFloat = 15
 }

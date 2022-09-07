@@ -2,6 +2,7 @@ import SwiftUI
 
 // MARK: - Content
 extension ShuffleStack {
+    /// A view that renders the content view for the element of the previous index.
     @ViewBuilder
     internal var leftContent: some View {
         switch style {
@@ -31,6 +32,7 @@ extension ShuffleStack {
         }
     }
     
+    /// A view that renders the content view for the element of the next index.
     @ViewBuilder
     internal var rightContent: some View {
         switch style {
@@ -60,6 +62,7 @@ extension ShuffleStack {
         }
     }
     
+    /// A view that renders the content view for the element of the current index.
     @ViewBuilder
     internal var mainContent: some View {
         switch style {
