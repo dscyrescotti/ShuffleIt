@@ -4,9 +4,9 @@ import Combine
 public extension View {
     /// A modifer that override default shuffle style of the shuffle stack view.
     ///
-    /// `ShuffleStack` comes with three different shuffle styles - `.slide` (default), `.rotateIn` and `.rotateOut` and uses `.slide` as a default style. To apply other style, it can be overriden by using `shuffleStyle(_:)` modifier.
+    /// `ShuffleStack` comes with three different shuffle styles - `slide` (default), `rotateIn` and `rotateOut` and uses `slide` as a default style. To apply other style, it can be overriden by using `shuffleStyle(_:)` modifier.
     ///
-    /// The following example show the usage of overriding default shuffle style with `.rotateOut` style to rotate and scale to the outside while shuffling.
+    /// The following example show the usage of overriding default shuffle style with `rotateOut` style to rotate and scale to the outside while shuffling.
     /// ```
     /// let colors: [Color] = [.blue, .brown, .black, .cyan, .green, .indigo, .pink, .purple, .red, .orange, .yellow]
     /// var body: some View {
@@ -29,9 +29,9 @@ public extension View {
     
     /// A modifer that override default shuffle animation of the shuffle stack view.
     ///
-    /// As a default, `ShuffleStack` use `.linear` animation to animate shuffling behaviour. With `shuffleAnimation(_:)` modifier, it can be overriden with the given animation value.
+    /// As a default, `ShuffleStack` use `linear` animation to animate shuffling behaviour. With `shuffleAnimation(_:)` modifier, it can be overriden with the given animation value.
     ///
-    /// The following example show the usage of overriding default shuffle animation with `.easeInOut` animation that will be used while shuffling.
+    /// The following example show the usage of overriding default shuffle animation with `easeInOut` animation that will be used while shuffling.
     /// ```
     /// let colors: [Color] = [.blue, .brown, .black, .cyan, .green, .indigo, .pink, .purple, .red, .orange, .yellow]
     /// var body: some View {
