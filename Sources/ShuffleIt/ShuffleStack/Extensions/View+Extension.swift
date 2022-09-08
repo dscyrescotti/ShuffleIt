@@ -7,7 +7,7 @@ public extension View {
     /// `ShuffleStack` comes with three different shuffle styles - `slide` (default), `rotateIn` and `rotateOut` and uses `slide` as a default style. To apply other style, it can be overriden by using `shuffleStyle(_:)` modifier.
     ///
     /// The following example show the usage of overriding default shuffle style with `rotateOut` style to rotate and scale to the outside while shuffling.
-    /// ```
+    /// ```swift
     /// let colors: [Color] = [.blue, .brown, .black, .cyan, .green, .indigo, .pink, .purple, .red, .orange, .yellow]
     /// var body: some View {
     ///     ShuffleStack(
@@ -32,7 +32,7 @@ public extension View {
     /// As a default, `ShuffleStack` use `linear` animation to animate shuffling behaviour. With `shuffleAnimation(_:)` modifier, it can be overriden with the given animation value.
     ///
     /// The following example show the usage of overriding default shuffle animation with `easeInOut` animation that will be used while shuffling.
-    /// ```
+    /// ```swift
     /// let colors: [Color] = [.blue, .brown, .black, .cyan, .green, .indigo, .pink, .purple, .red, .orange, .yellow]
     /// var body: some View {
     ///     ShuffleStack(
@@ -57,7 +57,7 @@ public extension View {
     /// Based on the boolean passing into the modifier, the user interaction will be disabled accordingly. If the boolean is `true`,  it will no longer turn on the interaction to UI. If the boolean is `false`, it allows to shuffle content views.
     ///
     /// The following piece of code show how to disable the user interaction on the shuffle stack view.
-    /// ```
+    /// ```swift
     /// let colors: [Color] = [.blue, .brown, .black, .cyan, .green, .indigo, .pink, .purple, .red, .orange, .yellow]
     /// var body: some View {
     ///     ShuffleStack(
@@ -83,7 +83,7 @@ public extension View {
     /// In purpose of shuffling programmatically such as using timer, `ShuffleStack` accepts events via `.shuffleTrigger(on:)` modifier which is needed to inject an instance of publisher with `Direction` output type and `Never` failure type.
     ///
     /// The following example provides the programmatic way of triggering shuffle event by sending `Direction` value through the publisher.
-    /// ```
+    /// ```swift
     /// let colors: [Color] = [.blue, .brown, .black, .cyan, .green, .indigo, .pink, .purple, .red, .orange, .yellow]
     /// let shufflePublisher = PassthroughSubject<Direction, Never>()
     /// var body: some View {
@@ -111,7 +111,7 @@ public extension View {
     /// To shift the upcoming and previous content views of the shuffle stack view (not to overlay by the current view that display on the top of the stack), it can be adjust by setting offset value through `stackOffset(_:)` modifier. For default, it uses 15 pixels to shift the offset.
     ///
     /// The following code snippet shows the usage of `stackOffset(_:)` modifier. By using 25 pixels, it will be noticable that there is more horizontal gap between the upcoming and previous content views and the current view than using the default offset.
-    /// ```
+    /// ```swift
     /// let colors: [Color] = [.blue, .brown, .black, .cyan, .green, .indigo, .pink, .purple, .red, .orange, .yellow]
     /// var body: some View {
     ///     ShuffleStack(
@@ -136,7 +136,7 @@ public extension View {
     /// For default, `ShuffleStack` uses 15 pixels to add extra space between its frame and its content views. To be overriden, it can be achieved by passing the desired padding value through `stackPadding(_:)` modifier.
     ///
     /// The following code snippet shows the usage of `stackPadding(_:)` modifier.
-    /// ```
+    /// ```swift
     /// let colors: [Color] = [.blue, .brown, .black, .cyan, .green, .indigo, .pink, .purple, .red, .orange, .yellow]
     /// var body: some View {
     ///     ShuffleStack(
@@ -161,7 +161,7 @@ public extension View {
     /// Regarding scaling content views, `ShuffleStack` only allows to set value between 0 and 1 inclusive. If the value is out of this range, it will be replaced with 0 or 1 based on the given value. The default scaling factor is 0.5.
     ///
     /// The following code snippet shows the usage of `stackScale(_:)` modifier.
-    /// ```
+    /// ```swift
     /// let colors: [Color] = [.blue, .brown, .black, .cyan, .green, .indigo, .pink, .purple, .red, .orange, .yellow]
     /// var body: some View {
     ///     ShuffleStack(
@@ -185,8 +185,8 @@ public extension View {
     ///
     /// Using `onShuffle(_:)` modifier, it can be injected wtih a closure that exposes shuffling information - `ShuffleContext` through its parameter to perform a particular task whenever the user swipe content views or trigger shuffling programmatically.
     ///
-    /// The following example provides the usage of `.onShuffle(_:)` modifier.
-    ///```
+    /// The following example provides the usage of `onShuffle(_:)` modifier.
+    ///```swift
     /// let colors: [Color] = [.blue, .brown, .black, .cyan, .green, .indigo, .pink, .purple, .red, .orange, .yellow]
     /// var body: some View {
     ///     ShuffleStack(
@@ -212,8 +212,8 @@ public extension View {
     ///
     /// To listen translation value of content views while shuffling, `onTranslate(_:)` modifier can be used by passing a closure in order to perform a specific task based on the translation value.
     ///
-    /// The following example provides the usage of `.onTranslate(_:)` modifier.
-    ///```
+    /// The following example provides the usage of `onTranslate(_:)` modifier.
+    ///```swift
     /// let colors: [Color] = [.blue, .brown, .black, .cyan, .green, .indigo, .pink, .purple, .red, .orange, .yellow]
     /// var body: some View {
     ///     ShuffleStack(

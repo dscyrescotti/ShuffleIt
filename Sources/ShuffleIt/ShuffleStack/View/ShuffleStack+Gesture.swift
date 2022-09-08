@@ -1,6 +1,5 @@
 import SwiftUI
 
-// MARK: - Gesture
 extension ShuffleStack {
     /// A drag gesture that listens gesture state on content views and calculates rotation and position for shuffling.
     internal var dragGesture: some Gesture {
