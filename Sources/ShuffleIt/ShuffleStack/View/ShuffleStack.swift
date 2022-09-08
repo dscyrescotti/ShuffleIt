@@ -29,12 +29,12 @@ import SwiftUI
 ///
 /// Modifier | Description
 /// --- | ---
-/// [`shuffleAnimation(_:)`](https://dscyrescotti.github.io/ShuffleIt/documentation/shuffleit/shufflestack/shuffleanimation(_:)-5g6o2) | A modifer that override default shuffle animation of the shuffle stack view.
-/// [`shuffleStyle(_:)`](https://dscyrescotti.github.io/ShuffleIt/documentation/shuffleit/shufflestack/shufflestyle(_:)-71c20) | A modifer that override default shuffle style of the shuffle stack view.
-/// [`stackOffset(_:)`](https://dscyrescotti.github.io/ShuffleIt/documentation/shuffleit/shufflestack/stackoffset(_:)-xc7r) | A modifier that sets value that is used to shift the offset of the upcoming and previous content views behind the view of the current index.
-/// [`stackPadding(_:)`](https://dscyrescotti.github.io/ShuffleIt/documentation/shuffleit/shufflestack/stackpadding(_:)-8lx8) | A modifier that sets horizontal padding to the shuffle stack view.
-/// [`stackScale(_:)`](https://dscyrescotti.github.io/ShuffleIt/documentation/shuffleit/shufflestack/stackscale(_:)-8ms9p) | A modifier that sets scale factor to shrink the size of the upcoming and previous content views of stack.
-/// [`swipeDisabled(_:)`](https://dscyrescotti.github.io/ShuffleIt/documentation/shuffleit/shufflestack/swipedisabled(_:)-3r0v5) | A modifer that disables user interaction to shuffle content views.
+/// [`shuffleAnimation(_:)`](https://dscyrescotti.github.io/ShuffleIt/documentation/shuffleit/shufflestack/shuffleanimation(_:)) | A modifer that override default shuffle animation of the shuffle stack view.
+/// [`shuffleStyle(_:)`](https://dscyrescotti.github.io/ShuffleIt/documentation/shuffleit/shufflestack/shufflestyle(_:)) | A modifer that override default shuffle style of the shuffle stack view.
+/// [`stackOffset(_:)`](https://dscyrescotti.github.io/ShuffleIt/documentation/shuffleit/shufflestack/stackoffset(_:)) | A modifier that sets value that is used to shift the offset of the upcoming and previous content views behind the view of the current index.
+/// [`stackPadding(_:)`](https://dscyrescotti.github.io/ShuffleIt/documentation/shuffleit/shufflestack/stackpadding(_:)) | A modifier that sets horizontal padding to the shuffle stack view.
+/// [`stackScale(_:)`](https://dscyrescotti.github.io/ShuffleIt/documentation/shuffleit/shufflestack/stackscale(_:)) | A modifier that sets scale factor to shrink the size of the upcoming and previous content views of stack.
+/// [`swipeDisabled(_:)`](https://dscyrescotti.github.io/ShuffleIt/documentation/shuffleit/shufflestack/swipedisabled(_:)) | A modifer that disables user interaction to shuffle content views.
 ///
 /// ## Observing shuffle events and swiping translation
 /// `ShuffleStack` provides handy modifiers that listens shuffle events and swiping translation to perform a particular action based on those values after shuffling succeeds or while swiping stack views.
@@ -43,14 +43,14 @@ import SwiftUI
 ///
 /// Modifier | Description
 /// --- | ---
-/// [`onShuffle(_:)`](https://dscyrescotti.github.io/ShuffleIt/documentation/shuffleit/shufflestack/onshuffle(_:)-8ihbm) |  A modifier that listens shuffling events occurring on the shuffle stack view.
-/// [`onTranslate(_:)`](https://dscyrescotti.github.io/ShuffleIt/documentation/shuffleit/shufflestack/ontranslate(_:)-8c1nj) | A modifier that listens translation changes while swiping content views.
+/// [`onShuffle(_:)`](https://dscyrescotti.github.io/ShuffleIt/documentation/shuffleit/shufflestack/onshuffle(_:)) |  A modifier that listens shuffling events occurring on the shuffle stack view.
+/// [`onTranslate(_:)`](https://dscyrescotti.github.io/ShuffleIt/documentation/shuffleit/shufflestack/ontranslate(_:)) | A modifier that listens translation changes while swiping content views.
 ///
 /// ## Triggering shuffling programmatically
 /// `ShuffleStack` also allows programmatic shuffling by accpecting a series of events from the upstream publisher. Whenever the publisher fires an event, it block user interaction on the view and perform shuffling action.
 /// Modifier | Description
 /// --- | ---
-/// [`shuffleTrigger(on:)`](https://dscyrescotti.github.io/ShuffleIt/documentation/shuffleit/shufflestack/shuffletrigger(on:)-zamc) | A modifier that accpets events of direction to perform programmatic shuffling.
+/// [`shuffleTrigger(on:)`](https://dscyrescotti.github.io/ShuffleIt/documentation/shuffleit/shufflestack/shuffletrigger(on:)) | A modifier that accpets events of direction to perform programmatic shuffling.
 ///
 /// ## Topics
 /// ### Initializers
