@@ -1,6 +1,5 @@
 import SwiftUI
 
-// MARK: - Content
 extension ShuffleStack {
     /// A view that renders the content view for the element of the previous index.
     @ViewBuilder

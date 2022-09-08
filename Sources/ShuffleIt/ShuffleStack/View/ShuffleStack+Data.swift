@@ -1,6 +1,5 @@
 import SwiftUI
 
-// MARK: - Data Element
 extension ShuffleStack {
     /// A property that provides the upcoming element of left side.
     internal var leftDataElement: Data.Element {

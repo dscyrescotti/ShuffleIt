@@ -18,7 +18,7 @@
 > For now, **ShuffleIt** only provides **ShuffleStack** view. (🚨 Spoiler Alert - There will be very soon various types of stack views coming.)
 
 ### ShuffleStack <a id="shufflestack"></a>
-**ShuffleStack** is a stack view with shuffling behaviour on the stack of content views which will be useful as a banner. Not like normal stack view, it only renders three content views visible on the screen and switches data of content views based on the current index.
+**ShuffleStack** is a stack view with shuffling behaviour on the stack of content views which will be useful as a banner. Not like normal stack view, it only renders three content views visible on the screen and switches data of content views based on the current index. As it comes with a bunch of modifiers, it is highly customizable to get the desired appearance.
 
 #### Usage
 ```swift
@@ -36,11 +36,9 @@ var body: some View {
 ```
 <details>
 <summary>Preview</summary>
-<div style="background-color:#343434;" align="center">
 <img src="https://github.com/dscyrescotti/ShuffleIt/blob/main/Assets/Previews/ShuffleStack-Preview.gif?raw=true" alt="ShuffleStack-Preview"  width="30%"/>
-</div>
 </details>
-
+To explore more about **ShuffleStack**, check out the [documentation](https://dscyrescotti.github.io/ShuffleIt/documentation/shuffleit/shufflestack/).
 
 ## ⚠️ Requirements 
 - iOS 15+, macOS 12+, watchOS 8+, tvOS 15+
@@ -56,6 +54,10 @@ dependencies: [
 ```
 
 ## 🔎 Exploration
+### Documentation
+**ShuffleIt** provides a clear documentation to increase the familiarity with the API and shallow learning curve when using it. You can check it out via this [link](https://dscyrescotti.github.io/ShuffleIt/documentation/shuffleit/).
+
+
 **ShuffleIt** comes with the demo project which is an optimal spot to explore the API usage for available stack views. To run the demo project, you can use the following commands in your terminal.
 ```
 > git clone https://github.com/dscyrescotti/ShuffleIt.git
@@ -65,10 +67,20 @@ Afterwards, Xcode will open the project and then you can hit ⌘+R to run the pr
 
 
 ## 🎉 Motivation 
-As I'm kinda like an artistic guy, I really indulge in crafting something innovative, in particular, in an iOS development. It's a huge pleasure for me to explore the API and create an elegant components and then it has attached to me as my precious hobby. That's why, I used to craft various components to test out what I can achieve so far. Recently, I got the idea of gathering my creations in one place and delivering them to the world so that it can be easily used in other projects and also used as a learning resource for other developers. With this intention, I eventually published my first UI library called **ShuffleIt** for SwiftUI.
+As I'm kinda like an artistic guy, I really indulge in crafting something innovative, in particular, in area of implementing user interface elements. It's a huge pleasure for me to explore the API and create an elegant components and then it has attached to me as my precious hobby. That's why, I used to craft various components to test out what I can achieve so far. Recently, I got the idea of gathering my creations in one place and delivering them to the world so that it can be easily used in other projects and also used as a learning resource for other developers. With this intention, I eventually published my first UI library called **ShuffleIt** for SwiftUI.
 
 ## ✍️ Author
-**Scotti** (**[@dscyrescotti](https://twitter.com/dscyrescotti)**)
+Scotti | [@dscyrescotti](https://twitter.com/dscyrescotti) 
+
+<p>
+<a href="https://twitter.com/dscyrescotti">
+<img src="https://img.shields.io/twitter/follow/dscyrescotti.svg?style=social">
+</a>
+&nbsp;
+<a href="https://github.com/dscyrescotti">
+<img src="https://img.shields.io/github/followers/dscyrescotti.svg?style=social&label=Follow">
+</a>
+</p>
 
 ## 👨‍💻 Contributions
 
