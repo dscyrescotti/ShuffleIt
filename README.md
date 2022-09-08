@@ -38,6 +38,7 @@ var body: some View {
 <summary>Preview</summary>
 <img src="https://github.com/dscyrescotti/ShuffleIt/blob/main/Assets/Previews/ShuffleStack-Preview.gif?raw=true" alt="ShuffleStack-Preview"  width="30%"/>
 </details>
+
 To explore more about **ShuffleStack**, check out the [documentation](https://dscyrescotti.github.io/ShuffleIt/documentation/shuffleit/shufflestack/).
 
 ## ⚠️ Requirements 
@@ -57,8 +58,8 @@ dependencies: [
 ### Documentation
 **ShuffleIt** provides a clear documentation to increase the familiarity with the API and shallow learning curve when using it. You can check it out via this [link](https://dscyrescotti.github.io/ShuffleIt/documentation/shuffleit/).
 
-
-**ShuffleIt** comes with the demo project which is an optimal spot to explore the API usage for available stack views. To run the demo project, you can use the following commands in your terminal.
+### Demo
+**ShuffleIt** also comes with the demo project which is an optimal spot to explore the API usage for available stack views. To run the demo project, you can use the following commands in your terminal.
 ```
 > git clone https://github.com/dscyrescotti/ShuffleIt.git
 > cd ShuffleIt && xed Demo
