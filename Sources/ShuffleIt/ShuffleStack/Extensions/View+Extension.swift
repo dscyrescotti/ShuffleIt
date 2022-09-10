@@ -29,7 +29,7 @@ public extension View {
     
     /// A modifer that override default shuffle animation of the shuffle stack view.
     ///
-    /// As a default, `ShuffleStack` use `linear` animation to animate shuffling behaviour. With `shuffleAnimation(_:)` modifier, it can be overriden with the given animation value.
+    /// By default, `ShuffleStack` use `linear` animation to animate shuffling behaviour. With `shuffleAnimation(_:)` modifier, it can be overriden with the given animation value.
     ///
     /// The following example show the usage of overriding default shuffle animation with `easeInOut` animation that will be used while shuffling.
     /// ```swift
@@ -108,7 +108,7 @@ public extension View {
     
     /// A modifier that sets value that is used to shift the offset of the upcoming and previous content views behind the view of the current index.
     ///
-    /// To shift the upcoming and previous content views of the shuffle stack view (not to overlay by the current view that display on the top of the stack), it can be adjust by setting offset value through `stackOffset(_:)` modifier. For default, it uses 15 pixels to shift the offset.
+    /// To shift the upcoming and previous content views of the shuffle stack view (not to overlay by the current view that display on the top of the stack), it can be adjust by setting offset value through `stackOffset(_:)` modifier. By default, it uses 15 pixels to shift the offset.
     ///
     /// The following code snippet shows the usage of `stackOffset(_:)` modifier. By using 25 pixels, it will be noticable that there is more horizontal gap between the upcoming and previous content views and the current view than using the default offset.
     /// ```swift
@@ -133,7 +133,7 @@ public extension View {
     
     /// A modifier that sets horizontal padding to the shuffle stack view.
     ///
-    /// For default, `ShuffleStack` uses 15 pixels to add extra space between its frame and its content views. To be overriden, it can be achieved by passing the desired padding value through `stackPadding(_:)` modifier.
+    /// By default, `ShuffleStack` uses 15 pixels to add extra space between its frame and its content views. To be overriden, it can be achieved by passing the desired padding value through `stackPadding(_:)` modifier.
     ///
     /// The following code snippet shows the usage of `stackPadding(_:)` modifier.
     /// ```swift
