@@ -69,7 +69,9 @@ import ViewInspector
 public struct ShuffleStack<Data: RandomAccessCollection, StackContent: View>: View where Data.Index == Int {
     @Environment(\.shuffleStyle) internal var style
     @Environment(\.shuffleAnimation) internal var animation
+    #if !os(tvOS)
     @Environment(\.shuffleDisabled) internal var disabled
+    #endif
     @Environment(\.shuffleTrigger) internal var shuffleTrigger
     @Environment(\.stackOffset) internal var offset
     @Environment(\.stackPadding) internal var padding
@@ -99,12 +101,16 @@ public struct ShuffleStack<Data: RandomAccessCollection, StackContent: View>: Vi
             Group {
                 leftContent
                 rightContent
+                #if os(tvOS)
+                mainContent
+                #else
                 if disabled {
                     mainContent
                 } else {
                     mainContent
                         .gesture(dragGesture)
                 }
+                #endif
             }
             .background {
                 GeometryReader { proxy in

@@ -2,6 +2,24 @@
 <img width="70%" src="https://github.com/dscyrescotti/ShuffleIt/blob/main/Assets/ShuffleIt.png?raw=true">
 </p>
 
+<p align="center">
+    <a href="https://swiftpackageindex.com/dscyrescotti/ShuffleIt">
+	    <img  src="https://img.shields.io/endpoint?url=https%3A%2F%2Fswiftpackageindex.com%2Fapi%2Fpackages%2Fdscyrescotti%2FShuffleIt%2Fbadge%3Ftype%3Dplatforms"/> 
+    </a>
+    <a href="https://swiftpackageindex.com/dscyrescotti/ShuffleIt">
+	    <img  src="https://img.shields.io/endpoint?url=https%3A%2F%2Fswiftpackageindex.com%2Fapi%2Fpackages%2Fdscyrescotti%2FShuffleIt%2Fbadge%3Ftype%3Dswift-versions"/> 
+    </a>
+    <a href="https://codecov.io/gh/dscyrescotti/ShuffleIt">
+	    <img  src="https://codecov.io/gh/dscyrescotti/ShuffleIt/branch/main/graph/badge.svg?token=D7DRKAD0VP"/> 
+    </a>
+    <a href="https://github.com/dscyrescotti/ShuffleIt/actions/workflows/swift.yml">
+     	<img src="https://github.com/dscyrescotti/ShuffleIt/actions/workflows/swift.yml/badge.svg" alt="Action Status"/>
+    </a>
+    <a href="LICENSE">
+        <img src="https://img.shields.io/badge/license-MIT-brightgreen.svg" alt="MIT License">
+    </a>
+</p>
+
 **ShuffleIt** is a user interface library for **SwiftUI** which delivers a collection of customizable stack views with a wide range of elegant shuffling, sliding and swiping behaviours.
 
 <table>
@@ -58,7 +76,7 @@ dependencies: [
 ### Documentation
 **ShuffleIt** provides a clear documentation to increase the familiarity with the API and shallow learning curve when using it. You can check it out via this [link](https://dscyrescotti.github.io/ShuffleIt/documentation/shuffleit/).
 
-### Demo
+### Demo Project
 **ShuffleIt** also comes with the demo project which is an optimal spot to explore the API usage for available stack views. To run the demo project, you can use the following commands in your terminal.
 ```
 > git clone https://github.com/dscyrescotti/ShuffleIt.git

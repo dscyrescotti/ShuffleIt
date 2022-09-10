@@ -73,6 +73,8 @@ public extension View {
     /// ```
     /// - Parameter disabled: A boolean value to decide whether it should be disabled or not.
     /// - Returns: A view with the given boolean.
+    @available(iOS 15.0, macOS 12.0, watchOS 8.0, *)
+    @available(tvOS, unavailable)
     func swipeDisabled(_ disabled: Bool) -> some View {
         environment(\.shuffleDisabled, disabled)
     }
