@@ -19,15 +19,16 @@ let package = Package(
     ],
     dependencies: [
         .package(url: "https://github.com/apple/swift-docc-plugin", from: "1.0.0"),
+        .package(url: "https://github.com/dscyrescotti/ViewInspector.git", branch: "master"),
     ],
     targets: [
         .target(
             name: "ShuffleIt",
-            dependencies: []
+            dependencies: ["ViewInspector"]
         ),
         .testTarget(
             name: "ShuffleItTests",
-            dependencies: ["ShuffleIt"]
+            dependencies: ["ShuffleIt", "ViewInspector"]
         ),
     ],
     swiftLanguageVersions: [.v5]

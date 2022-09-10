@@ -1,4 +1,7 @@
 import SwiftUI
+#if DEBUG
+import ViewInspector
+#endif
 
 /// A stack view that provides shuffling behaviour to swipe contents to left and right.
 ///
@@ -87,6 +90,10 @@ public struct ShuffleStack<Data: RandomAccessCollection, StackContent: View>: Vi
     internal let data: Data
     internal let stackContent: (Data.Element, CGFloat) -> StackContent
     
+    #if DEBUG
+    internal let inspection = Inspection<Self>()
+    #endif
+    
     public var body: some View {
         ZStack {
             Group {
@@ -128,6 +135,11 @@ public struct ShuffleStack<Data: RandomAccessCollection, StackContent: View>: Vi
                 performRestoring()
             }
         }
+        #if DEBUG
+        .onReceive(inspection.notice) {
+            self.inspection.visit(self, $0)
+        }
+        #endif
     }
 }
 
