@@ -222,7 +222,7 @@ final class ShuffleStackTests: BaseTestCase {
                 .shuffleStyle(.rotateIn),
             size: .init(width: 300, height: 800)
         )
-        self.wait(for: [exp1, exp2], timeout: 0.5)
+        self.wait(for: [exp1, exp2], timeout: 0.8)
     }
     
     func testShuffleStackRotateOutStyleLayout() throws {
@@ -304,7 +304,7 @@ final class ShuffleStackTests: BaseTestCase {
                 .shuffleStyle(.rotateOut),
             size: .init(width: 300, height: 800)
         )
-        self.wait(for: [exp1, exp2], timeout: 0.5)
+        self.wait(for: [exp1, exp2], timeout: 0.8)
     }
     
     func testShuffleStackDisabled() throws {
