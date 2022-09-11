@@ -1,5 +1,5 @@
 import SwiftUI
-#if DEBUG
+#if TEST
 import ViewInspector
 #endif
 
@@ -92,7 +92,7 @@ public struct ShuffleStack<Data: RandomAccessCollection, StackContent: View>: Vi
     internal let data: Data
     internal let stackContent: (Data.Element, CGFloat) -> StackContent
     
-    #if DEBUG
+    #if TEST
     internal let inspection = Inspection<Self>()
     #endif
     
@@ -141,7 +141,7 @@ public struct ShuffleStack<Data: RandomAccessCollection, StackContent: View>: Vi
                 performRestoring()
             }
         }
-        #if DEBUG
+        #if TEST
         .onReceive(inspection.notice) {
             self.inspection.visit(self, $0)
         }
