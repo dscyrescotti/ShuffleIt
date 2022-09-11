@@ -4,6 +4,7 @@ import SwiftUI
 import ViewInspector
 @testable import ShuffleItForTest
 
+#if !os(tvOS)
 final class ShuffleStackGestureTests: BaseTestCase {
     
     func testShuffleStackDragGestureUpdating() throws {
@@ -93,3 +94,4 @@ final class ShuffleStackGestureTests: BaseTestCase {
         self.wait(for: [exp1, exp2], timeout: 0.3)
     }
 }
+#endif
