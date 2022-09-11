@@ -1,4 +1,4 @@
-#if DEBUG
+#if canImport(ViewInspector)
 import Combine
 import SwiftUI
 import ViewInspector

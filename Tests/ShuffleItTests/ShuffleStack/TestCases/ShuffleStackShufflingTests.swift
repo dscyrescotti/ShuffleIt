@@ -2,7 +2,7 @@ import XCTest
 import Combine
 import SwiftUI
 import ViewInspector
-@testable import ShuffleIt
+@testable import ShuffleItForTest
 
 final class ShuffleStackShufflingTests: BaseTestCase {
     
