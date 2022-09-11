@@ -1,4 +1,4 @@
-#if DEBUG
+#if TEST
 import Combine
 import SwiftUI
 import ViewInspector

@@ -17,7 +17,7 @@ jobs:
     - name: Build
       run: swift build -v
     - name: Run tests
-      run: swift test --enable-code-coverage
+      run: swift test -Xswiftc "-DTEST" --enable-code-coverage
     - name: Convert code coverage
       run: xcrun llvm-cov export -format="lcov" -instr-profile=$(find .build -name default.profdata) $(find .build -name ShuffleItPackageTests) > info.lcov
     - name: Codecov

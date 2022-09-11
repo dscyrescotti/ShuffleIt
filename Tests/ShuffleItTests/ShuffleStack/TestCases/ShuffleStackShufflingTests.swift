@@ -1,3 +1,4 @@
+#if TEST
 import XCTest
 import Combine
 import SwiftUI
@@ -335,3 +336,4 @@ final class ShuffleStackShufflingTests: BaseTestCase {
         self.wait(for: [exp1, exp2], timeout: 0.8)
     }
 }
+#endif
