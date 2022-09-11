@@ -27,12 +27,12 @@ let package = Package(
             dependencies: []
         ),
         .target(
-            name: "ShuffleIt-Test",
+            name: "ShuffleItForTest",
             dependencies: ["ViewInspector"]
         ),
         .testTarget(
             name: "ShuffleItTests",
-            dependencies: ["ShuffleIt-Test", "ViewInspector"]
+            dependencies: ["ShuffleItForTest", "ViewInspector"]
         ),
     ],
     swiftLanguageVersions: [.v5]
