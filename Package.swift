@@ -3,14 +3,6 @@
 
 import PackageDescription
 
-var dependencies: [Target.Dependency] {
-    #if TEST
-    return ["ViewInspector"]
-    #else
-    return []
-    #endif
-}
-
 let package = Package(
     name: "ShuffleIt",
     platforms: [
@@ -32,11 +24,15 @@ let package = Package(
     targets: [
         .target(
             name: "ShuffleIt",
-            dependencies: dependencies
+            dependencies: []
+        ),
+        .target(
+            name: "ShuffleIt-Test",
+            dependencies: ["ViewInspector"]
         ),
         .testTarget(
             name: "ShuffleItTests",
-            dependencies: ["ShuffleIt", "ViewInspector"]
+            dependencies: ["ShuffleIt-Test", "ViewInspector"]
         ),
     ],
     swiftLanguageVersions: [.v5]

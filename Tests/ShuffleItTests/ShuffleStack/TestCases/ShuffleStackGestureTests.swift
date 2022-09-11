@@ -1,9 +1,8 @@
-#if TEST
 import XCTest
 import Combine
 import SwiftUI
 import ViewInspector
-@testable import ShuffleIt
+@testable import ShuffleIt_Test
 
 final class ShuffleStackGestureTests: BaseTestCase {
     
@@ -94,4 +93,3 @@ final class ShuffleStackGestureTests: BaseTestCase {
         self.wait(for: [exp1, exp2], timeout: 0.3)
     }
 }
-#endif
