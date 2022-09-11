@@ -1,8 +1,19 @@
 {
   "images" : [
     {
-      "filename" : "swift-theming-logo-with-text 1.svg",
-      "idiom" : "universal"
+      "filename" : "swift-theming-logo-with-text 1.png",
+      "idiom" : "universal",
+      "scale" : "1x"
+    },
+    {
+      "filename" : "swift-theming-logo-with-text 1@2x.png",
+      "idiom" : "universal",
+      "scale" : "2x"
+    },
+    {
+      "filename" : "swift-theming-logo-with-text 1@3x.png",
+      "idiom" : "universal",
+      "scale" : "3x"
     }
   ],
   "info" : {
