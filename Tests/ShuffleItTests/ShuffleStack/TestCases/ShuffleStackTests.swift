@@ -17,7 +17,9 @@ final class ShuffleStackTests: BaseTestCase {
             XCTAssertEqual(sut.offset, 20)
             XCTAssertEqual(sut.scale, 0.92)
             XCTAssertEqual(sut.padding, 20)
+            #if !os(tvOS)
             XCTAssertEqual(sut.disabled, true)
+            #endif
             XCTAssertNotNil(sut.shuffleContext)
             XCTAssertNotNil(sut.translation)
         }
@@ -26,7 +28,9 @@ final class ShuffleStackTests: BaseTestCase {
                 .stackScale(0.2)
                 .stackOffset(20)
                 .stackPadding(20)
+                #if !os(tvOS)
                 .swipeDisabled(true)
+                #endif
                 .shuffleStyle(.rotateIn)
                 .shuffleAnimation(.easeInOut)
                 .onShuffle({ _ in })
@@ -46,7 +50,9 @@ final class ShuffleStackTests: BaseTestCase {
             XCTAssertEqual(sut.offset, 15)
             XCTAssertEqual(sut.scale, 0.95)
             XCTAssertEqual(sut.padding, 15)
+            #if !os(tvOS)
             XCTAssertEqual(sut.disabled, false)
+            #endif
             XCTAssertNil(sut.shuffleContext)
             XCTAssertNil(sut.shuffleTranslation)
         }
@@ -307,6 +313,7 @@ final class ShuffleStackTests: BaseTestCase {
         self.wait(for: [exp1, exp2], timeout: 0.8)
     }
     
+    #if !os(tvOS)
     func testShuffleStackDisabled() throws {
         let view = ShuffleStack(colors, initialIndex: 0) { color in
             ColorView(color: color)
@@ -326,4 +333,5 @@ final class ShuffleStackTests: BaseTestCase {
         )
         self.wait(for: [exp], timeout: 0.2)
     }
+    #endif
 }

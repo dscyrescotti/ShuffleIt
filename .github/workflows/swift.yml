@@ -16,6 +16,14 @@ jobs:
         xcode-version: '13.4.1'
     - name: Build
       run: swift build -v
+    - name: Build (iOS)
+      run: xcrun xcodebuild -derivedDataPath "../.derivedData" clean build -scheme "ShuffleIt" -destination "generic/platform=ios"
+    - name: Build (macOS)
+      run: xcrun xcodebuild -derivedDataPath "../.derivedData" clean build -scheme "ShuffleIt" -destination "generic/platform=macos"
+    - name: Build (tvOS)
+      run: xcrun xcodebuild -derivedDataPath "../.derivedData" clean build -scheme "ShuffleIt" -destination "generic/platform=tvos"
+    - name: Build (watchOS)
+      run: xcrun xcodebuild -derivedDataPath "../.derivedData" clean build -scheme "ShuffleIt" -destination "generic/platform=watchos"
     - name: Run tests
       run: swift test --enable-code-coverage
     - name: Convert code coverage
