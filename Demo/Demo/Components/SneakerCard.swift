@@ -1,6 +1,6 @@
 import SwiftUI
 
-struct SneakerShuffleCard: View {
+struct SneakerCard: View {
     let sneaker: Sneaker
     let translation: CGFloat
     @Environment(\.horizontalSizeClass) var horizontalSizeClass
@@ -77,9 +77,9 @@ struct SneakerShuffleCard: View {
     }
 }
 
-struct SneakerShuffleCard_Previews: PreviewProvider {
+struct SneakerCard_Previews: PreviewProvider {
     static var previews: some View {
-        SneakerShuffleCard(
+        SneakerCard(
             sneaker: Sneaker(
                 id: "air-trainer-sc-high",
                 title: "Air Force 1",

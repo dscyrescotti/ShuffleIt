@@ -2,20 +2,19 @@ import Combine
 import SwiftUI
 import ShuffleIt
 
-struct TimingShuffleStackDemoView: View {
+struct ShuffleStackDemoView: View {
     @Environment(\.dismiss) var dismiss
-    @State private var sneakers = loadSneakers()
     @State private var sneaker: Sneaker?
     @State private var isShowItems: Bool = false
     let shufflePublisher = PassthroughSubject<Direction, Never>()
-    let timer = Timer.publish(every: 10, tolerance: 0.1, on: .main, in: .default).autoconnect()
     @Environment(\.horizontalSizeClass) var horizontalSizeClass
     let columns: [GridItem] = .init(repeating: GridItem(.flexible(), spacing: 20, alignment: .leading), count: 2)
+    let sneakers: [Sneaker] = .sneakers()
     
     var body: some View {
         VStack(alignment: .leading, spacing: 16) {
             ShuffleStack(sneakers) { sneaker, translation in
-                SneakerShuffleCard(
+                SneakerCard(
                     sneaker: sneaker,
                     translation: abs(translation)
                 )
@@ -64,6 +63,7 @@ struct TimingShuffleStackDemoView: View {
                     .padding(.horizontal, 20)
                     .animation(.none, value: sneaker.id)
                 }
+                .clipped()
                 .transition(AnyTransition.move(edge: .bottom).combined(with: .opacity))
                 .modifier(DragGestureViewModifier(onEnd: { value in
                     switch(value.translation.width, value.translation.height) {
@@ -122,19 +122,11 @@ struct TimingShuffleStackDemoView: View {
             .buttonStyle(.plain)
             .padding(.horizontal, 20)
         }
-        .onReceive(timer) { _ in
-            shufflePublisher.send(.right)
-        }
-    }
-    
-    static func loadSneakers() -> [Sneaker] {
-        guard let path = Bundle.main.url(forResource: "Sneakers", withExtension: "json"), let data = try? Data(contentsOf: path), let sneakers = try? JSONDecoder().decode([Sneaker].self, from: data) else { return [] }
-        return sneakers
     }
 }
 
-struct TimingShuffleStackDemoView_Previews: PreviewProvider {
+struct ShuffleStackDemoView_Previews: PreviewProvider {
     static var previews: some View {
-        TimingShuffleStackDemoView()
+        ShuffleStackDemoView()
     }
 }
