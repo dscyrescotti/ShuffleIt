@@ -1,21 +1,22 @@
 import Utils
 import SwiftUI
 
-public enum CarouselDirection {
-    case left
-    case right
-}
-
 public struct CarouselStack<Data: RandomAccessCollection, Content: View>: View {
     
-    let padding: CGFloat = 40
-    let spacing: CGFloat = 10
+    @Environment(\.carouselPadding) internal var padding
+    @Environment(\.carouselSpacing) internal var spacing
+    @Environment(\.carouselAnimation) internal var animation
+    #if !os(tvOS)
+    @Environment(\.carouselDisabled) internal var disabled
+    #endif
+    @Environment(\.carouselTranslation) internal var carouselTranslation
+    @Environment(\.carouselTrigger) internal var carouselTrigger
     
     @State internal var index: Data.Index
-    
     @State internal var xPosition: CGFloat = .zero
     @State internal var direction: CarouselDirection = .left
     @State internal var size: CGSize = .zero
+    @State internal var autoSliding: Bool = false
     
     @GestureState internal var isActiveGesture: Bool = false
     
@@ -23,6 +24,34 @@ public struct CarouselStack<Data: RandomAccessCollection, Content: View>: View {
     internal let content: (Data.Element) -> Content
     
     public var body: some View {
+        Group {
+            #if os(tvOS)
+            view
+            #else
+            if disabled {
+                view
+            } else {
+                view.gesture(dragGesture)
+            }
+            #endif
+        }
+        .disabled(autoSliding)
+        .onChange(of: xPosition) { position in
+            carouselTranslation?(abs(position) / size.width * 2)
+        }
+        .onChange(of: isActiveGesture) { value in
+            if !isActiveGesture {
+                performRestoring()
+            }
+        }
+        .onReceive(carouselTrigger) { direction in
+            if !autoSliding && xPosition == 0 {
+                performSliding(direction)
+            }
+        }
+    }
+    
+    private var view: some View {
         ZStack {
             Group {
                 leftContent
@@ -44,12 +73,6 @@ public struct CarouselStack<Data: RandomAccessCollection, Content: View>: View {
                 self.size = size
             }
         }
-        .onChange(of: isActiveGesture) { value in
-            if !isActiveGesture {
-                performRestoring()
-            }
-        }
-        .gesture(dragGesture)
     }
 }
 

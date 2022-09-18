@@ -6,7 +6,7 @@ struct TimingShuffleStackDemoView: View {
     @Environment(\.dismiss) var dismiss
     @State private var sneaker: Sneaker?
     @State private var isShowItems: Bool = false
-    let shufflePublisher = PassthroughSubject<Direction, Never>()
+    let shufflePublisher = PassthroughSubject<ShuffleDirection, Never>()
     let timer = Timer.publish(every: 10, tolerance: 0.1, on: .main, in: .default).autoconnect()
     @Environment(\.horizontalSizeClass) var horizontalSizeClass
     let columns: [GridItem] = .init(repeating: GridItem(.flexible(), spacing: 20, alignment: .leading), count: 2)
