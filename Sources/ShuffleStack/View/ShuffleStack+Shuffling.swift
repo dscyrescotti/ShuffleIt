@@ -1,8 +1,9 @@
+import Utils
 import SwiftUI
 
 extension ShuffleStack {
     /// A method that mimics shuffling behaviour for the purpose of programmatic shuffling.
-    internal func performShuffling(_ direction: Direction) {
+    internal func performShuffling(_ direction: ShuffleDirection) {
         self.autoShuffling = true
         self.direction = direction
         performSpreadingOut()

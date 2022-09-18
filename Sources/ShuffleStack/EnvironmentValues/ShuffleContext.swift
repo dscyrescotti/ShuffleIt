@@ -7,7 +7,7 @@ public struct ShuffleContext {
     /// A property of previous index of shuffle stack view.
     public let previousIndex: Int
     /// A property of shuffling direction to which content view was swiped.
-    public let direction: Direction
+    public let direction: ShuffleDirection
 }
 
 /// An environment key for shuffle context.

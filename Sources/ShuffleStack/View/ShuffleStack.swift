@@ -1,5 +1,7 @@
+import Utils
 import SwiftUI
 #if canImport(ViewInspector)
+import UtilsForTest
 import ViewInspector
 #endif
 
@@ -81,7 +83,7 @@ public struct ShuffleStack<Data: RandomAccessCollection, StackContent: View>: Vi
     
     @State internal var index: Data.Index
     @State internal var xPosition: CGFloat = .zero
-    @State internal var direction: Direction = .left
+    @State internal var direction: ShuffleDirection = .left
     @State internal var isLockedLeft: Bool = false
     @State internal var isLockedRight: Bool = false
     @State internal var size: CGSize = .zero

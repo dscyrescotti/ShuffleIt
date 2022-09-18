@@ -15,6 +15,14 @@ let package = Package(
         .library(
             name: "ShuffleIt",
             targets: ["ShuffleIt"]
+        ),
+        .library(
+            name: "ShuffleStack",
+            targets: ["ShuffleStack"]
+        ),
+        .library(
+            name: "CarouselStack",
+            targets: ["CarouselStack"]
         )
     ],
     dependencies: [
@@ -24,15 +32,31 @@ let package = Package(
     targets: [
         .target(
             name: "ShuffleIt",
+            dependencies: ["Utils"]
+        ),
+        .target(
+            name: "ShuffleStack",
+            dependencies: ["Utils"]
+        ),
+        .target(
+            name: "CarouselStack",
+            dependencies: ["Utils"]
+        ),
+        .target(
+            name: "Utils",
             dependencies: []
         ),
         .target(
-            name: "ShuffleItForTest",
+            name: "UtilsForTest",
             dependencies: ["ViewInspector"]
+        ),
+        .target(
+            name: "ShuffleItForTest",
+            dependencies: ["ViewInspector", "UtilsForTest"]
         ),
         .testTarget(
             name: "ShuffleItTests",
-            dependencies: ["ShuffleItForTest", "ViewInspector"]
+            dependencies: ["ShuffleItForTest", "Utils", "ViewInspector"]
         ),
     ],
     swiftLanguageVersions: [.v5]

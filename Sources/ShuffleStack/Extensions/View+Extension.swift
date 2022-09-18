@@ -104,7 +104,7 @@ public extension View {
     /// ```
     /// - Parameter publisher: A publisher object that fires `Direction` values.
     /// - Returns: A view with the given publisher object.
-    func shuffleTrigger<P: Publisher>(on publisher: P) -> some View where P.Output == Direction, P.Failure == Never {
+    func shuffleTrigger<P: Publisher>(on publisher: P) -> some View where P.Output == ShuffleDirection, P.Failure == Never {
         environment(\.shuffleTrigger, publisher.eraseToAnyPublisher())
     }
     

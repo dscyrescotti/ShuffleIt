@@ -265,7 +265,7 @@ final class ShuffleStackShufflingTests: BaseTestCase {
     }
     
     func testShuffleStackAutoShufflingToRightWithContext() throws {
-        let shuffleTrigger = PassthroughSubject<Direction, Never>()
+        let shuffleTrigger = PassthroughSubject<ShuffleDirection, Never>()
         let collector = PassthroughSubject<ShuffleContext, Never>()
         let valueSpy = ValueSpy<ShuffleContext>(collector.eraseToAnyPublisher())
         let view = ShuffleStack(colors, initialIndex: 6) { color in
@@ -301,7 +301,7 @@ final class ShuffleStackShufflingTests: BaseTestCase {
     }
     
     func testShuffleStackAutoShufflingToLeftWithContext() throws {
-        let shuffleTrigger = PassthroughSubject<Direction, Never>()
+        let shuffleTrigger = PassthroughSubject<ShuffleDirection, Never>()
         let collector = PassthroughSubject<ShuffleContext, Never>()
         let valueSpy = ValueSpy<ShuffleContext>(collector.eraseToAnyPublisher())
         let view = ShuffleStack(colors, initialIndex: 0) { color in

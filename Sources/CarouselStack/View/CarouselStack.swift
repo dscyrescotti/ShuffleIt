@@ -1,4 +1,10 @@
+import Utils
 import SwiftUI
+
+public enum CarouselDirection {
+    case left
+    case right
+}
 
 public struct CarouselStack<Data: RandomAccessCollection, Content: View>: View {
     
@@ -8,7 +14,7 @@ public struct CarouselStack<Data: RandomAccessCollection, Content: View>: View {
     @State internal var index: Data.Index
     
     @State internal var xPosition: CGFloat = .zero
-    @State internal var direction: Direction = .left
+    @State internal var direction: CarouselDirection = .left
     @State internal var size: CGSize = .zero
     
     @GestureState internal var isActiveGesture: Bool = false

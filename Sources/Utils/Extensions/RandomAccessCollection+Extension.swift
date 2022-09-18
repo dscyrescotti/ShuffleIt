@@ -1,6 +1,6 @@
 import Foundation
 
-extension RandomAccessCollection {
+public extension RandomAccessCollection {
     /// A method that returns the upcoming index based on the current index and offset.
     func nextIndex(_ index: Index, offset: Int) -> Index {
         self.index(index, offsetBy: offset, limitedBy: self.index(before: endIndex)) ?? self.index(startIndex, offsetBy: offset - self.distance(from: index, to: endIndex))

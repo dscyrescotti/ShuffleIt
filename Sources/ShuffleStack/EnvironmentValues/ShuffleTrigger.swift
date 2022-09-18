@@ -2,7 +2,7 @@ import SwiftUI
 import Combine
 
 /// An enumeration of shuffle direction.
-public enum Direction {
+public enum ShuffleDirection {
     /// A shuffle direction to the left.
     case left
     /// A shuffle direction to the right.
@@ -10,11 +10,11 @@ public enum Direction {
 }
 
 struct ShuffleTriggerKey: EnvironmentKey {
-    static var defaultValue: AnyPublisher<Direction, Never> = Empty<Direction, Never>().eraseToAnyPublisher()
+    static var defaultValue: AnyPublisher<ShuffleDirection, Never> = Empty<ShuffleDirection, Never>().eraseToAnyPublisher()
 }
 
 extension EnvironmentValues {
-    var shuffleTrigger: AnyPublisher<Direction, Never> {
+    var shuffleTrigger: AnyPublisher<ShuffleDirection, Never> {
         get { self[ShuffleTriggerKey.self] }
         set { self[ShuffleTriggerKey.self] = newValue }
     }
