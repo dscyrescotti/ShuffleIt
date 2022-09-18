@@ -3,14 +3,12 @@ import Foundation
 extension RandomAccessCollection where Index == Int {
     /// A method that returns the upcoming index based on the current index and offset.
     func nextIndex(_ index: Index, offset: Int) -> Index {
-        precondition(offset > 0)
-        return self.index(index, offsetBy: 1 * offset, limitedBy: endIndex - 1) ?? startIndex + offset - 1
+        self.index(index, offsetBy: offset, limitedBy: self.index(before: endIndex)) ?? self.index(startIndex, offsetBy: offset - self.distance(from: index, to: endIndex))
     }
     
     /// A method that returns the previous index based on the current index and offset.
     func previousIndex(_ index: Index, offset: Int) -> Index {
-        precondition(offset > 0)
-        return self.index(index, offsetBy: -1 * offset, limitedBy: startIndex) ?? endIndex - 1 * offset
+        self.index(index, offsetBy: -offset, limitedBy: startIndex) ?? self.index(endIndex, offsetBy:  self.distance(from: startIndex, to: index) - offset)
     }
     
     /// A method that returns the upcoming element based on the current index and offset.
