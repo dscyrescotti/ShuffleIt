@@ -3,14 +3,15 @@ import SwiftUI
 
 public struct CarouselStack<Data: RandomAccessCollection, Content: View>: View {
     
-    @Environment(\.carouselPadding) internal var padding
-    @Environment(\.carouselSpacing) internal var spacing
     @Environment(\.carouselAnimation) internal var animation
     #if !os(tvOS)
     @Environment(\.carouselDisabled) internal var disabled
     #endif
-    @Environment(\.carouselTranslation) internal var carouselTranslation
     @Environment(\.carouselTrigger) internal var carouselTrigger
+    @Environment(\.carouselPadding) internal var padding
+    @Environment(\.carouselSpacing) internal var spacing
+    @Environment(\.carouselContext) internal var carouselContext
+    @Environment(\.carouselTranslation) internal var carouselTranslation
     
     @State internal var index: Data.Index
     @State internal var xPosition: CGFloat = .zero
@@ -36,19 +37,6 @@ public struct CarouselStack<Data: RandomAccessCollection, Content: View>: View {
             #endif
         }
         .disabled(autoSliding)
-        .onChange(of: xPosition) { position in
-            carouselTranslation?(abs(position) / size.width * 2)
-        }
-        .onChange(of: isActiveGesture) { value in
-            if !isActiveGesture {
-                performRestoring()
-            }
-        }
-        .onReceive(carouselTrigger) { direction in
-            if !autoSliding && xPosition == 0 {
-                performSliding(direction)
-            }
-        }
     }
     
     private var view: some View {
@@ -71,6 +59,21 @@ public struct CarouselStack<Data: RandomAccessCollection, Content: View>: View {
         .onPreferenceChange(SizePreferenceKey.self) { size in
             DispatchQueue.main.async {
                 self.size = size
+            }
+        }
+        .onReceive(carouselTrigger) { direction in
+            if !autoSliding && xPosition == 0 {
+                performSliding(direction)
+            }
+        }
+        .onChange(of: xPosition) { position in
+            DispatchQueue.main.async {
+                carouselTranslation?(abs(position) / (size.width + (padding + spacing) * 2))
+            }
+        }
+        .onChange(of: isActiveGesture) { value in
+            if !isActiveGesture {
+                performRestoring()
             }
         }
     }
