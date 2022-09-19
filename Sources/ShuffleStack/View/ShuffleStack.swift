@@ -68,16 +68,16 @@ import ViewInspector
 /// - ``ShuffleAnimation``
 /// - ``ShuffleContext``
 /// - ``ShuffleStyle``
-public struct ShuffleStack<Data: RandomAccessCollection, StackContent: View>: View where Data.Index == Int {
+public struct ShuffleStack<Data: RandomAccessCollection, StackContent: View>: View {
     @Environment(\.shuffleStyle) internal var style
     @Environment(\.shuffleAnimation) internal var animation
     #if !os(tvOS)
     @Environment(\.shuffleDisabled) internal var disabled
     #endif
     @Environment(\.shuffleTrigger) internal var shuffleTrigger
-    @Environment(\.stackOffset) internal var offset
-    @Environment(\.stackPadding) internal var padding
-    @Environment(\.stackScale) internal var scale
+    @Environment(\.shuffleOffset) internal var offset
+    @Environment(\.shufflePadding) internal var padding
+    @Environment(\.shuffleScale) internal var scale
     @Environment(\.shuffleContext) internal var shuffleContext
     @Environment(\.shuffleTranslation) internal var shuffleTranslation
     
@@ -135,7 +135,9 @@ public struct ShuffleStack<Data: RandomAccessCollection, StackContent: View>: Vi
             }
         }
         .onChange(of: xPosition) { position in
-            shuffleTranslation?(abs(position) / size.width * 2)
+            DispatchQueue.main.async {
+                shuffleTranslation?(abs(position) / size.width * 2)
+            }
         }
         .disabled(autoShuffling)
         .onChange(of: isActiveGesture) { value in
@@ -159,11 +161,11 @@ extension ShuffleStack {
     ///   - stackContent: A view builder that dynamically renders content view based on current index and data provided.
     public init(
         _ data: Data,
-        initialIndex: Int = 0,
+        initialIndex: Data.Index? = nil,
         @ViewBuilder stackContent: @escaping (Data.Element) -> StackContent
     ) {
         self.data = data
-        self._index = State(initialValue: initialIndex)
+        self._index = State(initialValue: initialIndex ?? data.startIndex)
         self.stackContent = { element, _ in
             stackContent(element)
         }
@@ -176,11 +178,11 @@ extension ShuffleStack {
     ///   - stackContent: A view builder that dynamically renders content view based on current index and data provided. It also expose the translation value of how much view is been dragging while shuffling.
     public init(
         _ data: Data,
-        initialIndex: Int = 0,
+        initialIndex: Data.Index? =  nil,
         @ViewBuilder stackContent: @escaping (Data.Element, CGFloat) -> StackContent
     ) {
         self.data = data
-        self._index = State(initialValue: initialIndex)
+        self._index = State(initialValue: initialIndex ?? data.startIndex)
         self.stackContent = stackContent
     }
 }

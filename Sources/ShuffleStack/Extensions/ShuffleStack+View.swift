@@ -68,14 +68,14 @@ public extension View {
     ///             .frame(height: 200)
     ///             .cornerRadius(16)
     ///     }
-    ///     .swipeDisabled(false)
+    ///     .shuffleDisabled(false)
     /// }
     /// ```
     /// - Parameter disabled: A boolean value to decide whether it should be disabled or not.
     /// - Returns: A view with the given boolean.
     @available(iOS 15.0, macOS 12.0, watchOS 8.0, *)
     @available(tvOS, unavailable)
-    func swipeDisabled(_ disabled: Bool) -> some View {
+    func shuffleDisabled(_ disabled: Bool) -> some View {
         environment(\.shuffleDisabled, disabled)
     }
     
@@ -110,9 +110,9 @@ public extension View {
     
     /// A modifier that sets value that is used to shift the offset of the upcoming and previous content views behind the view of the current index.
     ///
-    /// To shift the upcoming and previous content views of the shuffle stack view (not to overlay by the current view that display on the top of the stack), it can be adjust by setting offset value through `stackOffset(_:)` modifier. By default, it uses 15 pixels to shift the offset.
+    /// To shift the upcoming and previous content views of the shuffle stack view (not to overlay by the current view that display on the top of the stack), it can be adjust by setting offset value through `shuffleOffset(_:)` modifier. By default, it uses 15 pixels to shift the offset.
     ///
-    /// The following code snippet shows the usage of `stackOffset(_:)` modifier. By using 25 pixels, it will be noticable that there is more horizontal gap between the upcoming and previous content views and the current view than using the default offset.
+    /// The following code snippet shows the usage of `shuffleOffset(_:)` modifier. By using 25 pixels, it will be noticable that there is more horizontal gap between the upcoming and previous content views and the current view than using the default offset.
     /// ```swift
     /// let colors: [Color] = [.blue, .brown, .black, .cyan, .green, .indigo, .pink, .purple, .red, .orange, .yellow]
     /// var body: some View {
@@ -124,20 +124,20 @@ public extension View {
     ///             .frame(height: 200)
     ///             .cornerRadius(16)
     ///     }
-    ///     .stackOffset(25)
+    ///     .shuffleOffset(25)
     /// }
     /// ```
     /// - Parameter offset: A offset value for the content views behind the current content view.
     /// - Returns: A view with the given offset.
-    func stackOffset(_ offset: CGFloat) -> some View {
-        environment(\.stackOffset, offset)
+    func shuffleOffset(_ offset: CGFloat) -> some View {
+        environment(\.shuffleOffset, offset)
     }
     
     /// A modifier that sets horizontal padding to the shuffle stack view.
     ///
-    /// By default, `ShuffleStack` uses 15 pixels to add extra space between its frame and its content views. To be overriden, it can be achieved by passing the desired padding value through `stackPadding(_:)` modifier.
+    /// By default, `ShuffleStack` uses 15 pixels to add extra space between its frame and its content views. To be overriden, it can be achieved by passing the desired padding value through `shufflePadding(_:)` modifier.
     ///
-    /// The following code snippet shows the usage of `stackPadding(_:)` modifier.
+    /// The following code snippet shows the usage of `shufflePadding(_:)` modifier.
     /// ```swift
     /// let colors: [Color] = [.blue, .brown, .black, .cyan, .green, .indigo, .pink, .purple, .red, .orange, .yellow]
     /// var body: some View {
@@ -149,20 +149,20 @@ public extension View {
     ///             .frame(height: 200)
     ///             .cornerRadius(16)
     ///     }
-    ///     .stackPaddding(25)
+    ///     .shufflePadding(25)
     /// }
     /// ```
     /// - Parameter padding: A padding value for a shuffle stack view.
     /// - Returns: A view with the given padding.
-    func stackPadding(_ padding: CGFloat) -> some View {
-        environment(\.stackPadding, padding)
+    func shufflePadding(_ padding: CGFloat) -> some View {
+        environment(\.shufflePadding, padding)
     }
     
     /// A modifier that sets scale factor to shrink the size of the upcoming and previous content views of stack.
     ///
     /// Regarding scaling content views, `ShuffleStack` only allows to set value between 0 and 1 inclusive. If the value is out of this range, it will be replaced with 0 or 1 based on the given value. The default scaling factor is 0.5.
     ///
-    /// The following code snippet shows the usage of `stackScale(_:)` modifier.
+    /// The following code snippet shows the usage of `shuffleScale(_:)` modifier.
     /// ```swift
     /// let colors: [Color] = [.blue, .brown, .black, .cyan, .green, .indigo, .pink, .purple, .red, .orange, .yellow]
     /// var body: some View {
@@ -174,13 +174,13 @@ public extension View {
     ///             .frame(height: 200)
     ///             .cornerRadius(16)
     ///     }
-    ///     .stackScale(0.6)
+    ///     .shuffleScale(0.6)
     /// }
     /// ```
     /// - Parameter scale: A scaling factor to shrink the size of content views.
     /// - Returns: A view with the given scaling factor.
-    func stackScale(_ scale: CGFloat) -> some View {
-        environment(\.stackScale, scale)
+    func shuffleScale(_ scale: CGFloat) -> some View {
+        environment(\.shuffleScale, scale)
     }
     
     /// A modifier that listens shuffling events occurring on the shuffle stack view.
@@ -212,9 +212,9 @@ public extension View {
     
     /// A modifier that listens translation changes while swiping content views.
     ///
-    /// To listen translation value of content views while shuffling, `onTranslate(_:)` modifier can be used by passing a closure in order to perform a specific task based on the translation value.
+    /// To listen translation value of content views while shuffling, `onShuffleTranslation(_:)` modifier can be used by passing a closure in order to perform a specific task based on the translation value.
     ///
-    /// The following example provides the usage of `onTranslate(_:)` modifier.
+    /// The following example provides the usage of `onShuffleTranslation(_:)` modifier.
     ///```swift
     /// let colors: [Color] = [.blue, .brown, .black, .cyan, .green, .indigo, .pink, .purple, .red, .orange, .yellow]
     /// var body: some View {
@@ -226,7 +226,7 @@ public extension View {
     ///             .frame(height: 200)
     ///             .cornerRadius(16)
     ///     }
-    ///     .onTranslate { (translation: CGFloat) in
+    ///     .onShuffleTranslation { (translation: CGFloat) in
     ///         /* some stuff */
     ///     }
     /// }
@@ -234,7 +234,7 @@ public extension View {
     /// Besides, you can also directly listen translation value through the initializer instead of using this modifier.
     /// - Parameter perform: a closure that exposes translation changes to perform while swiping.
     /// - Returns: A view with the given action to listen translation changes.
-    func onTranslate(_ perform: @escaping (CGFloat) -> Void) -> some View {
+    func onShuffleTranslation(_ perform: @escaping (CGFloat) -> Void) -> some View {
         environment(\.shuffleTranslation, perform)
     }
 }

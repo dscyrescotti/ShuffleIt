@@ -25,16 +25,16 @@ final class ShuffleStackTests: BaseTestCase {
         }
         ViewHosting.host(
             view: view
-                .stackScale(0.2)
-                .stackOffset(20)
-                .stackPadding(20)
+                .shuffleScale(0.2)
+                .shuffleOffset(20)
+                .shufflePadding(20)
                 #if !os(tvOS)
-                .swipeDisabled(true)
+                .shuffleDisabled(true)
                 #endif
                 .shuffleStyle(.rotateIn)
                 .shuffleAnimation(.easeInOut)
                 .onShuffle({ _ in })
-                .onTranslate({ _ in })
+                .onShuffleTranslation({ _ in })
         )
         self.wait(for: [exp], timeout: 0.2)
     }
@@ -327,7 +327,7 @@ final class ShuffleStackTests: BaseTestCase {
         }
         ViewHosting.host(
             view: view
-                .swipeDisabled(true)
+                .shuffleDisabled(true)
                 .shuffleStyle(.rotateOut),
             size: .init(width: 300, height: 800)
         )

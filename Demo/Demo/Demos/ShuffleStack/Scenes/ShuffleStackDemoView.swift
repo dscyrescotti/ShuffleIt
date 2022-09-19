@@ -19,9 +19,9 @@ struct ShuffleStackDemoView: View {
                     translation: abs(translation)
                 )
             }
-            .stackOffset(horizontalSizeClass == .compact ? 20 : 40)
-            .stackScale(horizontalSizeClass == .compact ? 0.5 : 0.4)
-            .stackPadding(20)
+            .shuffleOffset(horizontalSizeClass == .compact ? 20 : 40)
+            .shuffleScale(horizontalSizeClass == .compact ? 0.5 : 0.4)
+            .shufflePadding(20)
             .onShuffle { context in
                 withAnimation(.easeInOut(duration: 0.2)) {
                     isShowItems = false

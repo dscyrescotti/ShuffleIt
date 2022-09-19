@@ -3,8 +3,8 @@ import SwiftUI
 struct MainView: View {
     @State private var route: Route? = nil
     var body: some View {
-        CarouselStackDemoView()
-        /*
+//        CarouselStackDemoView()
+        //
         NavigationView {
             List {
                 Section {
@@ -42,7 +42,7 @@ struct MainView: View {
                 }
             }
         }
-         */
+         //
     }
 }
 

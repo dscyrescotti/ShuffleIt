@@ -45,8 +45,8 @@ extension ShuffleStack {
                     direction = .right
                     isLockedLeft = true
                     let context = ShuffleContext(
-                        index: index,
-                        previousIndex: previousIndex,
+                        index: data.distance(from: data.startIndex, to: index),
+                        previousIndex: data.distance(from: data.startIndex, to: previousIndex),
                         direction: .left
                     )
                     notifyListener(context: context)
@@ -75,8 +75,8 @@ extension ShuffleStack {
                     direction = .left
                     isLockedRight = true
                     let context = ShuffleContext(
-                        index: index,
-                        previousIndex: previousIndex,
+                        index: data.distance(from: data.startIndex, to: index),
+                        previousIndex: data.distance(from: data.startIndex, to: previousIndex),
                         direction: .right
                     )
                     notifyListener(context: context)
@@ -100,6 +100,6 @@ extension ShuffleStack {
     
     /// A property that calculates translation value of swiping content views.
     internal var translation: CGFloat {
-        size.width > 0 ? xPosition / size.width * 2 : 0
+        size.width > 0 ? abs(xPosition) / size.width * 2 : 0
     }
 }

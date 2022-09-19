@@ -10,11 +10,8 @@ struct CarouselStackDemoView: View {
         CarouselStack(sneakers, initialIndex: 0) { sneaker in
             SneakerCard(sneaker: sneaker, translation: 0)
         }
-        .carouselTrigger(on: slideTrigger)
-        .onAppear {
-            DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
-                slideTrigger.send(.right)
-            }
+        .onCarouselTranslation { translation in
+            print(translation)
         }
     }
 }
