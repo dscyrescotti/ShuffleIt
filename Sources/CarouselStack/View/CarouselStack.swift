@@ -3,6 +3,7 @@ import SwiftUI
 
 public struct CarouselStack<Data: RandomAccessCollection, Content: View>: View {
     
+    @Environment(\.carouselStyle) internal var style
     @Environment(\.carouselAnimation) internal var animation
     #if !os(tvOS)
     @Environment(\.carouselDisabled) internal var disabled
@@ -10,6 +11,7 @@ public struct CarouselStack<Data: RandomAccessCollection, Content: View>: View {
     @Environment(\.carouselTrigger) internal var carouselTrigger
     @Environment(\.carouselPadding) internal var padding
     @Environment(\.carouselSpacing) internal var spacing
+    @Environment(\.carouselScale) internal var scale
     @Environment(\.carouselContext) internal var carouselContext
     @Environment(\.carouselTranslation) internal var carouselTranslation
     

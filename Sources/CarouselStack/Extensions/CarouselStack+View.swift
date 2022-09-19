@@ -2,9 +2,9 @@ import SwiftUI
 import Combine
 
 public extension View {
-//    func carouselStyle(_ style: ) -> some View {
-//
-//    }
+    func carouselStyle(_ style: CarouselStyle) -> some View {
+        environment(\.carouselStyle, style)
+    }
     
     func carouselAnimation(_ animation: CarouselAnimation) -> some View {
         environment(\.carouselAnimation, animation)
@@ -28,9 +28,9 @@ public extension View {
         environment(\.carouselPadding, padding)
     }
     
-//    func carouselScale(_ scale: CGFloat) -> some View {
-//        environment(\.carouselScale, scale)
-//    }
+    func carouselScale(_ scale: CGFloat) -> some View {
+        environment(\.carouselScale, scale)
+    }
     
     func onCarousel(_ perform: @escaping (CarouselContext) -> Void) -> some View {
         environment(\.carouselContext, perform)

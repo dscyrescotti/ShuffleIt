@@ -10,8 +10,5 @@ struct CarouselStackDemoView: View {
         CarouselStack(sneakers, initialIndex: 0) { sneaker in
             SneakerCard(sneaker: sneaker, translation: 0)
         }
-        .onCarouselTranslation { translation in
-            print(translation)
-        }
     }
 }
