@@ -10,5 +10,6 @@ struct CarouselStackDemoView: View {
         CarouselStack(sneakers, initialIndex: 0) { sneaker in
             SneakerCard(sneaker: sneaker, translation: 0)
         }
+        .carouselScale(0.7)
     }
 }

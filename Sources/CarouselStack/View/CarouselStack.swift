@@ -39,6 +39,11 @@ public struct CarouselStack<Data: RandomAccessCollection, Content: View>: View {
             #endif
         }
         .disabled(autoSliding)
+        .onChange(of: xPosition) { _ in
+            DispatchQueue.main.async {
+                carouselTranslation?(translation)
+            }
+        }
     }
     
     private var view: some View {
@@ -66,11 +71,6 @@ public struct CarouselStack<Data: RandomAccessCollection, Content: View>: View {
         .onReceive(carouselTrigger) { direction in
             if !autoSliding && xPosition == 0 {
                 performSliding(direction)
-            }
-        }
-        .onChange(of: xPosition) { position in
-            DispatchQueue.main.async {
-                carouselTranslation?(abs(position) / (size.width + (padding + spacing) * 2))
             }
         }
         .onChange(of: isActiveGesture) { value in

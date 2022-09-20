@@ -5,6 +5,7 @@ extension CarouselStack {
     internal var mainContent: some View {
         content(data[index])
             .offset(x: xPosition)
+            .scaleEffect(xPosition == 0 ? 1 : max(scale, 1 - (scale + ((1 - scale) * scaleFactor) - scale)))
     }
     
     @ViewBuilder
@@ -12,6 +13,7 @@ extension CarouselStack {
         if let element = leftDataElement {
             content(element)
                 .offset(x: xPosition - size.width - spacing)
+                .scaleEffect(xPosition == 0 ? scale : min(scale + ((1 - scale) * scaleFactor), 1), anchor: .leading)
         }
     }
     
@@ -20,6 +22,7 @@ extension CarouselStack {
         if let element = rightDataElement {
             content(element)
                 .offset(x: xPosition + size.width + spacing)
+                .scaleEffect(xPosition == 0 ? scale : min(scale + ((1 - scale) * scaleFactor), 1), anchor: .trailing)
         }
     }
 }
