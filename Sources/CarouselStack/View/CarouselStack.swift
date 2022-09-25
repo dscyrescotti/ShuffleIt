@@ -27,7 +27,8 @@ public struct CarouselStack<Data: RandomAccessCollection, Content: View>: View {
     internal let content: (Data.Element) -> Content
     
     public var body: some View {
-        Group {
+        carouselTranslation?(translation)
+        return Group {
             #if os(tvOS)
             view
             #else
@@ -39,19 +40,14 @@ public struct CarouselStack<Data: RandomAccessCollection, Content: View>: View {
             #endif
         }
         .disabled(autoSliding)
-        .onChange(of: xPosition) { _ in
-            DispatchQueue.main.async {
-                carouselTranslation?(translation)
-            }
-        }
     }
     
     private var view: some View {
         ZStack {
             Group {
                 leftContent
-                rightContent
                 mainContent
+                rightContent
             }
             .background {
                 GeometryReader { proxy in
@@ -69,8 +65,15 @@ public struct CarouselStack<Data: RandomAccessCollection, Content: View>: View {
             }
         }
         .onReceive(carouselTrigger) { direction in
-            if !autoSliding && xPosition == 0 {
-                performSliding(direction)
+//            if !autoSliding && xPosition == 0 {
+//                performSliding(direction)
+//            }
+            if direction == .right {
+                xPosition = -200 + size.width + spacing
+//                xPosition -= size.width
+//                xPosition = -200 + xPosition + size.width + spacing
+            } else {
+                xPosition = -200
             }
         }
         .onChange(of: isActiveGesture) { value in
@@ -78,6 +81,9 @@ public struct CarouselStack<Data: RandomAccessCollection, Content: View>: View {
                 performRestoring()
             }
         }
+//        .onChange(of: xPosition) { _ in
+//            carouselTranslation?(translation)
+//        }
     }
 }
 

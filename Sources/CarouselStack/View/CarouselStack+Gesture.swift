@@ -10,7 +10,7 @@ extension CarouselStack {
                 state = true
             })
             .onChanged({ value in
-                let translation = value.translation.width / 1.2
+                let translation = value.translation.width
                 if translation > 0 {
                     xPosition = translation - (index == data.startIndex ? translation * 0.7 : 0)
                     direction = .left
