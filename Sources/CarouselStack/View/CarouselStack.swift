@@ -57,6 +57,11 @@ public struct CarouselStack<Data: RandomAccessCollection, Content: View>: View {
                 }
             }
         }
+        .onChange(of: xPosition) { _ in
+            DispatchQueue.main.async {
+                carouselTranslation?(translation)
+            }
+        }
         .frame(maxWidth: .infinity)
         .padding(.horizontal, padding)
         .frame(minHeight: size.height)

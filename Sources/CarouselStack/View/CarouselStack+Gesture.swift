@@ -12,10 +12,20 @@ extension CarouselStack {
             .onChanged({ value in
                 let translation = value.translation.width
                 if translation > 0 {
-                    xPosition = translation - (index == data.startIndex ? translation * 0.7 : 0)
+                    switch style {
+                    case .infiniteScroll:
+                        xPosition = translation
+                    case .finiteScroll:
+                        xPosition = translation - (index == data.startIndex ? translation * 0.7 : 0)
+                    }
                     direction = .left
                 } else if translation < 0 {
-                    xPosition = translation - (index == data.index(before: data.endIndex) ? translation * 0.7 : 0)
+                    switch style {
+                    case .infiniteScroll:
+                        xPosition = translation
+                    case .finiteScroll:
+                        xPosition = translation - (index == data.index(before: data.endIndex) ? translation * 0.7 : 0)
+                    }
                     direction = .right
                 }
             })

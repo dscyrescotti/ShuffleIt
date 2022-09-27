@@ -17,20 +17,17 @@ struct CarouselStackDemoView: View {
                 CarouselStack(sneakers, initialIndex: 0) { sneaker in
                     SneakerCard(sneaker: sneaker, translation: 0)
                 }
-                .carouselScale(1.3)
+                .carouselScale(0.8)
                 .carouselPadding(30)
                 .carouselSpacing(20)
-                .carouselTrigger(on: slideTrigger1)
-//                .onCarouselTranslation({ translation in
-//                    print(translation)
-//                })
+                .carouselStyle(.infiniteScroll)
                 CarouselStack(sneakers, initialIndex: 0) { sneaker in
                     SneakerCard(sneaker: sneaker, translation: 0)
                 }
                 .carouselScale(0.5)
                 .carouselPadding(30)
                 .carouselSpacing(20)
-                .carouselTrigger(on: slideTrigger2)
+                .carouselStyle(.finiteScroll)
             }
         }
     }

@@ -26,7 +26,15 @@ extension CarouselStack {
     internal func performRestoring() {
         let maxSwipeDistance = size.width * 0.5
         if xPosition > 0 {
-            if xPosition >= maxSwipeDistance, let newIndex = data.previousIndex(index, offset: 1) {
+            let newIndex: Data.Index?
+            switch style {
+            case .infiniteScroll:
+                let index: Data.Index = data.previousIndex(index, offset: 1)
+                newIndex = index
+            case .finiteScroll:
+                newIndex = data.previousIndex(index, offset: 1)
+            }
+            if xPosition >= maxSwipeDistance, let newIndex = newIndex {
                 xPosition = xPosition - size.width - spacing
                 let context = CarouselContext(
                     index: data.distance(from: data.startIndex, to: newIndex),
@@ -46,7 +54,15 @@ extension CarouselStack {
                 }
             }
         } else if xPosition < 0 {
-            if xPosition <= -maxSwipeDistance, let newIndex = data.nextIndex(index, offset: 1) {
+            let newIndex: Data.Index?
+            switch style {
+            case .infiniteScroll:
+                let index: Data.Index = data.nextIndex(index, offset: 1)
+                newIndex = index
+            case .finiteScroll:
+                newIndex = data.nextIndex(index, offset: 1)
+            }
+            if xPosition <= -maxSwipeDistance, let newIndex = newIndex {
                 xPosition = xPosition + size.width + spacing
                 let context = CarouselContext(
                     index: data.distance(from: data.startIndex, to: newIndex),
