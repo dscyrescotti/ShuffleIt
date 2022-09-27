@@ -94,4 +94,12 @@ extension CarouselStack {
         }
         return 0
     }
+    
+    internal var scaleFactor: CGFloat {
+        if size.width > 0 {
+            let width = (size.width + spacing * 2)
+            return min(1, abs(xPosition) / width)
+        }
+        return 0
+    }
 }

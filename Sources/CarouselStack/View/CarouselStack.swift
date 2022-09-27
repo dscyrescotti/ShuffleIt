@@ -27,8 +27,7 @@ public struct CarouselStack<Data: RandomAccessCollection, Content: View>: View {
     internal let content: (Data.Element) -> Content
     
     public var body: some View {
-        carouselTranslation?(translation)
-        return Group {
+        Group {
             #if os(tvOS)
             view
             #else
@@ -45,9 +44,11 @@ public struct CarouselStack<Data: RandomAccessCollection, Content: View>: View {
     private var view: some View {
         ZStack {
             Group {
+                secondLeftContent
                 leftContent
                 mainContent
                 rightContent
+                secondRightContent
             }
             .background {
                 GeometryReader { proxy in
@@ -74,9 +75,6 @@ public struct CarouselStack<Data: RandomAccessCollection, Content: View>: View {
                 performRestoring()
             }
         }
-//        .onChange(of: xPosition) { _ in
-//            carouselTranslation?(translation)
-//        }
     }
 }
 
