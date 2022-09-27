@@ -65,15 +65,8 @@ public struct CarouselStack<Data: RandomAccessCollection, Content: View>: View {
             }
         }
         .onReceive(carouselTrigger) { direction in
-//            if !autoSliding && xPosition == 0 {
-//                performSliding(direction)
-//            }
-            if direction == .right {
-                xPosition = -200 + size.width + spacing
-//                xPosition -= size.width
-//                xPosition = -200 + xPosition + size.width + spacing
-            } else {
-                xPosition = -200
+            if !autoSliding && xPosition == 0 {
+                performSliding(direction)
             }
         }
         .onChange(of: isActiveGesture) { value in

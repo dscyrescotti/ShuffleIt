@@ -17,18 +17,13 @@ struct CarouselStackDemoView: View {
                 CarouselStack(sneakers, initialIndex: 0) { sneaker in
                     SneakerCard(sneaker: sneaker, translation: 0)
                 }
-                .carouselScale(0.5)
+                .carouselScale(1.3)
                 .carouselPadding(30)
                 .carouselSpacing(20)
                 .carouselTrigger(on: slideTrigger1)
-                .onCarouselTranslation({ translation in
-                    print(translation)
-                })
-                .onAppear {
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-                        slideTrigger1.send(.right)
-                    }
-                }
+//                .onCarouselTranslation({ translation in
+//                    print(translation)
+//                })
                 CarouselStack(sneakers, initialIndex: 0) { sneaker in
                     SneakerCard(sneaker: sneaker, translation: 0)
                 }
@@ -36,9 +31,6 @@ struct CarouselStackDemoView: View {
                 .carouselPadding(30)
                 .carouselSpacing(20)
                 .carouselTrigger(on: slideTrigger2)
-                .onAppear {
-                    slideTrigger2.send(.left)
-                }
             }
         }
     }
