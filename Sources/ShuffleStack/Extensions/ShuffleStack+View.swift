@@ -2,11 +2,11 @@ import SwiftUI
 import Combine
 
 public extension View {
-    /// A modifer that override default shuffle style of the shuffle stack view.
+    /// A modifer that overrides default shuffle style of the shuffle stack view.
     ///
-    /// `ShuffleStack` comes with three different shuffle styles - `slide` (default), `rotateIn` and `rotateOut` and uses `slide` as a default style. To apply other style, it can be overriden by using `shuffleStyle(_:)` modifier.
+    /// `ShuffleStack` comes with three different shuffle styles - `slide` (default), `rotateIn` and `rotateOut` and uses `slide` as a default style. To apply other style, it can be overridden by using `shuffleStyle(_:)` modifier.
     ///
-    /// The following example show the usage of overriding default shuffle style with `rotateOut` style to rotate and scale to the outside while shuffling.
+    /// The following example shows the usage of overriding default shuffle style with `rotateOut` style to rotate and scale to the outside while shuffling.
     /// ```swift
     /// let colors: [Color] = [.blue, .brown, .black, .cyan, .green, .indigo, .pink, .purple, .red, .orange, .yellow]
     /// var body: some View {
@@ -27,11 +27,11 @@ public extension View {
         environment(\.shuffleStyle, style)
     }
     
-    /// A modifer that override default shuffle animation of the shuffle stack view.
+    /// A modifer that overrides default shuffle animation of the shuffle stack view.
     ///
-    /// By default, `ShuffleStack` use `linear` animation to animate shuffling behaviour. With `shuffleAnimation(_:)` modifier, it can be overriden with the given animation value.
+    /// By default, `ShuffleStack` uses `linear` animation to animate shuffling behaviour. With `shuffleAnimation(_:)` modifier, it can be overridden with the given animation value.
     ///
-    /// The following example show the usage of overriding default shuffle animation with `easeInOut` animation that will be used while shuffling.
+    /// The following example shows the usage of overriding default shuffle animation with `easeInOut` animation that will be used while shuffling.
     /// ```swift
     /// let colors: [Color] = [.blue, .brown, .black, .cyan, .green, .indigo, .pink, .purple, .red, .orange, .yellow]
     /// var body: some View {
@@ -82,12 +82,12 @@ public extension View {
     
     /// A modifier that accpets events of direction to perform programmatic shuffling.
     ///
-    /// In purpose of shuffling programmatically such as using timer, `ShuffleStack` accepts events via `.shuffleTrigger(on:)` modifier which is needed to inject an instance of publisher with `Direction` output type and `Never` failure type.
+    /// In purpose of shuffling programmatically such as using timer, `ShuffleStack` accepts events via `shuffleTrigger(on:)` modifier which is needed to inject an instance of publisher with `ShuffleDirection` output type and `Never` failure type.
     ///
-    /// The following example provides the programmatic way of triggering shuffle event by sending `Direction` value through the publisher.
+    /// The following example provides the programmatic way of triggering shuffle event by sending `ShuffleDirection` value through the publisher.
     /// ```swift
     /// let colors: [Color] = [.blue, .brown, .black, .cyan, .green, .indigo, .pink, .purple, .red, .orange, .yellow]
-    /// let shufflePublisher = PassthroughSubject<Direction, Never>()
+    /// let shufflePublisher = PassthroughSubject<ShuffleDirection, Never>()
     /// var body: some View {
     ///     ShuffleStack(
     ///         colors,
@@ -102,7 +102,7 @@ public extension View {
     /// shufflePublisher.send(.left)
     /// shufflePublisher.send(.right)
     /// ```
-    /// - Parameter publisher: A publisher object that fires `Direction` values.
+    /// - Parameter publisher: A publisher object that fires `ShuffleDirection` values.
     /// - Returns: A view with the given publisher object.
     func shuffleTrigger<P: Publisher>(on publisher: P) -> some View where P.Output == ShuffleDirection, P.Failure == Never {
         environment(\.shuffleTrigger, publisher.eraseToAnyPublisher())
@@ -135,7 +135,7 @@ public extension View {
     
     /// A modifier that sets horizontal padding to the shuffle stack view.
     ///
-    /// By default, `ShuffleStack` uses 15 pixels to add extra space between its frame and its content views. To be overriden, it can be achieved by passing the desired padding value through `shufflePadding(_:)` modifier.
+    /// By default, `ShuffleStack` uses 15 pixels to add extra space between its frame and its content views. To be overridden, it can be achieved by passing the desired padding value through `shufflePadding(_:)` modifier.
     ///
     /// The following code snippet shows the usage of `shufflePadding(_:)` modifier.
     /// ```swift
@@ -185,7 +185,7 @@ public extension View {
     
     /// A modifier that listens shuffling events occurring on the shuffle stack view.
     ///
-    /// Using `onShuffle(_:)` modifier, it can be injected wtih a closure that exposes shuffling information - `ShuffleContext` through its parameter to perform a particular task whenever the user swipe content views or trigger shuffling programmatically.
+    /// Using `onShuffle(_:)` modifier, it can be injected wtih a closure that exposes shuffling information - `ShuffleContext` through its parameter to perform a particular task whenever the user swipes content views or shuffling is triggered programmatically.
     ///
     /// The following example provides the usage of `onShuffle(_:)` modifier.
     ///```swift
@@ -204,7 +204,7 @@ public extension View {
     ///     }
     /// }
     /// ```
-    /// - Parameter perform: a closure that exposes shuffle context to perform everytime shuffling happens.
+    /// - Parameter perform: A closure that exposes shuffle context to perform everytime shuffling happens.
     /// - Returns: A view with the given action for side effect of shuffling.
     func onShuffle(_ perform: @escaping (ShuffleContext) -> Void) -> some View {
         environment(\.shuffleContext, perform)
@@ -232,7 +232,7 @@ public extension View {
     /// }
     /// ```
     /// Besides, you can also directly listen translation value through the initializer instead of using this modifier.
-    /// - Parameter perform: a closure that exposes translation changes to perform while swiping.
+    /// - Parameter perform: A closure that exposes translation changes while swiping.
     /// - Returns: A view with the given action to listen translation changes.
     func onShuffleTranslation(_ perform: @escaping (CGFloat) -> Void) -> some View {
         environment(\.shuffleTranslation, perform)
