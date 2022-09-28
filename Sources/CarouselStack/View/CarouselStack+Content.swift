@@ -59,7 +59,7 @@ extension CarouselStack {
     
     func mainOffset(on scale: CGFloat) -> CGFloat {
         let scaledWidth = size.width * scale
-        let translation: CGFloat = scaleFactor > 0.5 ? (scaleFactor == 1 ? 0 : 0.5 - scaleFactor.truncatingRemainder(dividingBy: 0.5)) : scaleFactor.truncatingRemainder(dividingBy: 0.5)
+        let translation: CGFloat = scaleFactor > 0.5 ? (scaleFactor == 1 ? 0 : 0.5 - scaleFactor.truncatingRemainder(dividingBy: 0.5)) : scaleFactor
         if xPosition > 0 {
             return xPosition + (spacing * translation) - (spacing * scaleFactor) - (size.width - scaledWidth) / 2
         } else {
