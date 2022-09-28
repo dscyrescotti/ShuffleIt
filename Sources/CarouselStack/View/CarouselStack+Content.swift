@@ -4,7 +4,7 @@ extension CarouselStack {
     @ViewBuilder
     internal var mainContent: some View {
         let scale = 1 - (1 - scale) * scaleFactor
-        content(data[index])
+        content(data[index], translation)
             .scaleEffect(scale)
             .offset(x: mainOffset(on: scale))
     }
@@ -15,7 +15,7 @@ extension CarouselStack {
             let scale = scale + (1 - scale) * scaleFactor
             let scaledWidth = size.width * scale
             let offset = xPosition - size.width - spacing - (spacing * scaleFactor) + (size.width - scaledWidth) / 2
-            content(element)
+            content(element, translation)
                 .scaleEffect(scale)
                 .offset(x: offset)
         }
@@ -27,7 +27,7 @@ extension CarouselStack {
             let scale = scale + (1 - scale) * scaleFactor
             let scaledWidth = size.width * scale
             let offset = xPosition + size.width + spacing + (spacing * scaleFactor) - (size.width - scaledWidth) / 2
-            content(element)
+            content(element, translation)
                 .scaleEffect(scale)
                 .offset(x: offset)
         }
@@ -39,7 +39,7 @@ extension CarouselStack {
             let scaledWidth = size.width * scale
             let offsetRight = xPosition - size.width - spacing - (spacing * scaleFactor) + (size.width - scaledWidth) / 2
             let offset = offsetRight - size.width - spacing * scaleFactor
-            content(element)
+            content(element, translation)
                 .scaleEffect(scale)
                 .offset(x: offset)
         }
@@ -51,7 +51,7 @@ extension CarouselStack {
             let scaledWidth = size.width * scale
             let offsetRight = xPosition + size.width + spacing + (spacing * scaleFactor) - (size.width - scaledWidth) / 2
             let offset = offsetRight + size.width + spacing * scaleFactor
-            content(element)
+            content(element, translation)
                 .scaleEffect(scale)
                 .offset(x: offset)
         }

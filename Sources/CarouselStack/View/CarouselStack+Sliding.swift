@@ -100,7 +100,7 @@ extension CarouselStack {
     
     internal var translation: CGFloat {
         if size.width > 0 {
-            let width = (size.width + spacing * 2)
+            let width = (size.width + spacing * 2) / 2
             let position = abs(xPosition).truncatingRemainder(dividingBy: width)
             if abs(xPosition) > width {
                 return 1 - (position / width)

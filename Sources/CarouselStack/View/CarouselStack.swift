@@ -2,7 +2,6 @@ import Utils
 import SwiftUI
 
 public struct CarouselStack<Data: RandomAccessCollection, Content: View>: View {
-    
     @Environment(\.carouselStyle) internal var style
     @Environment(\.carouselAnimation) internal var animation
     #if !os(tvOS)
@@ -24,7 +23,7 @@ public struct CarouselStack<Data: RandomAccessCollection, Content: View>: View {
     @GestureState internal var isActiveGesture: Bool = false
     
     internal let data: Data
-    internal let content: (Data.Element) -> Content
+    internal let content: (Data.Element, CGFloat) -> Content
     
     public var body: some View {
         Group {
@@ -86,17 +85,20 @@ public struct CarouselStack<Data: RandomAccessCollection, Content: View>: View {
 extension CarouselStack {
     public init(
         _ data: Data,
-        initialIndex: Data.Index,
+        initialIndex: Data.Index? = nil,
         @ViewBuilder content: @escaping (Data.Element) -> Content
     ) {
         self.data = data
-        self.content = content
-        self._index = State(initialValue: initialIndex)
+        self.content = { element, _ in
+            content(element)
+        }
+        self._index = State(initialValue: initialIndex ?? data.startIndex)
     }
     
     public init(
         _ data: Data,
-        @ViewBuilder content: @escaping (Data.Element) -> Content
+        initialIndex: Data.Index? = nil,
+        @ViewBuilder content: @escaping (Data.Element, CGFloat) -> Content
     ) {
         self.data = data
         self.content = content

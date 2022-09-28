@@ -14,8 +14,8 @@ struct CarouselStackDemoView: View {
     
     var body: some View {
         VStack(alignment: .leading, spacing: 16) {
-            CarouselStack(sneakers, initialIndex: 0) { sneaker in
-                SneakerCard(sneaker: sneaker, translation: 0)
+            CarouselStack(sneakers, initialIndex: 0) { sneaker, translation in
+                SneakerCard(sneaker: sneaker, translation: translation)
             }
             .carouselScale(0.7)
             .carouselPadding(horizontalSizeClass == .compact ? 20 : 40)
