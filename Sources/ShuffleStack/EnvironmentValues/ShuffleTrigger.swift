@@ -9,6 +9,7 @@ public enum ShuffleDirection {
     case right
 }
 
+/// An environment key for shuffle trigger.
 struct ShuffleTriggerKey: EnvironmentKey {
     static var defaultValue: AnyPublisher<ShuffleDirection, Never> = Empty<ShuffleDirection, Never>().eraseToAnyPublisher()
 }
