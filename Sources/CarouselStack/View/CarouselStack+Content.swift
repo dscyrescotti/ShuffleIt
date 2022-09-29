@@ -1,6 +1,7 @@
 import SwiftUI
 
 extension CarouselStack {
+    /// A view that renders the content view for the element of the current index.
     @ViewBuilder
     internal var mainContent: some View {
         let scale = 1 - (1 - scale) * scaleFactor
@@ -9,6 +10,7 @@ extension CarouselStack {
             .offset(x: mainOffset(on: scale))
     }
     
+    /// A view that renders the content view for the element of the previous index.
     @ViewBuilder
     internal var leftContent: some View {
         if let element = leftDataElement {
@@ -21,6 +23,7 @@ extension CarouselStack {
         }
     }
     
+    /// A view that renders the content view for the element of the next index.
     @ViewBuilder
     internal var rightContent: some View {
         if let element = rightDataElement {
@@ -33,6 +36,7 @@ extension CarouselStack {
         }
     }
     
+    /// A view that renders the content view for the element of the second previous index.
     @ViewBuilder
     internal var secondLeftContent: some View {
         if let element = secondLeftDataElement {
@@ -45,6 +49,7 @@ extension CarouselStack {
         }
     }
     
+    /// A view that renders the content view for the element of the second next index.
     @ViewBuilder
     internal var secondRightContent: some View {
         if let element = secondRightDataElement {

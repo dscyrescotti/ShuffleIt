@@ -2,10 +2,12 @@ import Utils
 import SwiftUI
 
 extension CarouselStack {
+    /// A property that provides the upcoming element of left side.
     internal var leftDataElement: Data.Element? {
         style == .infiniteScroll ? previousElement : previousElementNullable
     }
     
+    /// A property that provides the upcoming element of right side.
     internal var rightDataElement: Data.Element? {
         style == .infiniteScroll ? nextElement : nextElementNullable
     }

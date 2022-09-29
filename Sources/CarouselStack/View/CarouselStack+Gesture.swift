@@ -1,7 +1,7 @@
 import SwiftUI
 
 extension CarouselStack {
-    /// A drag gesture that listens gesture state on content views and calculates rotation and position for shuffling.
+    /// A drag gesture that listens gesture state on content views and calculates rotation and position for sliding.
     @available(iOS 15.0, macOS 12.0, watchOS 8.0, *)
     @available(tvOS, unavailable)
     internal var dragGesture: some Gesture {
