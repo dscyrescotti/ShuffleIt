@@ -50,8 +50,6 @@ extension ShuffleStack {
                         direction: .left
                     )
                     notifyListener(context: context)
-                }
-                DispatchQueue.main.asyncAfter(deadline: .now() + 0.25) {
                     withAnimation(animation.timing(duration: 0.2)) {
                         xPosition = 0
                         isLockedLeft = false
@@ -80,15 +78,12 @@ extension ShuffleStack {
                         direction: .right
                     )
                     notifyListener(context: context)
-                }
-                DispatchQueue.main.asyncAfter(deadline: .now() + 0.25) {
                     withAnimation(animation.timing(duration: 0.2)) {
                         xPosition = 0
                         isLockedRight = false
                         autoShuffling = false
                     }
                 }
-                
             }
         }
     }
