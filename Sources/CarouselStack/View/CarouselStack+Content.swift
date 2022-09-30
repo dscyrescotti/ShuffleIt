@@ -4,10 +4,12 @@ extension CarouselStack {
     /// A view that renders the content view for the element of the current index.
     @ViewBuilder
     internal var mainContent: some View {
-        let scale = 1 - (1 - scale) * scaleFactor
-        content(data[index], translation)
-            .scaleEffect(scale)
-            .offset(x: mainOffset(on: scale))
+        if let element = data[safe: index] {
+            let scale = 1 - (1 - scale) * scaleFactor
+            content(element, translation)
+                .scaleEffect(scale)
+                .offset(x: mainOffset(on: scale))
+        }
     }
     
     /// A view that renders the content view for the element of the previous index.

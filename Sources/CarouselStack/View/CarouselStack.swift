@@ -128,6 +128,17 @@ public struct CarouselStack<Data: RandomAccessCollection, Content: View>: View {
             }
         }
         .onReceive(carouselTrigger) { direction in
+            switch style {
+            case .infiniteScroll:
+                guard data.distance(from: data.startIndex, to: data.endIndex) > 1 else { return }
+            case .finiteScroll:
+                switch direction {
+                case .left:
+                    guard data.startIndex != index else { return }
+                case .right:
+                    guard data.index(before: data.endIndex) != index else { return }
+                }
+            }
             if !autoSliding && xPosition == 0 {
                 performSliding(direction)
             }

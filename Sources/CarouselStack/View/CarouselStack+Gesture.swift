@@ -14,7 +14,7 @@ extension CarouselStack {
                 if translation > 0 {
                     switch style {
                     case .infiniteScroll:
-                        xPosition = translation
+                        xPosition = translation - (data.nextIndex(forLoop: index, offset: 1) == nil ? translation * 0.7 : 0)
                     case .finiteScroll:
                         xPosition = translation - (index == data.startIndex ? translation * 0.7 : 0)
                     }
@@ -22,7 +22,7 @@ extension CarouselStack {
                 } else if translation < 0 {
                     switch style {
                     case .infiniteScroll:
-                        xPosition = translation
+                        xPosition = translation - (data.previousIndex(forLoop: index, offset: 1) == nil ? translation * 0.7 : 0)
                     case .finiteScroll:
                         xPosition = translation - (index == data.index(before: data.endIndex) ? translation * 0.7 : 0)
                     }
