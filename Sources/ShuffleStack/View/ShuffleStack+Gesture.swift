@@ -10,7 +10,7 @@ extension ShuffleStack {
                 state = true
             })
             .onChanged({ value in
-                xPosition = value.translation.width / 2.3
+                xPosition = value.translation.width / 2.3 - (data.distance(from: data.startIndex, to: data.endIndex) == 1 ? value.translation.width * 0.2 : 0)
                 if xPosition > 0 {
                     direction = .left
                 } else if xPosition < 0 {

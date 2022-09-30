@@ -30,18 +30,14 @@ extension ShuffleStack {
         let midX = size.width * 0.5
         let maxSwipeDistance = size.width * 0.25
         if xPosition > 0 {
-            if xPosition < maxSwipeDistance {
-                withAnimation(animation.timing(duration: 0.15)) {
-                    xPosition = 0
-                }
-            } else {
+            if xPosition >= maxSwipeDistance, let nextIndex = data.previousIndex(forLoop: index, offset: 1) {
                 withAnimation(animation.timing(duration: 0.15)) {
                     xPosition = midX
                 }
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
                     xPosition = -xPosition
                     let previousIndex = index
-                    index = data.previousIndex(index, offset: 1)
+                    index = nextIndex
                     direction = .right
                     isLockedLeft = true
                     let context = ShuffleContext(
@@ -56,20 +52,20 @@ extension ShuffleStack {
                         autoShuffling = false
                     }
                 }
-            }
-        } else if xPosition < 0 {
-            if xPosition > -maxSwipeDistance {
+            } else {
                 withAnimation(animation.timing(duration: 0.15)) {
                     xPosition = 0
                 }
-            } else {
+            }
+        } else if xPosition < 0 {
+            if xPosition <= -maxSwipeDistance, let nextIndex = data.nextIndex(forLoop: index, offset: 1) {
                 withAnimation(animation.timing(duration: 0.15)) {
                     xPosition = -midX
                 }
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
                     xPosition = -xPosition
                     let previousIndex = index
-                    index = data.nextIndex(index, offset: 1)
+                    index = nextIndex
                     direction = .left
                     isLockedRight = true
                     let context = ShuffleContext(
@@ -83,6 +79,10 @@ extension ShuffleStack {
                         isLockedRight = false
                         autoShuffling = false
                     }
+                }
+            } else {
+                withAnimation(animation.timing(duration: 0.15)) {
+                    xPosition = 0
                 }
             }
         }

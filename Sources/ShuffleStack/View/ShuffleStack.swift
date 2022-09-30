@@ -125,6 +125,7 @@ public struct ShuffleStack<Data: RandomAccessCollection, StackContent: View>: Vi
             }
         }
         .onReceive(shuffleTrigger) { direction in
+            guard data.distance(from: data.startIndex, to: data.endIndex) > 1 else { return }
             if !autoShuffling && xPosition == 0 {
                 performShuffling(direction)
             }

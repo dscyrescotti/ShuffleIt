@@ -33,7 +33,7 @@ extension CarouselStack {
             case .infiniteScroll:
                 newIndex = data.previousIndex(forLoop: index, offset: 1)
             case .finiteScroll:
-                newIndex = data.previousIndex(index, offset: 1)
+                newIndex = data.previousIndex(forUnloop: index, offset: 1)
             }
             if xPosition >= maxSwipeDistance, let newIndex = newIndex {
                 xPosition = xPosition - size.width - spacing
@@ -60,7 +60,7 @@ extension CarouselStack {
             case .infiniteScroll:
                 newIndex = data.nextIndex(forLoop: index, offset: 1)
             case .finiteScroll:
-                newIndex = data.nextIndex(index, offset: 1)
+                newIndex = data.nextIndex(forUnloop: index, offset: 1)
             }
             if xPosition <= -maxSwipeDistance, let newIndex = newIndex {
                 xPosition = xPosition + size.width + spacing
