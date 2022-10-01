@@ -8,12 +8,13 @@
 
 /* Begin PBXBuildFile section */
 		EC1D2D6328C366F80000668C /* ShuffleStackDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC1D2D6228C366F80000668C /* ShuffleStackDemoView.swift */; };
-		EC1D2D6728C36AC20000668C /* SneakerShuffleCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC1D2D6628C36AC20000668C /* SneakerShuffleCard.swift */; };
 		EC1D2D6B28C37D280000668C /* Sneakers.json in Resources */ = {isa = PBXBuildFile; fileRef = EC1D2D6A28C37D280000668C /* Sneakers.json */; };
 		EC1D2D6E28C382EF0000668C /* Color+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC1D2D6D28C382EF0000668C /* Color+Extension.swift */; };
 		EC1D2D7128C3882D0000668C /* Sneaker.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC1D2D7028C3882D0000668C /* Sneaker.swift */; };
 		EC1D2D7628C3A6EF0000668C /* SneakerItemRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC1D2D7528C3A6EF0000668C /* SneakerItemRow.swift */; };
 		EC1D2D7D28C3C8B50000668C /* DragGestureViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC1D2D7C28C3C8B50000668C /* DragGestureViewModifier.swift */; };
+		EC467D8028D6CCC700291DFD /* CarouselStackDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC467D7F28D6CCC700291DFD /* CarouselStackDemoView.swift */; };
+		EC467D8228D6CF4800291DFD /* SneakerCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC467D8128D6CF4800291DFD /* SneakerCard.swift */; };
 		EC64DECA28C4EB4000C317A3 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EC64DEC928C4EB4000C317A3 /* Launch Screen.storyboard */; };
 		EC67A95D28BE69F800BDAB83 /* DemoApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC67A94D28BE69F700BDAB83 /* DemoApp.swift */; };
 		EC67A96128BE69F800BDAB83 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EC67A94F28BE69F800BDAB83 /* Assets.xcassets */; };
@@ -24,12 +25,13 @@
 
 /* Begin PBXFileReference section */
 		EC1D2D6228C366F80000668C /* ShuffleStackDemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShuffleStackDemoView.swift; sourceTree = "<group>"; };
-		EC1D2D6628C36AC20000668C /* SneakerShuffleCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SneakerShuffleCard.swift; sourceTree = "<group>"; };
 		EC1D2D6A28C37D280000668C /* Sneakers.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Sneakers.json; sourceTree = "<group>"; };
 		EC1D2D6D28C382EF0000668C /* Color+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Extension.swift"; sourceTree = "<group>"; };
 		EC1D2D7028C3882D0000668C /* Sneaker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sneaker.swift; sourceTree = "<group>"; };
 		EC1D2D7528C3A6EF0000668C /* SneakerItemRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SneakerItemRow.swift; sourceTree = "<group>"; };
 		EC1D2D7C28C3C8B50000668C /* DragGestureViewModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DragGestureViewModifier.swift; sourceTree = "<group>"; };
+		EC467D7F28D6CCC700291DFD /* CarouselStackDemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarouselStackDemoView.swift; sourceTree = "<group>"; };
+		EC467D8128D6CF4800291DFD /* SneakerCard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SneakerCard.swift; sourceTree = "<group>"; };
 		EC64DEC928C4EB4000C317A3 /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		EC67A94D28BE69F700BDAB83 /* DemoApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoApp.swift; sourceTree = "<group>"; };
 		EC67A94F28BE69F800BDAB83 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -55,9 +57,6 @@
 			isa = PBXGroup;
 			children = (
 				EC7410BB28C455DB005EFC41 /* Scenes */,
-				EC1D2D7B28C3C8A80000668C /* ViewModifier */,
-				EC1D2D6F28C388170000668C /* Models */,
-				EC1D2D6528C368F30000668C /* Components */,
 			);
 			path = ShuffleStack;
 			sourceTree = "<group>";
@@ -92,7 +91,7 @@
 		EC1D2D6528C368F30000668C /* Components */ = {
 			isa = PBXGroup;
 			children = (
-				EC1D2D6628C36AC20000668C /* SneakerShuffleCard.swift */,
+				EC467D8128D6CF4800291DFD /* SneakerCard.swift */,
 				EC1D2D7528C3A6EF0000668C /* SneakerItemRow.swift */,
 			);
 			path = Components;
@@ -122,6 +121,31 @@
 			path = ViewModifier;
 			sourceTree = "<group>";
 		};
+		EC467D7D28D6CC5200291DFD /* CarouselStack */ = {
+			isa = PBXGroup;
+			children = (
+				EC467D7E28D6CC8F00291DFD /* Scenes */,
+			);
+			path = CarouselStack;
+			sourceTree = "<group>";
+		};
+		EC467D7E28D6CC8F00291DFD /* Scenes */ = {
+			isa = PBXGroup;
+			children = (
+				EC467D7F28D6CCC700291DFD /* CarouselStackDemoView.swift */,
+			);
+			path = Scenes;
+			sourceTree = "<group>";
+		};
+		EC467D8328D6CF8C00291DFD /* Demos */ = {
+			isa = PBXGroup;
+			children = (
+				EC467D7D28D6CC5200291DFD /* CarouselStack */,
+				EC1D2D5F28C366A10000668C /* ShuffleStack */,
+			);
+			path = Demos;
+			sourceTree = "<group>";
+		};
 		EC67A94728BE69F700BDAB83 = {
 			isa = PBXGroup;
 			children = (
@@ -135,10 +159,13 @@
 		EC67A94C28BE69F700BDAB83 /* Demo */ = {
 			isa = PBXGroup;
 			children = (
-				EC1D2D6C28C382D80000668C /* Extensions */,
-				EC1D2D6128C366C20000668C /* Resources */,
 				EC1D2D6028C366AB0000668C /* App */,
-				EC1D2D5F28C366A10000668C /* ShuffleStack */,
+				EC1D2D6528C368F30000668C /* Components */,
+				EC467D8328D6CF8C00291DFD /* Demos */,
+				EC1D2D6C28C382D80000668C /* Extensions */,
+				EC1D2D6F28C388170000668C /* Models */,
+				EC1D2D6128C366C20000668C /* Resources */,
+				EC1D2D7B28C3C8A80000668C /* ViewModifier */,
 			);
 			path = Demo;
 			sourceTree = "<group>";
@@ -252,14 +279,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				EC1D2D7128C3882D0000668C /* Sneaker.swift in Sources */,
+				EC467D8228D6CF4800291DFD /* SneakerCard.swift in Sources */,
 				EC7410B928C44DA3005EFC41 /* MainView.swift in Sources */,
 				EC1D2D7D28C3C8B50000668C /* DragGestureViewModifier.swift in Sources */,
 				EC7410BD28C45605005EFC41 /* TimingShuffleStackDemoView.swift in Sources */,
+				EC467D8028D6CCC700291DFD /* CarouselStackDemoView.swift in Sources */,
 				EC1D2D7628C3A6EF0000668C /* SneakerItemRow.swift in Sources */,
 				EC1D2D6E28C382EF0000668C /* Color+Extension.swift in Sources */,
 				EC1D2D6328C366F80000668C /* ShuffleStackDemoView.swift in Sources */,
 				EC67A95D28BE69F800BDAB83 /* DemoApp.swift in Sources */,
-				EC1D2D6728C36AC20000668C /* SneakerShuffleCard.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -397,7 +425,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.example.ShuffleIt;
+				PRODUCT_BUNDLE_IDENTIFIER = com.example.ShuffleIt.app;
 				PRODUCT_NAME = "ShuffleIt Demo";
 				SDKROOT = iphoneos;
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -428,7 +456,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.example.ShuffleIt;
+				PRODUCT_BUNDLE_IDENTIFIER = com.example.ShuffleIt.app;
 				PRODUCT_NAME = "ShuffleIt Demo";
 				SDKROOT = iphoneos;
 				SWIFT_EMIT_LOC_STRINGS = YES;
