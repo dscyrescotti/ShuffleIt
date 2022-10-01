@@ -8,7 +8,7 @@ import ViewInspector
 /// A stack view that provides shuffling behaviour to swipe contents to left and right.
 ///
 /// ## Overview
-/// `ShuffleStack` is built on top of `ZStack` but it only renders three child views which are visible on the screen and switches data to display based on the current index. As it renders three child views, it is mandatory to have at least three elements in data array. If not, it will end up with fatal error.
+/// `ShuffleStack` is built on top of `ZStack` but it only renders three child views which are visible on the screen and switches data to display based on the current index. In case the data passed into the stack view is empty, there will be empty view on the screen.
 ///
 /// The following example provides the simple usage of `ShuffleStack` which creates a stack of color cards with default shuffle style and animation.
 /// ```swift
