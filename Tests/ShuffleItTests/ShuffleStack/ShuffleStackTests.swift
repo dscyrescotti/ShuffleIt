@@ -57,7 +57,7 @@ final class ShuffleStackTests: BaseTestCase {
             XCTAssertNil(sut.shuffleTranslation)
         }
         ViewHosting.host(view: view)
-        self.wait(for: [exp], timeout: 0.5)
+        self.wait(for: [exp], timeout: 0.2)
     }
     
     func testShuffleStackStates() throws {

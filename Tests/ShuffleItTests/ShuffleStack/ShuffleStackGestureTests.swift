@@ -54,7 +54,7 @@ final class ShuffleStackGestureTests: BaseTestCase {
             let sut = try view.actualView()
             let width = 300 - sut.padding * 2 - sut.offset * 2
             XCTAssertEqual(sut.direction, .right)
-            XCTAssertEqual(sut.translation, sut.xPosition / width * 2)
+            XCTAssertEqual(sut.translation, abs(sut.xPosition) / width * 2)
         }
         ViewHosting.host(
             view: view
@@ -84,11 +84,11 @@ final class ShuffleStackGestureTests: BaseTestCase {
             let sut = try view.actualView()
             let width = 300 - sut.padding * 2 - sut.offset * 2
             XCTAssertEqual(sut.direction, .left)
-            XCTAssertEqual(sut.translation, sut.xPosition / width * 2)
+            XCTAssertEqual(sut.translation, abs(sut.xPosition) / width * 2)
         }
         ViewHosting.host(
             view: view
-            .shuffleAnimation(.easeIn),
+                .shuffleAnimation(.easeIn),
             size: .init(width: 300, height: 800)
         )
         self.wait(for: [exp1, exp2], timeout: 0.3)
