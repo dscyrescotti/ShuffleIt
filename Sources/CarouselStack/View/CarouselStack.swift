@@ -1,5 +1,9 @@
 import Utils
 import SwiftUI
+#if canImport(ViewInspector)
+import UtilsForTest
+import ViewInspector
+#endif
 
 /// A stack view which provides carousel-style sliding behaviour to slide contents to left and right.
 ///
@@ -83,6 +87,10 @@ public struct CarouselStack<Data: RandomAccessCollection, Content: View>: View {
     internal let data: Data
     internal let content: (Data.Element, CGFloat) -> Content
     
+    #if canImport(ViewInspector)
+    internal let inspection = Inspection<Self>()
+    #endif
+    
     public var body: some View {
         Group {
             #if os(tvOS)
@@ -96,6 +104,11 @@ public struct CarouselStack<Data: RandomAccessCollection, Content: View>: View {
             #endif
         }
         .disabled(autoSliding)
+        #if canImport(ViewInspector)
+        .onReceive(inspection.notice) {
+            self.inspection.visit(self, $0)
+        }
+        #endif
     }
     
     private var view: some View {
