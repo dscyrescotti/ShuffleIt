@@ -1,6 +1,6 @@
 import SwiftUI
 
-/// An environment key for suffle translation.
+/// An environment key for carousel translation.
 struct CarouselTranslation: EnvironmentKey {
     static var defaultValue: ((CGFloat) -> Void)? = nil
 }

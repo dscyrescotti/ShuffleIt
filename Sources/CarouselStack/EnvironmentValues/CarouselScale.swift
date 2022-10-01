@@ -1,5 +1,6 @@
 import SwiftUI
 
+/// An environment key for carousel scale.
 struct CarouselScaleKey: EnvironmentKey {
     static let defaultValue: CGFloat = 1
 }

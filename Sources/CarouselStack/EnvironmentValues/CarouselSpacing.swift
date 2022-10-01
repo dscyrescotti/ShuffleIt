@@ -1,5 +1,6 @@
 import SwiftUI
 
+/// An environment key for carousel spacing.
 struct CarouselSpacingKey: EnvironmentKey {
     static var defaultValue: CGFloat = 10
 }

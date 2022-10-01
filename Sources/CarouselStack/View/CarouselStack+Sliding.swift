@@ -1,18 +1,20 @@
 import SwiftUI
 
 extension CarouselStack {
+    /// A method that mimics sliding behaviour for the purpose of programmatic sliding.
     internal func performSliding(_ direction: CarouselDirection) {
         self.autoSliding = true
         self.direction = direction
         performMovingToMiddle()
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + duration(0.15)) {
             self.performRestoring()
         }
     }
     
+    /// A method that mimics sliding behaviour to slide view to left or right for the purpose of programmatic sliding.
     internal func performMovingToMiddle() {
-        let maXSwipeDistance = size.width * 0.5
-        withAnimation(animation.timing(duration: 0.1)) {
+        let maXSwipeDistance = size.width * 0.6
+        withAnimation(animation.timing(duration: duration(0.15))) {
             switch direction {
             case .left:
                 xPosition = maXSwipeDistance
@@ -22,17 +24,16 @@ extension CarouselStack {
         }
     }
     
-    
+    /// A method that performs to restore content views, which have already been in the middle of sliding in the process of sliding, to the original position.
     internal func performRestoring() {
         let maxSwipeDistance = size.width * 0.5
         if xPosition > 0 {
             let newIndex: Data.Index?
             switch style {
             case .infiniteScroll:
-                let index: Data.Index = data.previousIndex(index, offset: 1)
-                newIndex = index
+                newIndex = data.previousIndex(forLoop: index, offset: 1)
             case .finiteScroll:
-                newIndex = data.previousIndex(index, offset: 1)
+                newIndex = data.previousIndex(forUnloop: index, offset: 1)
             }
             if xPosition >= maxSwipeDistance, let newIndex = newIndex {
                 xPosition = xPosition - size.width - spacing
@@ -44,7 +45,7 @@ extension CarouselStack {
                 index = newIndex
                 direction = .right
                 notifyListener(context: context)
-                withAnimation(animation.timing(duration: duration(0.2))) {
+                withAnimation(animation.timing(duration: duration(0.12))) {
                     xPosition = 0
                     autoSliding = false
                 }
@@ -57,10 +58,9 @@ extension CarouselStack {
             let newIndex: Data.Index?
             switch style {
             case .infiniteScroll:
-                let index: Data.Index = data.nextIndex(index, offset: 1)
-                newIndex = index
+                newIndex = data.nextIndex(forLoop: index, offset: 1)
             case .finiteScroll:
-                newIndex = data.nextIndex(index, offset: 1)
+                newIndex = data.nextIndex(forUnloop: index, offset: 1)
             }
             if xPosition <= -maxSwipeDistance, let newIndex = newIndex {
                 xPosition = xPosition + size.width + spacing
@@ -72,7 +72,7 @@ extension CarouselStack {
                 index = newIndex
                 direction = .left
                 notifyListener(context: context)
-                withAnimation(animation.timing(duration: duration(0.2))) {
+                withAnimation(animation.timing(duration: duration(0.12))) {
                     xPosition = 0
                     autoSliding = false
                 }
@@ -94,10 +94,12 @@ extension CarouselStack {
         return (fn(x + h) - fn(x)) / h
     }
     
+    /// A method that notifies an listener with context value after sliding succeeds.
     private func notifyListener(context: CarouselContext) {
         carouselContext?(context)
     }
     
+    /// A property that calculates translation value of swiping content views.
     internal var translation: CGFloat {
         if size.width > 0 {
             let width = (size.width + spacing * 2) / 2
@@ -111,6 +113,7 @@ extension CarouselStack {
         return 0
     }
     
+    /// A property that calculates scaleFactor for the views based on their position.
     internal var scaleFactor: CGFloat {
         if size.width > 0 {
             let width = (size.width + spacing * 2)

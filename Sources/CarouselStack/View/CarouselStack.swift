@@ -1,6 +1,68 @@
 import Utils
 import SwiftUI
+#if canImport(ViewInspector)
+import UtilsForTest
+import ViewInspector
+#endif
 
+/// A stack view which provides carousel-style sliding behaviour to slide contents to left and right.
+///
+/// ## Overview
+/// `CarouselStack` is built on top of `ZStack` to renders carousel sliding view which only allocates at most five content views and reuses them when index changes. In case the data passed into the stack view is empty, there will be empty view on the screen.
+///
+/// The following code snippet demonstrates the simple usage of `CarouselStack` which creates a slide view of color cards with default carousel style and animation.
+/// ```
+/// struct ContentView: View {
+///     let colors: [Color] = [.blue, .brown, .black, .cyan, .green, .indigo, .pink, .purple, .red, .orange, .yellow]
+///     var body: some View {
+///         CarouselStack(
+///             colors,
+///             initialIndex: 0
+///         ) { color in
+///             color
+///                 .frame(height: 200)
+///                 .cornerRadius(16)
+///         }
+///     }
+/// }
+/// ```
+///
+/// ## Customizing default behaviours
+/// `CarouselStack` provides a wide range of modifiers to override default behaviour of the stack view so that it is easy to tailor to view with custom values such as animation, style, spacing, padding and scale factor.
+///
+/// The following table shows a list of available modifiers that customizes the view.
+///
+/// Modifier | Description
+/// --- | ---
+/// ``carouselAnimation(_:)`` | A modifier that overrides default carousel animation of the carousel stack view.
+/// ``carouselStyle(_:)`` | A modifer that overrides default carousel style of the carousel stack view.
+/// ``carouselPadding(_:)`` | A modifier that sets horizontal padding to the carousel stack view.
+/// ``carouselScale(_:)`` | A modifier that sets scale factor to shrink the size of the contents right next to the current content of the carousel stack view.
+/// ``carouselSpacing(_:)`` | A modifier that sets value which is used to add some spacing between carousel stack contents.
+/// ``carouselDisabled(_:)`` | A modifier that disables user interaction to carousel content views.
+///
+/// ## Observing sliding events and swiping translation
+/// `CarouselStack` comes with useful modifiers that listens sliding events and swiping translation to perform a particular action based on those values after sliding succeeds or while swiping the views.
+///
+/// The following modifiers helps to observe sliding events and translation changes.
+///
+/// Modifier | Description
+/// --- | ---
+/// ``onCarousel(_:)`` | A modifier that listens sliding events occurring on the carousel stack view.
+/// ``onCarouselTranslation(_:)`` | A modifier that listens translation changes while sliding content views.
+///
+/// ## Triggering the programmatic sliding
+/// `CarouselStack` also allows programmatic sliding by accepting a series of events from the upstream publisher. Whenever the publisher fires an event, it block user interaction on the view and perform sliding action.
+/// Modifier | Description
+/// --- | ---
+/// ``carouselTrigger(on:)`` | A modifier that accepts events of direction to perform programmatic sliding.
+///
+/// ## Topics
+/// ### Initializers
+/// - ``init(_:initialIndex:content:)-38nwt``
+/// - ``init(_:initialIndex:content:)-7edjn``
+/// ### Instance Properties
+/// - ``body``
 public struct CarouselStack<Data: RandomAccessCollection, Content: View>: View {
     @Environment(\.carouselStyle) internal var style
     @Environment(\.carouselAnimation) internal var animation
@@ -25,6 +87,10 @@ public struct CarouselStack<Data: RandomAccessCollection, Content: View>: View {
     internal let data: Data
     internal let content: (Data.Element, CGFloat) -> Content
     
+    #if canImport(ViewInspector)
+    internal let inspection = Inspection<Self>()
+    #endif
+    
     public var body: some View {
         Group {
             #if os(tvOS)
@@ -38,6 +104,11 @@ public struct CarouselStack<Data: RandomAccessCollection, Content: View>: View {
             #endif
         }
         .disabled(autoSliding)
+        #if canImport(ViewInspector)
+        .onReceive(inspection.notice) {
+            self.inspection.visit(self, $0)
+        }
+        #endif
     }
     
     private var view: some View {
@@ -70,6 +141,17 @@ public struct CarouselStack<Data: RandomAccessCollection, Content: View>: View {
             }
         }
         .onReceive(carouselTrigger) { direction in
+            switch style {
+            case .infiniteScroll:
+                guard data.distance(from: data.startIndex, to: data.endIndex) > 1 else { return }
+            case .finiteScroll:
+                switch direction {
+                case .left:
+                    guard data.startIndex != index else { return }
+                case .right:
+                    guard data.index(before: data.endIndex) != index else { return }
+                }
+            }
             if !autoSliding && xPosition == 0 {
                 performSliding(direction)
             }
@@ -83,6 +165,11 @@ public struct CarouselStack<Data: RandomAccessCollection, Content: View>: View {
 }
 
 extension CarouselStack {
+    /// An initializer that returns an instance of `CarouselStack`.
+    /// - Parameters:
+    ///   - data: A collection of data that will be provided to content views through closure.
+    ///   - initialIndex: An initiali index of data for which content view will be rendered first.
+    ///   - content: A view builder that dynamically renders content view based on current index and data provided.
     public init(
         _ data: Data,
         initialIndex: Data.Index? = nil,
@@ -95,6 +182,11 @@ extension CarouselStack {
         self._index = State(initialValue: initialIndex ?? data.startIndex)
     }
     
+    /// An initializer that returns an instance of `CarouselStack` and exposes translation value to child content through view builder.
+    /// - Parameters:
+    ///   - data: A collection of data that will be provided to content views through closure.
+    ///   - initialIndex: An initiail index of data for which content view will be rendered first.
+    ///   - content: A view builder that dynamically renders content view based on current index and data provided. It also exposes the translation value of how much view is been dragging while sliding.
     public init(
         _ data: Data,
         initialIndex: Data.Index? = nil,

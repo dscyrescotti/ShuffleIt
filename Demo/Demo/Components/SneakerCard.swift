@@ -72,6 +72,7 @@ struct SneakerCard: View {
                     .font(.title)
             }
             .padding(.trailing, 30)
+            .lineLimit(2)
         }
         .padding(20)
     }

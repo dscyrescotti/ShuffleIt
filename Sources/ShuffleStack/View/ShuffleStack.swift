@@ -8,7 +8,7 @@ import ViewInspector
 /// A stack view that provides shuffling behaviour to swipe contents to left and right.
 ///
 /// ## Overview
-/// `ShuffleStack` is built on top of `ZStack` but it only renders three child views which are visible on the screen and switches data to display based on the current index. As it renders three child views, it is mandatory to have at least three elements in data array. If not, it will end up with fatal error.
+/// `ShuffleStack` is built on top of `ZStack` but it only renders three child views which are visible on the screen and switches data to display based on the current index. In case the data passed into the stack view is empty, there will be empty view on the screen.
 ///
 /// The following example provides the simple usage of `ShuffleStack` which creates a stack of color cards with default shuffle style and animation.
 /// ```swift
@@ -34,12 +34,12 @@ import ViewInspector
 ///
 /// Modifier | Description
 /// --- | ---
-/// [`shuffleAnimation(_:)`](https://dscyrescotti.github.io/ShuffleIt/documentation/shuffleit/shufflestack/shuffleanimation(_:)) | A modifer that override default shuffle animation of the shuffle stack view.
-/// [`shuffleStyle(_:)`](https://dscyrescotti.github.io/ShuffleIt/documentation/shuffleit/shufflestack/shufflestyle(_:)) | A modifer that override default shuffle style of the shuffle stack view.
-/// [`stackOffset(_:)`](https://dscyrescotti.github.io/ShuffleIt/documentation/shuffleit/shufflestack/stackoffset(_:)) | A modifier that sets value that is used to shift the offset of the upcoming and previous content views behind the view of the current index.
-/// [`stackPadding(_:)`](https://dscyrescotti.github.io/ShuffleIt/documentation/shuffleit/shufflestack/stackpadding(_:)) | A modifier that sets horizontal padding to the shuffle stack view.
-/// [`stackScale(_:)`](https://dscyrescotti.github.io/ShuffleIt/documentation/shuffleit/shufflestack/stackscale(_:)) | A modifier that sets scale factor to shrink the size of the upcoming and previous content views of stack.
-/// [`swipeDisabled(_:)`](https://dscyrescotti.github.io/ShuffleIt/documentation/shuffleit/shufflestack/swipedisabled(_:)) | A modifer that disables user interaction to shuffle content views.
+/// ``shuffleAnimation(_:)`` | A modifer that overrides default shuffle animation of the shuffle stack view.
+/// ``shuffleStyle(_:)`` | A modifer that overrides default shuffle style of the shuffle stack view.
+/// ``shuffleOffset(_:)`` | A modifier that sets value that is used to shift the offset of the upcoming and previous content views behind the view of the current index.
+/// ``shufflePadding(_:)`` | A modifier that sets horizontal padding to the shuffle stack view.
+/// ``shuffleScale(_:)`` | A modifier that sets scale factor to shrink the size of the upcoming and previous content views of stack.
+/// ``shuffleDisabled(_:)`` | A modifier that sets scale factor to shrink the size of the upcoming and previous content views of stack.
 ///
 /// ## Observing shuffle events and swiping translation
 /// `ShuffleStack` provides handy modifiers that listens shuffle events and swiping translation to perform a particular action based on those values after shuffling succeeds or while swiping stack views.
@@ -48,14 +48,14 @@ import ViewInspector
 ///
 /// Modifier | Description
 /// --- | ---
-/// [`onShuffle(_:)`](https://dscyrescotti.github.io/ShuffleIt/documentation/shuffleit/shufflestack/onshuffle(_:)) |  A modifier that listens shuffling events occurring on the shuffle stack view.
-/// [`onTranslate(_:)`](https://dscyrescotti.github.io/ShuffleIt/documentation/shuffleit/shufflestack/ontranslate(_:)) | A modifier that listens translation changes while swiping content views.
+/// ``onShuffle(_:)`` |  A modifier that listens shuffling events occurring on the shuffle stack view.
+/// ``onShuffleTranslation(_:)`` | A modifier that listens translation changes while swiping content views.
 ///
 /// ## Triggering shuffling programmatically
 /// `ShuffleStack` also allows programmatic shuffling by accpecting a series of events from the upstream publisher. Whenever the publisher fires an event, it block user interaction on the view and perform shuffling action.
 /// Modifier | Description
 /// --- | ---
-/// [`shuffleTrigger(on:)`](https://dscyrescotti.github.io/ShuffleIt/documentation/shuffleit/shufflestack/shuffletrigger(on:)) | A modifier that accpets events of direction to perform programmatic shuffling.
+/// ``shuffleTrigger(on:)`` | A modifier that accpets events of direction to perform programmatic shuffling.
 ///
 /// ## Topics
 /// ### Initializers
@@ -63,11 +63,6 @@ import ViewInspector
 /// - ``init(_:initialIndex:stackContent:)-72j8b``
 /// ### Instance Properties
 /// - ``body``
-/// ### Related
-/// - ``Direction``
-/// - ``ShuffleAnimation``
-/// - ``ShuffleContext``
-/// - ``ShuffleStyle``
 public struct ShuffleStack<Data: RandomAccessCollection, StackContent: View>: View {
     @Environment(\.shuffleStyle) internal var style
     @Environment(\.shuffleAnimation) internal var animation
@@ -130,6 +125,7 @@ public struct ShuffleStack<Data: RandomAccessCollection, StackContent: View>: Vi
             }
         }
         .onReceive(shuffleTrigger) { direction in
+            guard data.distance(from: data.startIndex, to: data.endIndex) > 1 else { return }
             if !autoShuffling && xPosition == 0 {
                 performShuffling(direction)
             }
@@ -175,7 +171,7 @@ extension ShuffleStack {
     /// - Parameters:
     ///   - data: A collection of data that will be provided to content views through closure.
     ///   - initialIndex: An initial index of data for which content view will be rendered first.
-    ///   - stackContent: A view builder that dynamically renders content view based on current index and data provided. It also expose the translation value of how much view is been dragging while shuffling.
+    ///   - stackContent: A view builder that dynamically renders content view based on current index and data provided. It also exposes the translation value of how much view is been dragging while shuffling.
     public init(
         _ data: Data,
         initialIndex: Data.Index? =  nil,

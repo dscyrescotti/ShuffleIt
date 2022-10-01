@@ -1,5 +1,6 @@
 import SwiftUI
 
+/// An environment key for carousel padding.
 struct CarouselPaddingKey: EnvironmentKey {
     static var defaultValue: CGFloat = 20
 }
