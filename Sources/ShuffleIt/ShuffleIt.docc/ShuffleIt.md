@@ -10,11 +10,16 @@ A UI element library for **SwiftUI**.
 
 ## Topics
 
-### Features
-- ``ShuffleStack``
+### CarouselStack
+- ``CarouselStack``
+- ``CarouselAnimation``
+- ``CarouselContext``
+- ``CarouselDirection``
+- ``CarouselStyle``
 
 ### ShuffleStack
-- ``Direction``
+- ``ShuffleStack``
 - ``ShuffleAnimation``
 - ``ShuffleContext``
+- ``ShuffleDirection``
 - ``ShuffleStyle``

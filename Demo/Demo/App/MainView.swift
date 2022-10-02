@@ -16,6 +16,11 @@ struct MainView: View {
                     }) {
                         Label("ShuffleStack (with Timer)", systemImage: "deskclock.fill")
                     }
+                    Button(action: {
+                        route = .carouselStack
+                    }) {
+                        Label("CarouselStack", systemImage: "sparkles.rectangle.stack.fill")
+                    }
                 } header: {
                     Text("ShuffleStack")
                 }
@@ -30,6 +35,8 @@ struct MainView: View {
                     ShuffleStackDemoView()
                 case .timingShuffleStack:
                     TimingShuffleStackDemoView()
+                case .carouselStack:
+                    CarouselStackDemoView()
                 }
             }
         }
@@ -45,11 +52,13 @@ struct ContentView_Previews: PreviewProvider {
 enum Route: Identifiable {
     case shuffleStack
     case timingShuffleStack
+    case carouselStack
     
     var id: String {
         switch self {
         case .shuffleStack: return "shuffle-stack"
         case .timingShuffleStack: return "timing-shuffle-stack"
+        case .carouselStack: return "carousel-stack"
         }
     }
 }
