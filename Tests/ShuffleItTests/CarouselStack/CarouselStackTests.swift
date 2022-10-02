@@ -93,7 +93,7 @@ final class CarouselStackTests: BaseTestCase {
                 .carouselStyle(.finiteScroll),
             size: .init(width: 300, height: 800)
         )
-        self.wait(for: [exp], timeout: 0.2)
+        self.wait(for: [exp], timeout: 0.3)
     }
     #endif
 }
