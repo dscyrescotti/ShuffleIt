@@ -34,8 +34,33 @@
 </table>
 
 ## 💡 Features
+- [CarouselStack](#carouselstack)
 - [ShuffleStack](#shufflestack)
-> For now, **ShuffleIt** only provides **ShuffleStack** view. (🚨 Spoiler Alert - There will be very soon various types of stack views coming.)
+> For now, **ShuffleIt** only provides **CarouselStack** and **ShuffleStack** views. (🚨 Spoiler Alert - There will be very soon various types of stack views coming.)
+
+### CarouselStack <a id="carouselstack"></a>
+**CarouselStack** is a stack view with sliding behaviour on the stack of content views with carousel effect. Just like **ShuffleStack**, it doesn't render all content views but it renders at most five content views which is enough to display content views with sliding animation. Besides, it provides customizablae modifiers to modify the view's appearance so that it is easy to adjust to what is desired.
+
+#### Usage
+```swift
+let colors: [Color] = [.blue, .brown, .black, .cyan, .green, .indigo, .pink, .purple, .red, .orange, .yellow]
+var body: some View {
+    CarouselStack(
+        colors,
+        initialIndex: 0
+    ) { color in
+        color
+            .frame(height: 200)
+            .cornerRadius(16)
+    }
+}
+```
+<details>
+<summary>Preview</summary>
+<img src="https://github.com/dscyrescotti/ShuffleIt/blob/main/Assets/Previews/CarouselStack-Preview.gif?raw=true" alt="CarouselStack-Preview"  width="30%"/>
+</details>
+
+To explore more about **CarouselStack**, check out the [documentation](https://dscyrescotti.github.io/ShuffleIt/documentation/shuffleit/carouselstack/).
 
 ### ShuffleStack <a id="shufflestack"></a>
 **ShuffleStack** is a stack view with shuffling behaviour on the stack of content views which will be useful as a banner. Not like normal stack view, it only renders three content views visible on the screen and switches data of content views based on the current index. As it comes with a bunch of modifiers, it is highly customizable to get the desired appearance.
@@ -61,6 +86,8 @@ var body: some View {
 
 To explore more about **ShuffleStack**, check out the [documentation](https://dscyrescotti.github.io/ShuffleIt/documentation/shuffleit/shufflestack/).
 
+> Starting from Version 2.0.0, there are some changes which rename some modifiers and some types of ShuffleStack. Please check out [documentation](https://dscyrescotti.github.io/ShuffleIt/documentation/shuffleit/shufflestack/) to update your code accordingly.
+
 ## ⚠️ Requirements 
 - iOS 15+, macOS 12+, watchOS 8+, tvOS 15+
 > ShuffleIt is developed using Xcode 13.3.1. Make sure you are using Xcode 13.3.1 and above.
@@ -70,7 +97,7 @@ To explore more about **ShuffleStack**, check out the [documentation](https://ds
 Add it as a dependency within your Package.swift.
 ```
 dependencies: [
-    .package(url: "https://github.com/dscyrescotti/ShuffleIt.git", from: "1.0.1")
+    .package(url: "https://github.com/dscyrescotti/ShuffleIt.git", from: "2.0.0")
 ]
 ```
 
