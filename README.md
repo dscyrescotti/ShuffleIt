@@ -24,10 +24,12 @@
 
 <table>
 <tr>
+<th>CarouselStack</th>
 <th>ShuffleStack</th>
 </tr>
 <tr>
-<td align="center"><img src="https://github.com/dscyrescotti/ShuffleIt/blob/main/Assets/ShuffleIt-Demo.gif?raw=true" alt="ShuffleIt-Demo"  width="50%"/></td>
+<td align="center"><img src="https://github.com/dscyrescotti/ShuffleIt/blob/main/Assets/CarouselStack-Demo.gif?raw=true" alt="CarouselStack-Demo"  width="50%"/></td>
+<td align="center"><img src="https://github.com/dscyrescotti/ShuffleIt/blob/main/Assets/ShuffleStack-Demo.gif?raw=true" alt="ShuffleStack-Demo"  width="50%"/></td>
 </tr>
 </table>
 
