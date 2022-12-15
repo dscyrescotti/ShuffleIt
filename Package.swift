@@ -27,7 +27,7 @@ let package = Package(
     ],
     dependencies: [
         .package(url: "https://github.com/apple/swift-docc-plugin", from: "1.0.0"),
-        .package(url: "https://github.com/dscyrescotti/ViewInspector.git", branch: "master"),
+        .package(url: "https://github.com/nalexn/ViewInspector.git", from: "0.9.2"),
     ],
     targets: [
         .target(
