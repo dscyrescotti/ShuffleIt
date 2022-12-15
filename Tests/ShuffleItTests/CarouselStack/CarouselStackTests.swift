@@ -75,6 +75,31 @@ final class CarouselStackTests: BaseTestCase {
         ViewHosting.host(view: view, size: .init(width: 300, height: 800))
         self.wait(for: [exp], timeout: 0.5)
     }
+
+    func testCarouselStackStatesWithButton() throws {
+        let view = CarouselStack(colors) { color in
+            HStack {
+                Button(action: { }) {
+                    Text("Button")
+                }
+            }
+            .frame(maxWidth: .infinity)
+            .frame(height: 200)
+            .background(color)
+        }
+        let exp = view.inspection.inspect(after: 0.2) { view in
+            let sut = try view.actualView()
+            let width = 300 - sut.padding * 2
+            XCTAssertEqual(sut.index, 0)
+            XCTAssertEqual(sut.xPosition, 0)
+            XCTAssertEqual(sut.direction, .left)
+            XCTAssertEqual(sut.size, .init(width: width, height: 200))
+            XCTAssertEqual(sut.autoSliding, false)
+            XCTAssertEqual(sut.isActiveGesture, false)
+        }
+        ViewHosting.host(view: view, size: .init(width: 300, height: 800))
+        self.wait(for: [exp], timeout: 0.5)
+    }
     
     #if !os(tvOS)
     func testCarouselStackDisabled() throws {
