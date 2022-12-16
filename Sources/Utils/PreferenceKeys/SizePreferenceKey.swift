@@ -6,7 +6,5 @@ public struct SizePreferenceKey: PreferenceKey {
 
     public static var defaultValue: Value = .zero
 
-    public static func reduce(value: inout Value, nextValue: () -> Value) {
-        value = nextValue()
-    }
+    public static func reduce(value: inout Value, nextValue: () -> Value) { }
 }
