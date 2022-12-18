@@ -4,11 +4,14 @@ import SwiftUI
 public struct ShuffleDeck<Data: RandomAccessCollection, Content: View>: View {
     @Environment(\.shuffleDeckStyle) internal var style
     @Environment(\.shuffleDeckScale) internal var scale
+    @Environment(\.shuffleDeckAnimation) internal var animation
 
     @State internal var index: Data.Index
     @State internal var xPosition: CGFloat = .zero
     @State internal var size: CGSize = .zero
     @State internal var direction: ShuffleDeckDirection = .left
+    @State internal var isLockedLeft = false
+    @State internal var isLockedRight = false
 
     @GestureState internal var isActiveGesture: Bool = false
 
@@ -17,6 +20,7 @@ public struct ShuffleDeck<Data: RandomAccessCollection, Content: View>: View {
 
     public var body: some View {
         ZStack {
+            
             // MARK: - Left Contents
             fourthLeftContent
             thirdLeftContent
