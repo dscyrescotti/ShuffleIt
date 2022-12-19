@@ -12,6 +12,9 @@ public struct ShuffleDeck<Data: RandomAccessCollection, Content: View>: View {
     @State internal var direction: ShuffleDeckDirection = .left
     @State internal var isLockedLeft = false
     @State internal var isLockedRight = false
+    // MARK: - fourth content animation
+    @State internal var isShiftedLeft = false
+    @State internal var isShiftedRight = false
 
     @GestureState internal var isActiveGesture: Bool = false
 
@@ -20,7 +23,6 @@ public struct ShuffleDeck<Data: RandomAccessCollection, Content: View>: View {
 
     public var body: some View {
         ZStack {
-            
             // MARK: - Left Contents
             fourthLeftContent
             thirdLeftContent

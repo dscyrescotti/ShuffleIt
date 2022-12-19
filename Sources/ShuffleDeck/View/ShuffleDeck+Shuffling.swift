@@ -14,19 +14,21 @@ extension ShuffleDeck {
                 newIndex = data.previousIndex(forUnloop: index, offset: 1)
             }
             if xPosition >= maxSwipeDistance, let nextIndex = newIndex {
-                withAnimation(animation.timing(duration: 0.03)) {
+                withAnimation(animation.timing(duration: 0.1)) {
                     xPosition = midX + midX * 0.2
                 }
-                DispatchQueue.main.asyncAfter(deadline: .now() + 0.04) {
-                    print(xPosition, translation, midX, direction)
-
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.11) {
                     #warning("TODO: notify listener")
-                    withAnimation(animation.timing(duration: 0.05)) {
+                    withAnimation(animation.timing(duration: 0.1)) {
                         isLockedLeft = true
                     }
+                    withAnimation(animation.timing(duration: 0.02)) {
+                        isShiftedRight = true
+                    }
                 }
-                DispatchQueue.main.asyncAfter(deadline: .now() + 0.12) {
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.23) {
                     index = nextIndex
+                    isShiftedRight = false
                     isLockedLeft = false
                     xPosition = 0
                 }
@@ -44,20 +46,23 @@ extension ShuffleDeck {
                 newIndex = data.nextIndex(forUnloop: index, offset: 1)
             }
             if xPosition <= -maxSwipeDistance, let nextIndex = newIndex {
-//                if xPosition > -midX {
-//                    withAnimation(animation.timing(duration: 0.15)) {
-//                        xPosition = -midX
-//                    }
-//                }
-                DispatchQueue.main.asyncAfter(deadline: .now() + 0.01) {
-                    index = nextIndex
-                    direction = .left
-                    isLockedRight = true
+                withAnimation(animation.timing(duration: 0.1)) {
+                    xPosition = -midX - midX * 0.2
+                }
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.11) {
                     #warning("TODO: notify listener")
-                    withAnimation(animation.timing(duration: 0.2)) {
-                        xPosition = 0
-                        isLockedRight = false
+                    withAnimation(animation.timing(duration: 0.1)) {
+                        isLockedRight = true
                     }
+                    withAnimation(animation.timing(duration: 0.02)) {
+                        isShiftedLeft = true
+                    }
+                }
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.23) {
+                    index = nextIndex
+                    isShiftedLeft = false
+                    isLockedRight = false
+                    xPosition = 0
                 }
             } else {
                 withAnimation(animation.timing(duration: 0.15)) {

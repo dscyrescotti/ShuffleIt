@@ -10,7 +10,7 @@ extension ShuffleDeck {
             }
             .onChanged { value in
                 let position = value.translation.width / 1.2
-                let range = size.width * 0.4
+                let range = size.width * 0.5
                 xPosition = min(max(position, -range), range)
                 if xPosition > 0 {
                     direction = .left
