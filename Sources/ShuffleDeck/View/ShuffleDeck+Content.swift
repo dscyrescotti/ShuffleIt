@@ -10,7 +10,7 @@ extension ShuffleDeck {
             let degree: Double = isLockedLeft ? 2 : isLockedRight ? -2 : Double(factor) * 2
             let xOffset: CGFloat = isLockedLeft ? 3 : isLockedRight ? -3 : xPosition * 0.8
             let yOffset: CGFloat = isLockedLeft || isLockedRight ? -5 : -5 * abs(factor)
-            let index: Double = isLockedLeft || isLockedRight ? 52 : 100
+            let index: Double = isLockedLeft || isLockedRight ? 2 : 10
             content(element, translation)
                 .scaleEffect(scale, anchor: anchor)
                 .rotationEffect(.degrees(degree), anchor: anchor)
@@ -27,7 +27,7 @@ extension ShuffleDeck {
             let degree: Double = -2 + Double(factor) * 2
             let xOffset: CGFloat = -3 + factor * 2
             let yOffset: CGFloat = -5 + factor * 5
-            let index: Double = direction == .left ? 53 : 51
+            let index: Double = direction == .left ? 3 : 1
             content(element, translation)
                 .scaleEffect(scale, anchor: .bottomLeading)
                 .rotationEffect(.degrees(degree), anchor: .bottomLeading)
@@ -44,7 +44,7 @@ extension ShuffleDeck {
             let degree: Double = 2 + Double(factor) * 2
             let xOffset: CGFloat = 3 + factor * 2
             let yOffset: CGFloat = -5 - factor * 5
-            let index: Double = direction == .right ? 53 : 51
+            let index: Double = direction == .right ? 3 : 1
             content(element, translation)
                 .scaleEffect(scale, anchor: .bottomTrailing)
                 .rotationEffect(.degrees(degree), anchor: .bottomTrailing)
