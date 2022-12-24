@@ -79,6 +79,7 @@ public struct ShuffleDeck<Data: RandomAccessCollection, Content: View>: View {
                 performShuffling(direction)
             }
         }
+        .disabled(autoShuffling)
         .onChange(of: xPosition) { _ in
             DispatchQueue.main.async {
                 shuffleDeckTranslation?(translation)

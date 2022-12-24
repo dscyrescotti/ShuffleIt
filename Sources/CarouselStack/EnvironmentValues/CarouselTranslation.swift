@@ -1,14 +1,14 @@
 import SwiftUI
 
 /// An environment key for carousel translation.
-struct CarouselTranslation: EnvironmentKey {
+struct CarouselTranslationKey: EnvironmentKey {
     static var defaultValue: ((CGFloat) -> Void)? = nil
 }
 
 extension EnvironmentValues {
     var carouselTranslation: ((CGFloat) -> Void)? {
-        get { self[CarouselTranslation.self] }
-        set { self[CarouselTranslation.self] = newValue }
+        get { self[CarouselTranslationKey.self] }
+        set { self[CarouselTranslationKey.self] = newValue }
     }
 }
 
