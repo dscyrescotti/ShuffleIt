@@ -6,6 +6,9 @@ public struct ShuffleDeck<Data: RandomAccessCollection, Content: View>: View {
     @Environment(\.shuffleDeckScale) internal var scale
     @Environment(\.shuffleDeckAnimation) internal var animation
     @Environment(\.shuffleDeckTrigger) internal var shuffleDeckTrigger
+    #if !os(tvOS)
+    @Environment(\.shuffleDeckDisabled) internal var disabled
+    #endif
 
     @State internal var index: Data.Index
     @State internal var xPosition: CGFloat = .zero
@@ -39,8 +42,7 @@ public struct ShuffleDeck<Data: RandomAccessCollection, Content: View>: View {
             secondRightContent
             rightContent
             // MARK: - Main Content
-            mainContent
-                .gesture(dragGesture)
+            mainContentView
                 .background {
                     GeometryReader { proxy in
                         Color.clear
@@ -75,6 +77,20 @@ public struct ShuffleDeck<Data: RandomAccessCollection, Content: View>: View {
                 performShuffling(direction)
             }
         }
+    }
+
+    @ViewBuilder
+    var mainContentView: some View {
+        #if os(tvOS)
+        mainContent
+        #else
+        if disabled {
+            mainContent
+        } else {
+            mainContent
+                .gesture(dragGesture)
+        }
+        #endif
     }
 }
 
