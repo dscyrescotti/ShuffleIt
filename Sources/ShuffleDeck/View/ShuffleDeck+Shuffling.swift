@@ -100,7 +100,7 @@ extension ShuffleDeck {
     }
 
     internal var translation: CGFloat {
-        return size.width > 0 ? max(0, min(xPosition / (size.width * 0.5), 1)) : 0
+        return size.width > 0 ? min(abs(xPosition) / (size.width * 0.5), 1) : 0
     }
 
     internal var factor: CGFloat {
