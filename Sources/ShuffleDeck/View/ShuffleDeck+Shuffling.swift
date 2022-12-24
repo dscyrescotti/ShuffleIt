@@ -2,6 +2,7 @@ import Utils
 import SwiftUI
 
 extension ShuffleDeck {
+    /// A method that mimics shuffling behavoir for the purpose of programmatic shuffling.
     internal func performShuffling(_ direction: ShuffleDeckDirection) {
         self.autoShuffling = true
         self.direction = direction
@@ -11,6 +12,7 @@ extension ShuffleDeck {
         }
     }
 
+    /// A method that mimics shuffling behaviour of dragging view to left or right for the purpose of programmatic shuffling.
     internal func performSpreadingOut() {
         let maxSwipeDistance = size.width * 0.25
         withAnimation(animation.timing(duration: 0.1)) {
@@ -23,6 +25,7 @@ extension ShuffleDeck {
         }
     }
 
+    /// A method that performs to restore content views, which have already spread out in the process of shuffling, to the original position.
     internal func performRestoring() {
         let midX = size.width * 0.5
         let maxSwipeDistance = size.width * 0.25
@@ -44,7 +47,12 @@ extension ShuffleDeck {
                     }
                 }
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.11) {
-                    #warning("TODO: notify listener")
+                    let context = ShuffleDeckContext(
+                        index: data.distance(from: data.startIndex, to: nextIndex),
+                        previousIndex: data.distance(from: data.startIndex, to: index),
+                        direction: .left
+                    )
+                    notifyListener(context: context)
                     withAnimation(animation.timing(duration: 0.1)) {
                         isLockedLeft = true
                     }
@@ -79,7 +87,12 @@ extension ShuffleDeck {
                     }
                 }
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.11) {
-                    #warning("TODO: notify listener")
+                    let context = ShuffleDeckContext(
+                        index: data.distance(from: data.startIndex, to: nextIndex),
+                        previousIndex: data.distance(from: data.startIndex, to: index),
+                        direction: .right
+                    )
+                    notifyListener(context: context)
                     withAnimation(animation.timing(duration: 0.1)) {
                         isLockedRight = true
                     }
@@ -99,10 +112,17 @@ extension ShuffleDeck {
         }
     }
 
+    /// A method that notifies an listener with context value after shuffling succeeds.
+    private func notifyListener(context: ShuffleDeckContext) {
+        shuffleDeckContext?(context)
+    }
+
+    /// A property that calculates translation value of dragging content views.
     internal var translation: CGFloat {
         return size.width > 0 ? min(abs(xPosition) / (size.width * 0.5), 1) : 0
     }
 
+    /// A property that calculates drag amount of the content view.
     internal var factor: CGFloat {
         return size.width > 0 ? xPosition / (size.width * 0.5) : 0
     }
