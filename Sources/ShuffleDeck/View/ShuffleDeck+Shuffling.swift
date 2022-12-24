@@ -2,6 +2,27 @@ import Utils
 import SwiftUI
 
 extension ShuffleDeck {
+    internal func performShuffling(_ direction: ShuffleDeckDirection) {
+        self.autoShuffling = true
+        self.direction = direction
+        performSpreadingOut()
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.11) {
+            self.performRestoring()
+        }
+    }
+
+    internal func performSpreadingOut() {
+        let maxSwipeDistance = size.width * 0.25
+        withAnimation(animation.timing(duration: 0.1)) {
+            switch direction {
+            case .left:
+                xPosition = maxSwipeDistance
+            case .right:
+                xPosition = -maxSwipeDistance
+            }
+        }
+    }
+
     internal func performRestoring() {
         let midX = size.width * 0.5
         let maxSwipeDistance = size.width * 0.25
@@ -33,6 +54,7 @@ extension ShuffleDeck {
                     isShiftedRight = false
                     isLockedLeft = false
                     xPosition = 0
+                    autoShuffling = false
                 }
             } else {
                 withAnimation(animation.timing(duration: 0.15)) {
@@ -67,6 +89,7 @@ extension ShuffleDeck {
                     isShiftedLeft = false
                     isLockedRight = false
                     xPosition = 0
+                    autoShuffling = false
                 }
             } else {
                 withAnimation(animation.timing(duration: 0.15)) {

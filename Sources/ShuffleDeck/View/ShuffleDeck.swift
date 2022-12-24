@@ -5,11 +5,14 @@ public struct ShuffleDeck<Data: RandomAccessCollection, Content: View>: View {
     @Environment(\.shuffleDeckStyle) internal var style
     @Environment(\.shuffleDeckScale) internal var scale
     @Environment(\.shuffleDeckAnimation) internal var animation
+    @Environment(\.shuffleDeckTrigger) internal var shuffleDeckTrigger
 
     @State internal var index: Data.Index
     @State internal var xPosition: CGFloat = .zero
     @State internal var size: CGSize = .zero
     @State internal var direction: ShuffleDeckDirection = .left
+    @State internal var autoShuffling: Bool = false
+
     @State internal var isLockedLeft = false
     @State internal var isLockedRight = false
     // MARK: - fourth content animation
@@ -54,6 +57,22 @@ public struct ShuffleDeck<Data: RandomAccessCollection, Content: View>: View {
         .onChange(of: isActiveGesture) { value in
             if !isActiveGesture {
                 performRestoring()
+            }
+        }
+        .onReceive(shuffleDeckTrigger) { direction in
+            switch style {
+            case .infiniteShuffle:
+                guard data.distance(from: data.startIndex, to: data.endIndex) > 1 else { return }
+            case .finiteShuffle:
+                switch direction {
+                case .left:
+                    guard data.startIndex != index else { return }
+                case .right:
+                    guard data.index(before: data.endIndex) != index else { return }
+                }
+            }
+            if !autoShuffling && xPosition == 0 {
+                performShuffling(direction)
             }
         }
     }
