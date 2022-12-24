@@ -52,7 +52,8 @@ import ViewInspector
 /// ``onCarouselTranslation(_:)`` | A modifier that listens translation changes while sliding content views.
 ///
 /// ## Triggering the programmatic sliding
-/// `CarouselStack` also allows programmatic sliding by accepting a series of events from the upstream publisher. Whenever the publisher fires an event, it block user interaction on the view and perform sliding action.
+/// `CarouselStack` also allows programmatic sliding by accepting a series of events from the upstream publisher. Whenever the publisher fires an event, it blocks user interaction on the view and performs sliding action.
+/// 
 /// Modifier | Description
 /// --- | ---
 /// ``carouselTrigger(on:)`` | A modifier that accepts events of direction to perform programmatic sliding.
@@ -168,7 +169,7 @@ extension CarouselStack {
     /// An initializer that returns an instance of `CarouselStack`.
     /// - Parameters:
     ///   - data: A collection of data that will be provided to content views through closure.
-    ///   - initialIndex: An initiali index of data for which content view will be rendered first.
+    ///   - initialIndex: An initiai index of data for which content view will be rendered first.
     ///   - content: A view builder that dynamically renders content view based on current index and data provided.
     public init(
         _ data: Data,
@@ -185,7 +186,7 @@ extension CarouselStack {
     /// An initializer that returns an instance of `CarouselStack` and exposes translation value to child content through view builder.
     /// - Parameters:
     ///   - data: A collection of data that will be provided to content views through closure.
-    ///   - initialIndex: An initiail index of data for which content view will be rendered first.
+    ///   - initialIndex: An initial index of data for which content view will be rendered first.
     ///   - content: A view builder that dynamically renders content view based on current index and data provided. It also exposes the translation value of how much view is been dragging while sliding.
     public init(
         _ data: Data,

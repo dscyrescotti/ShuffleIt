@@ -28,7 +28,7 @@ import ViewInspector
 /// ```
 ///
 /// ## Customizing default behaviours
-/// `ShuffleStack` comes with various type of modifiers to override default behaviour of the stack view so that it is easy to tailor to view with custom values such as animation, style, offset, padding and scale factor.
+/// `ShuffleStack` comes with various types of modifiers to override default behaviour of the stack view so that it is easy to tailor to view with custom values such as animation, style, offset, padding and scale factor.
 ///
 /// The following table shows a list of available modifiers that customizes the view.
 ///
@@ -52,7 +52,8 @@ import ViewInspector
 /// ``onShuffleTranslation(_:)`` | A modifier that listens translation changes while swiping content views.
 ///
 /// ## Triggering shuffling programmatically
-/// `ShuffleStack` also allows programmatic shuffling by accpecting a series of events from the upstream publisher. Whenever the publisher fires an event, it block user interaction on the view and perform shuffling action.
+/// `ShuffleStack` also allows programmatic shuffling by accpecting a series of events from the upstream publisher. Whenever the publisher fires an event, it blocks user interaction on the view and performs shuffling action.
+/// 
 /// Modifier | Description
 /// --- | ---
 /// ``shuffleTrigger(on:)`` | A modifier that accpets events of direction to perform programmatic shuffling.

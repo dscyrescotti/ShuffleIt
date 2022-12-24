@@ -1,6 +1,7 @@
 import SwiftUI
 
 extension ShuffleDeck {
+    /// A view that renders the content view with the element of the current index from data provided.
     @ViewBuilder
     internal var mainContent: some View {
         if let element = data[safe: index] {
@@ -19,6 +20,7 @@ extension ShuffleDeck {
         }
     }
 
+    /// A view that renders the content view on the left side of the main content view.
     @ViewBuilder
     internal var leftContent: some View {
         if let element = leftDataElement(1) {
@@ -36,6 +38,7 @@ extension ShuffleDeck {
         }
     }
 
+    /// A view that renders the content view on the right side of the main content view.
     @ViewBuilder
     internal var rightContent: some View {
         if let element = rightDataElement(1) {
@@ -53,6 +56,7 @@ extension ShuffleDeck {
         }
     }
 
+    /// A second view that renders the content view on the left side of the first left content view.
     @ViewBuilder
     internal var secondLeftContent: some View {
         if let element = leftDataElement(2) {
@@ -68,6 +72,7 @@ extension ShuffleDeck {
         }
     }
 
+    /// A second view that renders the content view on the right side of the first right content view.
     @ViewBuilder
     internal var secondRightContent: some View {
         if let element = rightDataElement(2) {
@@ -83,6 +88,7 @@ extension ShuffleDeck {
         }
     }
 
+    /// A third view that renders the content view on the left side of the second left content view.
     @ViewBuilder
     internal var thirdLeftContent: some View {
         if let element = leftDataElement(3) {
@@ -98,6 +104,7 @@ extension ShuffleDeck {
         }
     }
 
+    /// A third view that renders the content view on the right side of the second right content view.
     @ViewBuilder
     internal var thirdRightContent: some View {
         if let element = rightDataElement(3) {
@@ -113,6 +120,7 @@ extension ShuffleDeck {
         }
     }
 
+    /// A fourth view that renders the content view on the left side of the third left content view.
     @ViewBuilder
     internal var fourthLeftContent: some View {
         if let element = leftDataElement(4) {
@@ -128,6 +136,7 @@ extension ShuffleDeck {
         }
     }
 
+    /// A fourth view that renders the content view on the right side of the third right content view.
     @ViewBuilder
     internal var fourthRightContent: some View {
         if let element = rightDataElement(4) {
@@ -143,6 +152,7 @@ extension ShuffleDeck {
         }
     }
 
+    /// A view that renders to illustrate the fifth content view with the upcoming element from left or right side if there is any elements left.
     @ViewBuilder
     internal var nextContent: some View {
         if let element = leftDataElement(5), xPosition > 0 {
