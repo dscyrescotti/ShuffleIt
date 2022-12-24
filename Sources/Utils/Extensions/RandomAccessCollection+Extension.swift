@@ -3,17 +3,16 @@ import Foundation
 public extension RandomAccessCollection {
     // MARK: - Loop
     /// A method that returns the upcoming index based on the current index and offset.
-    func nextIndex(forLoop index: Index, offset: Int) -> Index? {
-        let nextIndex = self.index(index, offsetBy: offset, limitedBy: self.index(before: endIndex)) ?? self.index(startIndex, offsetBy: offset - self.distance(from: index, to: endIndex))
-        guard offset != 1 || nextIndex != index else { return nil }
-        return nextIndex
+    func nextIndex(forLoop current: Index, offset: Int) -> Index? {
+        let newOffset = (distance(from: startIndex, to: current) + offset) % distance(from: startIndex, to: endIndex)
+        return  self.index(startIndex, offsetBy: newOffset, limitedBy: self.index(before: endIndex))
     }
     
     /// A method that returns the previous index based on the current index and offset.
-    func previousIndex(forLoop index: Index, offset: Int) -> Index? {
-        let previousIndex = self.index(index, offsetBy: -offset, limitedBy: startIndex) ?? self.index(endIndex, offsetBy:  self.distance(from: startIndex, to: index) - offset)
-        guard offset != 1 || previousIndex != index else { return nil }
-        return previousIndex
+    func previousIndex(forLoop current: Index, offset: Int) -> Index? {
+        let length = distance(from: startIndex, to: endIndex)
+        let newOffset = (length + distance(from: startIndex, to: current) - (offset % length)) % length
+        return  self.index(startIndex, offsetBy: newOffset, limitedBy: self.index(before: endIndex))
     }
     
     /// A method that returns the upcoming element based on the current index and offset.
