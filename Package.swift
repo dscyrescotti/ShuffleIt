@@ -23,6 +23,10 @@ let package = Package(
         .library(
             name: "CarouselStack",
             targets: ["CarouselStack"]
+        ),
+        .library(
+            name: "ShuffleDeck",
+            targets: ["ShuffleDeck"]
         )
     ],
     dependencies: [
@@ -40,6 +44,10 @@ let package = Package(
         ),
         .target(
             name: "CarouselStack",
+            dependencies: ["Utils"]
+        ),
+        .target(
+            name: "ShuffleDeck",
             dependencies: ["Utils"]
         ),
         .target(
