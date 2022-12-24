@@ -27,4 +27,8 @@ public extension View {
     func onShuffleDeck(_ perform: @escaping (ShuffleDeckContext) -> Void) -> some View {
         environment(\.shuffleDeckContext, perform)
     }
+
+    func onShuffleDeckTranslation(_ perform: @escaping (CGFloat) -> Void) -> some View {
+        environment(\.shuffleDeckTranslation, perform)
+    }
 }

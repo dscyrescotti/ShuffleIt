@@ -10,6 +10,7 @@ public struct ShuffleDeck<Data: RandomAccessCollection, Content: View>: View {
     @Environment(\.shuffleDeckDisabled) internal var disabled
     #endif
     @Environment(\.shuffleDeckContext) internal var shuffleDeckContext
+    @Environment(\.shuffleDeckTranslation) internal var shuffleDeckTranslation
 
     @State internal var index: Data.Index
     @State internal var xPosition: CGFloat = .zero
@@ -76,6 +77,11 @@ public struct ShuffleDeck<Data: RandomAccessCollection, Content: View>: View {
             }
             if !autoShuffling && xPosition == 0 {
                 performShuffling(direction)
+            }
+        }
+        .onChange(of: xPosition) { _ in
+            DispatchQueue.main.async {
+                shuffleDeckTranslation?(translation)
             }
         }
     }
