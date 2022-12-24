@@ -117,17 +117,14 @@ extension ShuffleDeck {
     internal var fourthLeftContent: some View {
         if let element = leftDataElement(4) {
             let factor: CGFloat = direction == .left ? max(0, factor - 0.2) : min(0, factor + 0.2)
-            let scale: CGFloat = isShiftedLeft ? 1 - (scale * 4) : 1 - (scale * 4)  + (factor * scale)
-            let degree: Double = isShiftedLeft ? 8 : -8 + Double(factor) * 2
-            let anchor: UnitPoint = isShiftedLeft ? .bottomTrailing : .bottomLeading
-            let xOffset: CGFloat = isShiftedLeft ? 9 : -9 + factor * 2
-            let yOffset: CGFloat = isShiftedLeft ? -20 : -20 + factor * 5
-            let index: Double = isShiftedLeft ? -1 : 0
-            content(element, 0)
-                .scaleEffect(scale, anchor: anchor)
-                .rotationEffect(.degrees(degree), anchor: anchor)
+            let scale: CGFloat = isShiftedLeft ? 1 - (scale * 3) : 1 - (scale * 4)  + (factor * scale)
+            let degree: Double = isShiftedLeft ? -6 : -8 + Double(factor) * 2
+            let xOffset: CGFloat = isShiftedLeft ? -7 : -9 + factor * 2
+            let yOffset: CGFloat = isShiftedLeft ? -15 : -20 + factor * 5
+            content(element, translation)
+                .scaleEffect(scale, anchor: .bottomLeading)
+                .rotationEffect(.degrees(degree), anchor: .bottomLeading)
                 .offset(x: xOffset, y: yOffset)
-                .zIndex(index)
         }
     }
 
@@ -135,17 +132,32 @@ extension ShuffleDeck {
     internal var fourthRightContent: some View {
         if let element = rightDataElement(4) {
             let factor: CGFloat = direction == .left ? max(0, factor - 0.2) : min(0, factor + 0.2)
-            let scale: CGFloat = isShiftedRight ? 1 - (scale * 4) : 1 - (scale * 4) - (factor * scale)
-            let degree: Double = isShiftedRight ? -8 : 8 + Double(factor) * 2
-            let anchor: UnitPoint = isShiftedRight ? .bottomLeading : .bottomTrailing
-            let xOffset: CGFloat = isShiftedRight ? -9 : 9 + factor * 2
-            let yOffset: CGFloat = isShiftedRight ? -20 : -20 - factor * 5
-            let index: Double = isShiftedRight ? -1 : 0
-            content(element, 0)
-                .scaleEffect(scale, anchor: anchor)
-                .rotationEffect(.degrees(degree), anchor: anchor)
+            let scale: CGFloat = isShiftedRight ? 1 - (scale * 3) : 1 - (scale * 4) - (factor * scale)
+            let degree: Double = isShiftedRight ? 6 : 8 + Double(factor) * 2
+            let xOffset: CGFloat = isShiftedRight ? 7 : 9 + factor * 2
+            let yOffset: CGFloat = isShiftedRight ? -15 : -20 - factor * 5
+            content(element, translation)
+                .scaleEffect(scale, anchor: .bottomTrailing)
+                .rotationEffect(.degrees(degree), anchor: .bottomTrailing)
                 .offset(x: xOffset, y: yOffset)
-                .zIndex(index)
+        }
+    }
+
+    @ViewBuilder
+    internal var nextContent: some View {
+        if let element = leftDataElement(5), xPosition > 0 {
+            content(element, translation)
+                .scaleEffect(1 - scale * 4, anchor: .bottomLeading)
+                .rotationEffect(.degrees(-8), anchor: .bottomLeading)
+                .offset(x: isShiftedRight ? -9 : 0, y: -20)
+                .zIndex(-2)
+        }
+        if let element = rightDataElement(5), xPosition < 0 {
+            content(element, translation)
+                .scaleEffect(1 - scale * 4, anchor: .bottomTrailing)
+                .rotationEffect(.degrees(8), anchor: .bottomTrailing)
+                .offset(x: isShiftedLeft ? 9 : 0, y: -20)
+                .zIndex(-2)
         }
     }
 }

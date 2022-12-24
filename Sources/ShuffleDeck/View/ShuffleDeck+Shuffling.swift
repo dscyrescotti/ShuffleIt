@@ -17,13 +17,15 @@ extension ShuffleDeck {
                 withAnimation(animation.timing(duration: 0.1)) {
                     xPosition = midX + midX * 0.2
                 }
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.06) {
+                    withAnimation(animation.timing(duration: 0.03)) {
+                        isShiftedRight = true
+                    }
+                }
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.11) {
                     #warning("TODO: notify listener")
                     withAnimation(animation.timing(duration: 0.1)) {
                         isLockedLeft = true
-                    }
-                    withAnimation(animation.timing(duration: 0.02)) {
-                        isShiftedRight = true
                     }
                 }
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.23) {
@@ -49,13 +51,15 @@ extension ShuffleDeck {
                 withAnimation(animation.timing(duration: 0.1)) {
                     xPosition = -midX - midX * 0.2
                 }
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.06) {
+                    withAnimation(animation.timing(duration: 0.03)) {
+                        isShiftedLeft = true
+                    }
+                }
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.11) {
                     #warning("TODO: notify listener")
                     withAnimation(animation.timing(duration: 0.1)) {
                         isLockedRight = true
-                    }
-                    withAnimation(animation.timing(duration: 0.02)) {
-                        isShiftedLeft = true
                     }
                 }
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.23) {

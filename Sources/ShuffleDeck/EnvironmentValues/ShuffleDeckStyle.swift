@@ -6,7 +6,7 @@ public enum ShuffleDeckStyle {
 }
 
 struct ShuffleDeckStyleKey: EnvironmentKey {
-    static var defaultValue: ShuffleDeckStyle = .infiniteShuffle
+    static var defaultValue: ShuffleDeckStyle = .finiteShuffle
 }
 
 extension EnvironmentValues {

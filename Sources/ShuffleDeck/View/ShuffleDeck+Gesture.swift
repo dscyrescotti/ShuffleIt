@@ -9,7 +9,19 @@ extension ShuffleDeck {
                 state = true
             }
             .onChanged { value in
-                let position = value.translation.width / 1.2
+                var position: CGFloat
+                switch style {
+                case .infiniteShuffle:
+                    position = value.translation.width / 1.2
+                case .finiteShuffle:
+                    position = value.translation.width / 1.2
+                    if position > 0, data.previousIndex(forUnloop: index, offset: 1) == nil {
+                        position /= 15
+                    }
+                    if position < 0, data.nextIndex(forUnloop: index, offset: 1) == nil {
+                        position /= 15
+                    }
+                }
                 let range = size.width * 0.5
                 xPosition = min(max(position, -range), range)
                 if xPosition > 0 {

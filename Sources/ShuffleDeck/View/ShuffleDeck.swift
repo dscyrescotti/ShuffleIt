@@ -23,6 +23,8 @@ public struct ShuffleDeck<Data: RandomAccessCollection, Content: View>: View {
 
     public var body: some View {
         ZStack {
+            // MARK: - Next Contents
+            nextContent
             // MARK: - Left Contents
             fourthLeftContent
             thirdLeftContent
