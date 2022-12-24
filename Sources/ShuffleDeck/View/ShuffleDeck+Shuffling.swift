@@ -44,7 +44,12 @@ extension ShuffleDeck {
                     }
                 }
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.11) {
-                    #warning("TODO: notify listener")
+                    let context = ShuffleDeckContext(
+                        index: data.distance(from: data.startIndex, to: nextIndex),
+                        previousIndex: data.distance(from: data.startIndex, to: index),
+                        direction: .left
+                    )
+                    notifyListener(context: context)
                     withAnimation(animation.timing(duration: 0.1)) {
                         isLockedLeft = true
                     }
@@ -79,7 +84,12 @@ extension ShuffleDeck {
                     }
                 }
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.11) {
-                    #warning("TODO: notify listener")
+                    let context = ShuffleDeckContext(
+                        index: data.distance(from: data.startIndex, to: nextIndex),
+                        previousIndex: data.distance(from: data.startIndex, to: index),
+                        direction: .right
+                    )
+                    notifyListener(context: context)
                     withAnimation(animation.timing(duration: 0.1)) {
                         isLockedRight = true
                     }
@@ -97,6 +107,10 @@ extension ShuffleDeck {
                 }
             }
         }
+    }
+
+    private func notifyListener(context: ShuffleDeckContext) {
+        shuffleDeckContext?(context)
     }
 
     internal var translation: CGFloat {

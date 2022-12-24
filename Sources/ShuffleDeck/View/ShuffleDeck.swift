@@ -9,6 +9,7 @@ public struct ShuffleDeck<Data: RandomAccessCollection, Content: View>: View {
     #if !os(tvOS)
     @Environment(\.shuffleDeckDisabled) internal var disabled
     #endif
+    @Environment(\.shuffleDeckContext) internal var shuffleDeckContext
 
     @State internal var index: Data.Index
     @State internal var xPosition: CGFloat = .zero

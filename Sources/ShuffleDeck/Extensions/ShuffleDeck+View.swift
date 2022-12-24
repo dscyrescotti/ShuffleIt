@@ -23,4 +23,8 @@ public extension View {
     func shuffleDeckDisabled(_ disabled: Bool) -> some View {
         environment(\.shuffleDeckDisabled, disabled)
     }
+
+    func onShuffleDeck(_ perform: @escaping (ShuffleDeckContext) -> Void) -> some View {
+        environment(\.shuffleDeckContext, perform)
+    }
 }
