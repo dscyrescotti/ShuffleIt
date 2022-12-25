@@ -1,0 +1,83 @@
+[
+    {
+        "id": "christ_the_redeemer",
+        "image": "christ_the_redeemer",
+        "name": "Christ the Redeemer",
+        "location": "Rio de Janeiro, Brazil",
+        "lat": -22.9519,
+        "long": -43.2105,
+        "background": "#FFBF85FF"
+    },
+    {
+        "id": "eiffel_tower",
+        "image": "eiffel_tower",
+        "name": "Eiffel Tower",
+        "location": "Paris, France",
+        "lat": 48.8584,
+        "long": 2.2945,
+        "background": "#FFA490FF"
+    },
+    {
+        "id": "great_wall_of_china",
+        "image": "great_wall_of_china",
+        "name": "Great Wall of China",
+        "location": "Huairou, China",
+        "lat": 40.4319,
+        "long": 116.5704,
+        "background": "#FFDC62FF"
+    },
+    {
+        "id": "merlion_statue",
+        "image": "merlion_statue",
+        "name": "Merlion Statue",
+        "location": "Singapore, Singapore",
+        "lat": 1.2868,
+        "long": 103.8545,
+        "background": "#7451FFFF"
+    },
+    {
+        "id": "niagara_falls",
+        "image": "niagara_falls",
+        "name": "Niagara Falls",
+        "location": "Ontario, Canada",
+        "lat": 43.0962,
+        "long": -79.0377,
+        "background": "#FF4D00FF"
+    },
+    {
+        "id": "petronas_towers",
+        "image": "petronas_towers",
+        "name": "Petronas Towers",
+        "location": "Kuala Lumpur, Malaysia",
+        "lat": 3.1575,
+        "long": 101.7116,
+        "background": "#FF4B4BFF"
+    },
+    {
+        "id": "shwedagon_pagoda",
+        "image": "shwedagon_pagoda",
+        "name": "Shwedagon Pagoda",
+        "location": "Yangon, Myanmar",
+        "lat": 16.7985,
+        "long": 96.1497,
+        "background": "#2B10CFFF"
+    },
+    {
+        "id": "sphinx_statue",
+        "image": "sphinx_statue",
+        "name": "Great Sphinx of Giza",
+        "location": "Giza, Egypt",
+        "lat": 29.9753,
+        "long": 31.1376,
+        "background": "#993700FF"
+    },
+    {
+        "id": "statue_of_liberty",
+        "image": "statue_of_liberty",
+        "name": "Statue of Liberty",
+        "location": "New York, US",
+        "lat": 40.6892,
+        "long": -74.0445,
+        "background": "#7A320AFF"
+    }
+]
