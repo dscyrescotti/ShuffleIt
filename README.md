@@ -25,18 +25,20 @@
 <table>
 <tr>
 <th>CarouselStack</th>
+<th>ShuffleDeck</th>
 <th>ShuffleStack</th>
 </tr>
 <tr>
-<td align="center"><img src="https://github.com/dscyrescotti/ShuffleIt/blob/main/Assets/CarouselStack-Demo.gif?raw=true" alt="CarouselStack-Demo"  width="50%"/></td>
-<td align="center"><img src="https://github.com/dscyrescotti/ShuffleIt/blob/main/Assets/ShuffleStack-Demo.gif?raw=true" alt="ShuffleStack-Demo"  width="50%"/></td>
+<td align="center"><img src="https://github.com/dscyrescotti/ShuffleIt/blob/main/Assets/CarouselStack-Demo.gif?raw=true" alt="CarouselStack-Demo" width="50%"/></td>
+<td align="center"><img src="./Assets/ShuffleDeck-Demo.gif" width="50%"/></td>
+<td align="center"><img src="https://github.com/dscyrescotti/ShuffleIt/blob/main/Assets/ShuffleStack-Demo.gif?raw=true" alt="ShuffleStack-Demo" width="50%"/></td>
 </tr>
 </table>
 
 ## 💡 Features
 - [CarouselStack](#carouselstack)
+- [ShuffleDeck](#shuffledeck)
 - [ShuffleStack](#shufflestack)
-> For now, **ShuffleIt** only provides **CarouselStack** and **ShuffleStack** views. (🚨 Spoiler Alert - There will be very soon various types of stack views coming.)
 
 ### CarouselStack <a id="carouselstack"></a>
 **CarouselStack** is a stack view with sliding behaviour on the stack of content views with carousel effect. Just like **ShuffleStack**, it doesn't render all content views but it renders at most five content views which is enough to display content views with sliding animation. Besides, it provides customizablae modifiers to modify the view's appearance so that it is easy to adjust to what is desired.
@@ -61,6 +63,30 @@ var body: some View {
 </details>
 
 To explore more about **CarouselStack**, check out the [documentation](https://dscyrescotti.github.io/ShuffleIt/documentation/shuffleit/carouselstack/).
+
+### ShuffleDeck <a id="shuffledeck"></a>
+**ShuffleDeck** is a stack view with shuffling behaviour on the stack of content views which mimics the behaviour of photo collections in Apple's Messages App. As it is based on the reusability of content views, it only renders views that are visible on the screen and switches data of content views based on the current index. As it comes with a bunch of modifiers, it fully supports to tailor the view to meet the wanted appearance.
+
+#### Usage
+```swift
+let colors: [Color] = [.blue, .brown, .black, .cyan, .green, .indigo, .pink, .purple, .red, .orange, .yellow]
+var body: some View {
+    ShuffleDeck(
+        colors,
+        initialIndex: 0
+    ) { color in
+        color
+            .frame(width: 200, height: 300)
+            .cornerRadius(16)
+    }
+}
+```
+<details>
+<summary>Preview</summary>
+<img src="./Assets/Previews/ShuffleDeck-Preview.gif" alt="ShuffleDeck-Preview"  width="30%"/>
+</details>
+
+To explore more about **ShuffleDeck**, check out the [documentation](https://dscyrescotti.github.io/ShuffleIt/documentation/shuffleit/shuffledeck/).
 
 ### ShuffleStack <a id="shufflestack"></a>
 **ShuffleStack** is a stack view with shuffling behaviour on the stack of content views which will be useful as a banner. Not like normal stack view, it only renders three content views visible on the screen and switches data of content views based on the current index. As it comes with a bunch of modifiers, it is highly customizable to get the desired appearance.
@@ -97,7 +123,7 @@ To explore more about **ShuffleStack**, check out the [documentation](https://ds
 Add it as a dependency within your Package.swift.
 ```
 dependencies: [
-    .package(url: "https://github.com/dscyrescotti/ShuffleIt.git", from: "2.0.0")
+    .package(url: "https://github.com/dscyrescotti/ShuffleIt.git", from: "2.1.0")
 ]
 ```
 

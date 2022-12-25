@@ -15,7 +15,7 @@ extension CarouselStack {
     /// A view that renders the content view for the element of the previous index.
     @ViewBuilder
     internal var leftContent: some View {
-        if let element = leftDataElement {
+        if let element = leftDataElement(1) {
             let scale = scale + (1 - scale) * scaleFactor
             let scaledWidth = size.width * scale
             let offset = xPosition - size.width - spacing - (spacing * scaleFactor) + (size.width - scaledWidth) / 2
@@ -28,7 +28,7 @@ extension CarouselStack {
     /// A view that renders the content view for the element of the next index.
     @ViewBuilder
     internal var rightContent: some View {
-        if let element = rightDataElement {
+        if let element = rightDataElement(1) {
             let scale = scale + (1 - scale) * scaleFactor
             let scaledWidth = size.width * scale
             let offset = xPosition + size.width + spacing + (spacing * scaleFactor) - (size.width - scaledWidth) / 2
@@ -41,7 +41,7 @@ extension CarouselStack {
     /// A view that renders the content view for the element of the second previous index.
     @ViewBuilder
     internal var secondLeftContent: some View {
-        if let element = secondLeftDataElement {
+        if let element = leftDataElement(2) {
             let scaledWidth = size.width * scale
             let offsetRight = xPosition - size.width - spacing - (spacing * scaleFactor) + (size.width - scaledWidth) / 2
             let offset = offsetRight - size.width - spacing * scaleFactor
@@ -54,7 +54,7 @@ extension CarouselStack {
     /// A view that renders the content view for the element of the second next index.
     @ViewBuilder
     internal var secondRightContent: some View {
-        if let element = secondRightDataElement {
+        if let element = rightDataElement(2) {
             let scaledWidth = size.width * scale
             let offsetRight = xPosition + size.width + spacing + (spacing * scaleFactor) - (size.width - scaledWidth) / 2
             let offset = offsetRight + size.width + spacing * scaleFactor

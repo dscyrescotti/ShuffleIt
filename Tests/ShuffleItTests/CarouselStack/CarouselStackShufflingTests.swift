@@ -18,7 +18,7 @@ final class CarouselStackShufflingTests: BaseTestCase {
             XCTAssertEqual(sut.direction, .left)
             XCTAssertEqual(sut.autoSliding, false)
             XCTAssertEqual(sut.isActiveGesture, false)
-            XCTAssertNil(sut.nextElementNullable)
+            XCTAssertNil(sut.rightDataElement(1))
             sut.performMovingToMiddle()
         }
         let exp2 = view.inspection.inspect(after: 0.4) { view in
@@ -67,7 +67,7 @@ final class CarouselStackShufflingTests: BaseTestCase {
             XCTAssertEqual(sut.direction, .right)
             XCTAssertEqual(sut.autoSliding, false)
             XCTAssertEqual(sut.isActiveGesture, false)
-            XCTAssertNil(sut.previousElementNullable)
+            XCTAssertNil(sut.leftDataElement(1))
             sut.performMovingToMiddle()
         }
         let exp2 = view.inspection.inspect(after: 0.4) { view in
@@ -115,7 +115,7 @@ final class CarouselStackShufflingTests: BaseTestCase {
             XCTAssertEqual(sut.direction, .left)
             XCTAssertEqual(sut.autoSliding, false)
             XCTAssertEqual(sut.isActiveGesture, false)
-            XCTAssertNil(sut.nextElementNullable)
+            XCTAssertNil(sut.rightDataElement(1))
             sut.performMovingToMiddle()
         }
         let exp2 = view.inspection.inspect(after: 0.4) { view in
@@ -162,7 +162,7 @@ final class CarouselStackShufflingTests: BaseTestCase {
             XCTAssertEqual(sut.direction, .right)
             XCTAssertEqual(sut.autoSliding, false)
             XCTAssertEqual(sut.isActiveGesture, false)
-            XCTAssertNil(sut.previousElementNullable)
+            XCTAssertNil(sut.leftDataElement(1))
             sut.performMovingToMiddle()
         }
         let exp2 = view.inspection.inspect(after: 0.4) { view in
@@ -294,6 +294,7 @@ final class CarouselStackShufflingTests: BaseTestCase {
             size: .init(width: 300, height: 800)
         )
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.05) {
+            slideTrigger.send(.left)
             slideTrigger.send(.left)
         }
         self.wait(for: [exp], timeout: 0.8)

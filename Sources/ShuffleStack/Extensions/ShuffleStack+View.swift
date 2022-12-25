@@ -56,7 +56,7 @@ public extension View {
     ///
     /// Based on the boolean passing into the modifier, the user interaction will be disabled accordingly. If the boolean is `true`,  it will no longer turn on the interaction to UI. If the boolean is `false`, it allows to shuffle content views.
     ///
-    /// The following piece of code show how to disable the user interaction on the shuffle stack view.
+    /// The following piece of code shows how to disable the user interaction on the shuffle stack view.
     /// ```swift
     /// let colors: [Color] = [.blue, .brown, .black, .cyan, .green, .indigo, .pink, .purple, .red, .orange, .yellow]
     /// var body: some View {
@@ -160,7 +160,7 @@ public extension View {
     
     /// A modifier that sets scale factor to shrink the size of the upcoming and previous content views of stack.
     ///
-    /// Regarding scaling content views, `ShuffleStack` only allows to set value between 0 and 1 inclusive. If the value is out of this range, it will be replaced with 0 or 1 based on the given value. The default scaling factor is 0.5.
+    /// Regarding scaling content views, `ShuffleStack` only allows to set value between 0 and 1 inclusively. If the value is out of this range, it will be replaced with 0 or 1 based on the given value. The default scaling factor is 0.5.
     ///
     /// The following code snippet shows the usage of `shuffleScale(_:)` modifier.
     /// ```swift
