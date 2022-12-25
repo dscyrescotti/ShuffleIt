@@ -59,11 +59,6 @@ import ViewInspector
 /// ``shuffleTrigger(on:)`` | A modifier that accpets events of direction to perform programmatic shuffling.
 ///
 /// ## Topics
-/// ### Initializers
-/// - ``init(_:initialIndex:stackContent:)-38nwt``
-/// - ``init(_:initialIndex:stackContent:)-72j8b``
-/// ### Instance Properties
-/// - ``body``
 public struct ShuffleStack<Data: RandomAccessCollection, StackContent: View>: View {
     @Environment(\.shuffleStyle) internal var style
     @Environment(\.shuffleAnimation) internal var animation

@@ -1,6 +1,6 @@
 import SwiftUI
 
-/// An environment key for a flag to decide on whether sliding is disable or not.
+/// An environment key for a flag to decide on whether sliding is disabled or not.
 @available(iOS 15.0, macOS 12.0, watchOS 8.0, *)
 @available(tvOS, unavailable)
 struct CarouselDisabledKey: EnvironmentKey {

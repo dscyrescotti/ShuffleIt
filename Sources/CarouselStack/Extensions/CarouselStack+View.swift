@@ -6,7 +6,7 @@ public extension View {
     ///
     /// `CarouselStack` provides two different carousel styles - `finiteScroll` (default) and `infiniteScroll`. To apply style as desired, it can be overridden with `carouselStyle(_:)` modifier.
     ///
-    /// The following code snippet demonstrate how to override the carousel style to be able to scroll infinitely left and right.
+    /// The following code snippet demonstrates how to override the carousel style to be able to scroll infinitely left and right.
     /// ```swift
     /// let colors: [Color] = [.blue, .brown, .black, .cyan, .green, .indigo, .pink, .purple, .red, .orange, .yellow]
     /// var body: some View {
@@ -81,9 +81,9 @@ public extension View {
     
     /// A modifier that accepts events of direction to perform programmatic sliding.
     ///
-    /// In purpose of programmactic sliding such as using timer, `CarouselStack` accepts events via `carouselTrigger(on:)` modifier which is needed to inject an instance of publisher with `CarouselDirection` output type and `Never` failure type.
+    /// In purpose of programmatic sliding such as using timer, `CarouselStack` accepts events via `carouselTrigger(on:)` modifier which is needed to inject an instance of publisher with `CarouselDirection` output type and `Never` failure type.
     ///
-    /// The following example provides the programmitc approach of triggering slide event by sending `CarouselDirection` value through the publisher.
+    /// The following example provides the programmatic approach of triggering slide event by sending `CarouselDirection` value through the publisher.
     ///```swift
     /// let colors: [Color] = [.blue, .brown, .black, .cyan, .green, .indigo, .pink, .purple, .red, .orange, .yellow]
     /// let carouselPublisher = PassthroughSubject<CarouselDirection, Never>()

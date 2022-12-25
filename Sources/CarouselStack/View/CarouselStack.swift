@@ -59,11 +59,6 @@ import ViewInspector
 /// ``carouselTrigger(on:)`` | A modifier that accepts events of direction to perform programmatic sliding.
 ///
 /// ## Topics
-/// ### Initializers
-/// - ``init(_:initialIndex:content:)-38nwt``
-/// - ``init(_:initialIndex:content:)-7edjn``
-/// ### Instance Properties
-/// - ``body``
 public struct CarouselStack<Data: RandomAccessCollection, Content: View>: View {
     @Environment(\.carouselStyle) internal var style
     @Environment(\.carouselAnimation) internal var animation

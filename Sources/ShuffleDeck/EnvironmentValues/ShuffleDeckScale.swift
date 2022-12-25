@@ -1,5 +1,6 @@
 import SwiftUI
 
+/// An environment key for shuffle deck scale.
 struct ShuffleDeckScaleKey: EnvironmentKey {
     static var defaultValue: CGFloat = 0.07
 }
