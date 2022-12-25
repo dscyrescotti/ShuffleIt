@@ -18,7 +18,7 @@ final class CarouselStackShufflingTests: BaseTestCase {
             XCTAssertEqual(sut.direction, .left)
             XCTAssertEqual(sut.autoSliding, false)
             XCTAssertEqual(sut.isActiveGesture, false)
-            XCTAssertNil(sut.nextElementNullable)
+            XCTAssertNil(sut.rightDataElement(1))
             sut.performMovingToMiddle()
         }
         let exp2 = view.inspection.inspect(after: 0.4) { view in
@@ -67,7 +67,7 @@ final class CarouselStackShufflingTests: BaseTestCase {
             XCTAssertEqual(sut.direction, .right)
             XCTAssertEqual(sut.autoSliding, false)
             XCTAssertEqual(sut.isActiveGesture, false)
-            XCTAssertNil(sut.previousElementNullable)
+            XCTAssertNil(sut.leftDataElement(1))
             sut.performMovingToMiddle()
         }
         let exp2 = view.inspection.inspect(after: 0.4) { view in
@@ -115,7 +115,7 @@ final class CarouselStackShufflingTests: BaseTestCase {
             XCTAssertEqual(sut.direction, .left)
             XCTAssertEqual(sut.autoSliding, false)
             XCTAssertEqual(sut.isActiveGesture, false)
-            XCTAssertNil(sut.nextElementNullable)
+            XCTAssertNil(sut.rightDataElement(1))
             sut.performMovingToMiddle()
         }
         let exp2 = view.inspection.inspect(after: 0.4) { view in
@@ -162,7 +162,7 @@ final class CarouselStackShufflingTests: BaseTestCase {
             XCTAssertEqual(sut.direction, .right)
             XCTAssertEqual(sut.autoSliding, false)
             XCTAssertEqual(sut.isActiveGesture, false)
-            XCTAssertNil(sut.previousElementNullable)
+            XCTAssertNil(sut.leftDataElement(1))
             sut.performMovingToMiddle()
         }
         let exp2 = view.inspection.inspect(after: 0.4) { view in
