@@ -31,10 +31,10 @@ import SwiftUI
 ///
 /// Modifier | Description
 /// --- | ---
-/// ``shuffleDeckAnimation(_:)`` | <description>
-/// ``shuffleDeckDisabled(_:)`` | <description>
-/// ``shuffleDeckScale(_:)`` | <description>
-/// ``shuffleDeckStyle(_:)`` | <description>
+/// ``shuffleDeckAnimation(_:)`` | A modifier that overrides default shuffle animation of the shuffle deck view.
+/// ``shuffleDeckDisabled(_:)`` | A modifier that disables user interaction to shuffle deck content views.
+/// ``shuffleDeckScale(_:)`` | A modifier that sets scale factor to shrink the size of the left and right content views of shuffle deck view.
+/// ``shuffleDeckStyle(_:)`` | A modifier that overrides default shuffle style of the shuffle deck view.
 ///
 /// ## Monitoring shuffle events and translation
 /// `ShuffleDeck` provides useful modifiers that listens shuffle events and shuffling translation to perform a particular action based on those values after shuffling succeeds or while shuffling deck view.
@@ -43,22 +43,17 @@ import SwiftUI
 ///
 /// Modifier | Decription
 /// --- | ---
-/// ``onShuffleDeck(_:)`` | <description>
-/// ``onShuffleDeckTranslation(_:)`` | <description>
+/// ``onShuffleDeck(_:)`` | A modifier that listens shuffling events occurring on the shuffle deck view.
+/// ``onShuffleDeckTranslation(_:)`` | A modifier that listens translation changes while shuffling content views.
 ///
 /// ## Triggering shuffling programmatically
 /// `ShuffleDeck` also allows programmatic shuffling by accepting a series of events from the upstream publisher. Whenever the publisher fires an event, it blocks user interaction on the view and performs shuffling action.
 ///
 /// Modifier | Description
 /// --- | ---
-/// ``shuffleDeckTrigger(_:)`` | <description>
+/// ``shuffleDeckTrigger(on:)`` | A modifier that accepts events of direction to perform programmatic shuffling.
 ///
 /// ## Topics
-/// ### Initializers
-/// - ``init(_:initialindex:content:)-6ou47``
-/// - ``init(_:initialindex:content:)-9osfg``
-/// ### Instance Properties
-/// - ``body``
 public struct ShuffleDeck<Data: RandomAccessCollection, Content: View>: View {
     @Environment(\.shuffleDeckStyle) internal var style
     @Environment(\.shuffleDeckScale) internal var scale

@@ -21,6 +21,13 @@ struct MainView: View {
                     }) {
                         Label("CarouselStack", systemImage: "sparkles.rectangle.stack.fill")
                     }
+                    #if os(iOS)
+                    Button(action: {
+                        route = .shuffleDeck
+                    }) {
+                        Label("ShuffleDeck", systemImage: "photo.on.rectangle.angled")
+                    }
+                    #endif
                 } header: {
                     Text("ShuffleStack")
                 }
@@ -37,6 +44,8 @@ struct MainView: View {
                     TimingShuffleStackDemoView()
                 case .carouselStack:
                     CarouselStackDemoView()
+                case .shuffleDeck:
+                    ShuffleDeckDemoView()
                 }
             }
         }
@@ -53,12 +62,14 @@ enum Route: Identifiable {
     case shuffleStack
     case timingShuffleStack
     case carouselStack
+    case shuffleDeck
     
     var id: String {
         switch self {
         case .shuffleStack: return "shuffle-stack"
         case .timingShuffleStack: return "timing-shuffle-stack"
         case .carouselStack: return "carousel-stack"
+        case .shuffleDeck: return "shuffle-deck"
         }
     }
 }

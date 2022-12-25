@@ -1,5 +1,6 @@
 import SwiftUI
 
+/// An environment key for shuffle deck translation.
 struct ShuffleDeckTranslationKey: EnvironmentKey {
     static var defaultValue: ((CGFloat) -> Void)? = nil
 }

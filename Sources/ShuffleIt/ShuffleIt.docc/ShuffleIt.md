@@ -17,6 +17,13 @@ A UI element library for **SwiftUI**.
 - ``CarouselDirection``
 - ``CarouselStyle``
 
+### ShuffleDeck
+- ``ShuffleDeck``
+- ``ShuffleDeckAnimation``
+- ``ShuffleDeckContext``
+- ``ShuffleDeckDirection``
+- ``ShuffleDeckStyle``
+
 ### ShuffleStack
 - ``ShuffleStack``
 - ``ShuffleAnimation``

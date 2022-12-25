@@ -21,6 +21,10 @@
 		EC7410B928C44DA3005EFC41 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC7410B828C44DA3005EFC41 /* MainView.swift */; };
 		EC7410BD28C45605005EFC41 /* TimingShuffleStackDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC7410BC28C45605005EFC41 /* TimingShuffleStackDemoView.swift */; };
 		EC98DC2128C8E1E7000F3DD9 /* ShuffleIt in Frameworks */ = {isa = PBXBuildFile; productRef = EC98DC2028C8E1E7000F3DD9 /* ShuffleIt */; };
+		ECBE0E4B294D782E002239C1 /* ShuffleDeckDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECBE0E4A294D782E002239C1 /* ShuffleDeckDemoView.swift */; };
+		ECDE4B4829584BC800FF1876 /* LandmarkCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECDE4B4729584BC800FF1876 /* LandmarkCard.swift */; };
+		ECDE4B4A295859A700FF1876 /* Landmarks.json in Resources */ = {isa = PBXBuildFile; fileRef = ECDE4B49295859A700FF1876 /* Landmarks.json */; };
+		ECDE4B4C295859D300FF1876 /* Landmark.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECDE4B4B295859D300FF1876 /* Landmark.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -39,6 +43,10 @@
 		EC7410B828C44DA3005EFC41 /* MainView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		EC7410BC28C45605005EFC41 /* TimingShuffleStackDemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimingShuffleStackDemoView.swift; sourceTree = "<group>"; };
 		EC98DC1F28C8E1D6000F3DD9 /* ShuffleIt */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = ShuffleIt; path = ..; sourceTree = "<group>"; };
+		ECBE0E4A294D782E002239C1 /* ShuffleDeckDemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShuffleDeckDemoView.swift; sourceTree = "<group>"; };
+		ECDE4B4729584BC800FF1876 /* LandmarkCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandmarkCard.swift; sourceTree = "<group>"; };
+		ECDE4B49295859A700FF1876 /* Landmarks.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Landmarks.json; sourceTree = "<group>"; };
+		ECDE4B4B295859D300FF1876 /* Landmark.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Landmark.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,6 +91,7 @@
 		EC1D2D6428C367E00000668C /* Json */ = {
 			isa = PBXGroup;
 			children = (
+				ECDE4B49295859A700FF1876 /* Landmarks.json */,
 				EC1D2D6A28C37D280000668C /* Sneakers.json */,
 			);
 			path = Json;
@@ -93,6 +102,7 @@
 			children = (
 				EC467D8128D6CF4800291DFD /* SneakerCard.swift */,
 				EC1D2D7528C3A6EF0000668C /* SneakerItemRow.swift */,
+				ECDE4B4729584BC800FF1876 /* LandmarkCard.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -109,6 +119,7 @@
 			isa = PBXGroup;
 			children = (
 				EC1D2D7028C3882D0000668C /* Sneaker.swift */,
+				ECDE4B4B295859D300FF1876 /* Landmark.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -140,6 +151,7 @@
 		EC467D8328D6CF8C00291DFD /* Demos */ = {
 			isa = PBXGroup;
 			children = (
+				ECBE0E49294D7659002239C1 /* ShuffleDeck */,
 				EC467D7D28D6CC5200291DFD /* CarouselStack */,
 				EC1D2D5F28C366A10000668C /* ShuffleStack */,
 			);
@@ -193,6 +205,22 @@
 				EC98DC1F28C8E1D6000F3DD9 /* ShuffleIt */,
 			);
 			name = Packages;
+			sourceTree = "<group>";
+		};
+		ECBE0E49294D7659002239C1 /* ShuffleDeck */ = {
+			isa = PBXGroup;
+			children = (
+				ECBE0E4C294D789A002239C1 /* Scenes */,
+			);
+			path = ShuffleDeck;
+			sourceTree = "<group>";
+		};
+		ECBE0E4C294D789A002239C1 /* Scenes */ = {
+			isa = PBXGroup;
+			children = (
+				ECBE0E4A294D782E002239C1 /* ShuffleDeckDemoView.swift */,
+			);
+			path = Scenes;
 			sourceTree = "<group>";
 		};
 		ECF6A7AA28BE6C360098E2BA /* Frameworks */ = {
@@ -268,6 +296,7 @@
 				EC64DECA28C4EB4000C317A3 /* Launch Screen.storyboard in Resources */,
 				EC1D2D6B28C37D280000668C /* Sneakers.json in Resources */,
 				EC67A96128BE69F800BDAB83 /* Assets.xcassets in Resources */,
+				ECDE4B4A295859A700FF1876 /* Landmarks.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -278,14 +307,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ECDE4B4C295859D300FF1876 /* Landmark.swift in Sources */,
 				EC1D2D7128C3882D0000668C /* Sneaker.swift in Sources */,
 				EC467D8228D6CF4800291DFD /* SneakerCard.swift in Sources */,
 				EC7410B928C44DA3005EFC41 /* MainView.swift in Sources */,
 				EC1D2D7D28C3C8B50000668C /* DragGestureViewModifier.swift in Sources */,
 				EC7410BD28C45605005EFC41 /* TimingShuffleStackDemoView.swift in Sources */,
+				ECDE4B4829584BC800FF1876 /* LandmarkCard.swift in Sources */,
 				EC467D8028D6CCC700291DFD /* CarouselStackDemoView.swift in Sources */,
 				EC1D2D7628C3A6EF0000668C /* SneakerItemRow.swift in Sources */,
 				EC1D2D6E28C382EF0000668C /* Color+Extension.swift in Sources */,
+				ECBE0E4B294D782E002239C1 /* ShuffleDeckDemoView.swift in Sources */,
 				EC1D2D6328C366F80000668C /* ShuffleStackDemoView.swift in Sources */,
 				EC67A95D28BE69F800BDAB83 /* DemoApp.swift in Sources */,
 			);

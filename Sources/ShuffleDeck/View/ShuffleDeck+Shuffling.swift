@@ -7,7 +7,7 @@ extension ShuffleDeck {
         self.autoShuffling = true
         self.direction = direction
         performSpreadingOut()
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.11) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
             self.performRestoring()
         }
     }
@@ -15,7 +15,7 @@ extension ShuffleDeck {
     /// A method that mimics shuffling behaviour of dragging view to left or right for the purpose of programmatic shuffling.
     internal func performSpreadingOut() {
         let maxSwipeDistance = size.width * 0.25
-        withAnimation(animation.timing(duration: 0.1)) {
+        withAnimation(animation.timing(duration: 0.08)) {
             switch direction {
             case .left:
                 xPosition = maxSwipeDistance
@@ -38,34 +38,35 @@ extension ShuffleDeck {
                 newIndex = data.previousIndex(forUnloop: index, offset: 1)
             }
             if xPosition >= maxSwipeDistance, let nextIndex = newIndex {
-                withAnimation(animation.timing(duration: 0.1)) {
+                withAnimation(animation.timing(duration: 0.08)) {
                     xPosition = midX + midX * 0.2
                 }
-                DispatchQueue.main.asyncAfter(deadline: .now() + 0.06) {
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.05) {
                     withAnimation(animation.timing(duration: 0.03)) {
                         isShiftedRight = true
                     }
                 }
-                DispatchQueue.main.asyncAfter(deadline: .now() + 0.11) {
-                    let context = ShuffleDeckContext(
-                        index: data.distance(from: data.startIndex, to: nextIndex),
-                        previousIndex: data.distance(from: data.startIndex, to: index),
-                        direction: .left
-                    )
-                    notifyListener(context: context)
-                    withAnimation(animation.timing(duration: 0.1)) {
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+                    withAnimation(animation.timing(duration: 0.08)) {
                         isLockedLeft = true
                     }
                 }
-                DispatchQueue.main.asyncAfter(deadline: .now() + 0.23) {
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+                    let previousIndex = index
                     index = nextIndex
                     isShiftedRight = false
                     isLockedLeft = false
                     xPosition = 0
                     autoShuffling = false
+                    let context = ShuffleDeckContext(
+                        index: data.distance(from: data.startIndex, to: index),
+                        previousIndex: data.distance(from: data.startIndex, to: previousIndex),
+                        direction: .left
+                    )
+                    notifyListener(context: context)
                 }
             } else {
-                withAnimation(animation.timing(duration: 0.15)) {
+                withAnimation(animation.timing(duration: 0.1)) {
                     xPosition = 0
                 }
             }
@@ -78,34 +79,35 @@ extension ShuffleDeck {
                 newIndex = data.nextIndex(forUnloop: index, offset: 1)
             }
             if xPosition <= -maxSwipeDistance, let nextIndex = newIndex {
-                withAnimation(animation.timing(duration: 0.1)) {
+                withAnimation(animation.timing(duration: 0.08)) {
                     xPosition = -midX - midX * 0.2
                 }
-                DispatchQueue.main.asyncAfter(deadline: .now() + 0.06) {
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.05) {
                     withAnimation(animation.timing(duration: 0.03)) {
                         isShiftedLeft = true
                     }
                 }
-                DispatchQueue.main.asyncAfter(deadline: .now() + 0.11) {
-                    let context = ShuffleDeckContext(
-                        index: data.distance(from: data.startIndex, to: nextIndex),
-                        previousIndex: data.distance(from: data.startIndex, to: index),
-                        direction: .right
-                    )
-                    notifyListener(context: context)
-                    withAnimation(animation.timing(duration: 0.1)) {
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+                    withAnimation(animation.timing(duration: 0.08)) {
                         isLockedRight = true
                     }
                 }
-                DispatchQueue.main.asyncAfter(deadline: .now() + 0.23) {
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+                    let previousIndex = index
                     index = nextIndex
                     isShiftedLeft = false
                     isLockedRight = false
                     xPosition = 0
                     autoShuffling = false
+                    let context = ShuffleDeckContext(
+                        index: data.distance(from: data.startIndex, to: index),
+                        previousIndex: data.distance(from: data.startIndex, to: previousIndex),
+                        direction: .right
+                    )
+                    notifyListener(context: context)
                 }
             } else {
-                withAnimation(animation.timing(duration: 0.15)) {
+                withAnimation(animation.timing(duration: 0.1)) {
                     xPosition = 0
                 }
             }
