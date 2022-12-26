@@ -21,13 +21,11 @@ struct MainView: View {
                     }) {
                         Label("CarouselStack", systemImage: "sparkles.rectangle.stack.fill")
                     }
-                    #if os(iOS)
                     Button(action: {
                         route = .shuffleDeck
                     }) {
                         Label("ShuffleDeck", systemImage: "photo.on.rectangle.angled")
                     }
-                    #endif
                 } header: {
                     Text("ShuffleStack")
                 }
