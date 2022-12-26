@@ -29,9 +29,9 @@
 <th>ShuffleStack</th>
 </tr>
 <tr>
-<td align="center" width="30%"><img src="./Assets/CarouselStack-Demo.gif" alt="CarouselStack-Demo" height="200px"/></td>
-<td align="center" width="30%"><img src="./Assets/ShuffleDeck-Demo.gif" height="200px"/></td>
-<td align="center" width="30%"><img src="./Assets/ShuffleStack-Demo.gif" alt="ShuffleStack-Demo" height="200px"/></td>
+<td align="center" width="30%"><img src="./Assets/CarouselStack-Demo.gif" alt="CarouselStack-Demo" width="100%"/></td>
+<td align="center" width="30%"><img src="./Assets/ShuffleDeck-Demo.gif" width="100%"/></td>
+<td align="center" width="30%"><img src="./Assets/ShuffleStack-Demo.gif" alt="ShuffleStack-Demo" width="100%"/></td>
 </tr>
 </table>
 
