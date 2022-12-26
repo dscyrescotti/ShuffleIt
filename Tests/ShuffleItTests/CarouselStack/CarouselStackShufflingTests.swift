@@ -24,7 +24,7 @@ final class CarouselStackShufflingTests: BaseTestCase {
         let exp2 = view.inspection.inspect(after: 0.4) { view in
             let sut = try view.actualView()
             let width = 300 - sut.padding * 2
-            let maxSlideDistance = sut.size.width * 0.6
+            let maxSlideDistance = sut.size.width * 0.75
             XCTAssertEqual(sut.index, 6)
             XCTAssertEqual(sut.xPosition, maxSlideDistance)
             XCTAssertEqual(sut.direction, .left)
@@ -73,7 +73,7 @@ final class CarouselStackShufflingTests: BaseTestCase {
         let exp2 = view.inspection.inspect(after: 0.4) { view in
             let sut = try view.actualView()
             let width = 300 - sut.padding * 2
-            let maxSlideDistance = sut.size.width * 0.6
+            let maxSlideDistance = sut.size.width * 0.75
             XCTAssertEqual(sut.index, 0)
             XCTAssertEqual(sut.xPosition, -maxSlideDistance)
             XCTAssertEqual(sut.direction, .right)
@@ -121,7 +121,7 @@ final class CarouselStackShufflingTests: BaseTestCase {
         let exp2 = view.inspection.inspect(after: 0.4) { view in
             let sut = try view.actualView()
             let width = 300 - sut.padding * 2
-            let maxSlideDistance = sut.size.width * 0.6
+            let maxSlideDistance = sut.size.width * 0.75
             XCTAssertEqual(sut.index, 6)
             XCTAssertEqual(sut.xPosition, maxSlideDistance)
             XCTAssertEqual(sut.direction, .left)
@@ -168,7 +168,7 @@ final class CarouselStackShufflingTests: BaseTestCase {
         let exp2 = view.inspection.inspect(after: 0.4) { view in
             let sut = try view.actualView()
             let width = 300 - sut.padding * 2
-            let maxSlideDistance = sut.size.width * 0.6
+            let maxSlideDistance = sut.size.width * 0.75
             XCTAssertEqual(sut.index, 0)
             XCTAssertEqual(sut.xPosition, -maxSlideDistance)
             XCTAssertEqual(sut.direction, .right)
