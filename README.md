@@ -1,5 +1,5 @@
 <p align="center">
-<img width="70%" src="https://github.com/dscyrescotti/ShuffleIt/blob/main/Assets/ShuffleIt.png?raw=true">
+<img width="70%" src="./Assets/ShuffleIt.png">
 </p>
 
 <p align="center">
@@ -29,9 +29,9 @@
 <th>ShuffleStack</th>
 </tr>
 <tr>
-<td align="center"><img src="https://github.com/dscyrescotti/ShuffleIt/blob/main/Assets/CarouselStack-Demo.gif?raw=true" alt="CarouselStack-Demo" width="50%"/></td>
-<td align="center"><img src="./Assets/ShuffleDeck-Demo.gif" width="50%"/></td>
-<td align="center"><img src="https://github.com/dscyrescotti/ShuffleIt/blob/main/Assets/ShuffleStack-Demo.gif?raw=true" alt="ShuffleStack-Demo" width="50%"/></td>
+<td align="center" width="30%"><img src="./Assets/CarouselStack-Demo.gif" alt="CarouselStack-Demo" height="200px"/></td>
+<td align="center" width="30%"><img src="./Assets/ShuffleDeck-Demo.gif" height="200px"/></td>
+<td align="center" width="30%"><img src="./Assets/ShuffleStack-Demo.gif" alt="ShuffleStack-Demo" height="200px"/></td>
 </tr>
 </table>
 
@@ -59,7 +59,7 @@ var body: some View {
 ```
 <details>
 <summary>Preview</summary>
-<img src="https://github.com/dscyrescotti/ShuffleIt/blob/main/Assets/Previews/CarouselStack-Preview.gif?raw=true" alt="CarouselStack-Preview"  width="30%"/>
+<img src="./Assets/Previews/CarouselStack-Preview.gif" alt="CarouselStack-Preview"  width="30%"/>
 </details>
 
 To explore more about **CarouselStack**, check out the [documentation](https://dscyrescotti.github.io/ShuffleIt/documentation/shuffleit/carouselstack/).
@@ -83,7 +83,7 @@ var body: some View {
 ```
 <details>
 <summary>Preview</summary>
-<img src="./Assets/Previews/ShuffleDeck-Preview.gif" alt="ShuffleDeck-Preview"  width="30%"/>
+<img src="./Assets/Previews/ShuffleDeck-Preview.gif" alt="ShuffleDeck-Preview" height="250px"/>
 </details>
 
 To explore more about **ShuffleDeck**, check out the [documentation](https://dscyrescotti.github.io/ShuffleIt/documentation/shuffleit/shuffledeck/).
@@ -107,7 +107,7 @@ var body: some View {
 ```
 <details>
 <summary>Preview</summary>
-<img src="https://github.com/dscyrescotti/ShuffleIt/blob/main/Assets/Previews/ShuffleStack-Preview.gif?raw=true" alt="ShuffleStack-Preview"  width="30%"/>
+<img src="./Assets/Previews/ShuffleStack-Preview.gif" alt="ShuffleStack-Preview" height="250px"/>
 </details>
 
 To explore more about **ShuffleStack**, check out the [documentation](https://dscyrescotti.github.io/ShuffleIt/documentation/shuffleit/shufflestack/).
@@ -123,7 +123,7 @@ To explore more about **ShuffleStack**, check out the [documentation](https://ds
 Add it as a dependency within your Package.swift.
 ```
 dependencies: [
-    .package(url: "https://github.com/dscyrescotti/ShuffleIt.git", from: "2.1.0")
+    .package(url: "https://github.com/dscyrescotti/ShuffleIt.git", from: "2.1.1")
 ]
 ```
 
