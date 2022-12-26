@@ -13,7 +13,7 @@ final class ShuffleStackGestureTests: BaseTestCase {
         }
         let exp1 = view.inspection.inspect(after: 0.1) { view in
             let sut = try view.actualView()
-            let main = try sut.inspect().find(ViewType.ZStack.self).find(ViewType.Group.self).view(ColorView.self, 2)
+            let main = try sut.inspect().find(ViewType.ZStack.self).view(ColorView.self, 2)
             let gesture = try main.gesture(DragGesture.self)
             let value = DragGesture.Value(
                 time: .now,
@@ -40,7 +40,7 @@ final class ShuffleStackGestureTests: BaseTestCase {
         }
         let exp1 = view.inspection.inspect(after: 0.1) { view in
             let sut = try view.actualView()
-            let main = try sut.inspect().find(ViewType.ZStack.self).find(ViewType.Group.self).view(ColorView.self, 2)
+            let main = try sut.inspect().find(ViewType.ZStack.self).view(ColorView.self, 2)
             let gesture = try main.gesture(DragGesture.self)
             let value = DragGesture.Value(
                 time: .now,
@@ -70,7 +70,7 @@ final class ShuffleStackGestureTests: BaseTestCase {
         }
         let exp1 = view.inspection.inspect(after: 0.1) { view in
             let sut = try view.actualView()
-            let main = try sut.inspect().find(ViewType.ZStack.self).find(ViewType.Group.self).view(ColorView.self, 2)
+            let main = try sut.inspect().find(ViewType.ZStack.self).view(ColorView.self, 2)
             let gesture = try main.gesture(DragGesture.self)
             let value = DragGesture.Value(
                 time: .now,
