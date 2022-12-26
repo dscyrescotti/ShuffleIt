@@ -6,7 +6,7 @@ extension CarouselStack {
         self.autoSliding = true
         self.direction = direction
         performMovingToMiddle()
-        DispatchQueue.main.asyncAfter(deadline: .now() + duration(0.11)) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + duration(0.12)) {
             self.performRestoring()
         }
     }
@@ -14,7 +14,7 @@ extension CarouselStack {
     /// A method that mimics sliding behaviour to slide view to left or right for the purpose of programmatic sliding.
     internal func performMovingToMiddle() {
         let maXSwipeDistance = size.width * 0.6
-        withAnimation(animation.timing(duration: duration(0.1))) {
+        withAnimation(animation.timing(duration: duration(0.12))) {
             switch direction {
             case .left:
                 xPosition = maXSwipeDistance
@@ -45,8 +45,8 @@ extension CarouselStack {
                 index = newIndex
                 direction = .right
                 notifyListener(context: context)
-                DispatchQueue.main.asyncAfter(deadline: .now() + 0.005) {
-                    withAnimation(animation.timing(duration: duration(0.1))) {
+                DispatchQueue.main.asyncAfter(deadline: .now() + (autoSliding ? 0 : 0.005)) {
+                    withAnimation(animation.timing(duration: duration(0.12))) {
                         xPosition = 0
                         autoSliding = false
                     }
@@ -74,8 +74,8 @@ extension CarouselStack {
                 index = newIndex
                 direction = .left
                 notifyListener(context: context)
-                DispatchQueue.main.asyncAfter(deadline: .now() + 0.005) {
-                    withAnimation(animation.timing(duration: duration(0.1))) {
+                DispatchQueue.main.asyncAfter(deadline: .now() + (autoSliding ? 0 : 0.005)) {
+                    withAnimation(animation.timing(duration: duration(0.12))) {
                         xPosition = 0
                         autoSliding = false
                     }
