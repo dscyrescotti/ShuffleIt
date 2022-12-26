@@ -123,7 +123,7 @@ To explore more about **ShuffleStack**, check out the [documentation](https://ds
 Add it as a dependency within your Package.swift.
 ```
 dependencies: [
-    .package(url: "https://github.com/dscyrescotti/ShuffleIt.git", from: "2.1.1")
+    .package(url: "https://github.com/dscyrescotti/ShuffleIt.git", from: "2.1.2")
 ]
 ```
 
