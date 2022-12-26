@@ -109,7 +109,7 @@ final class CarouselStackTests: BaseTestCase {
         let exp = view.inspection.inspect(after: 0.1) { view in
             let sut = try view.actualView()
             XCTAssertEqual(sut.style, .finiteScroll)
-            let content = try sut.inspect().find(ViewType.Group.self).find(ViewType.ZStack.self)
+            let content = try sut.inspect().find(ViewType.ZStack.self)
             XCTAssertThrowsError(try content.gesture(DragGesture.self))
         }
         ViewHosting.host(
