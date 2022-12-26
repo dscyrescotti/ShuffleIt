@@ -29,6 +29,6 @@ jobs:
     - name: Convert code coverage
       run: xcrun llvm-cov export -format="lcov" -instr-profile=$(find .build -name default.profdata) $(find .build -name ShuffleItPackageTests) > info.lcov
     - name: Codecov
-      uses: codecov/codecov-action@v1.5.2
+      uses: codecov/codecov-action@v3.1.1
       with:
         file: info.lcov
