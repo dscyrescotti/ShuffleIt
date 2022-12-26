@@ -6,7 +6,7 @@ extension CarouselStack {
         self.autoSliding = true
         self.direction = direction
         performMovingToMiddle()
-        DispatchQueue.main.asyncAfter(deadline: .now() + duration(0.17)) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + duration(0.16)) {
             self.performRestoring()
         }
     }
@@ -45,7 +45,7 @@ extension CarouselStack {
                 index = newIndex
                 direction = .right
                 notifyListener(context: context)
-                DispatchQueue.main.asyncAfter(deadline: .now() + 0.02) {
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.01) {
                     withAnimation(animation.timing(duration: duration(0.12))) {
                         xPosition = 0
                         autoSliding = false
@@ -74,7 +74,7 @@ extension CarouselStack {
                 index = newIndex
                 direction = .left
                 notifyListener(context: context)
-                DispatchQueue.main.asyncAfter(deadline: .now() + 0.02) {
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.01) {
                     withAnimation(animation.timing(duration: duration(0.12))) {
                         xPosition = 0
                         autoSliding = false
