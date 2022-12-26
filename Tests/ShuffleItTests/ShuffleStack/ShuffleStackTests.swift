@@ -95,13 +95,12 @@ final class ShuffleStackTests: BaseTestCase {
             XCTAssertEqual(try zStack.flexFrame().minHeight, 200)
             XCTAssertEqual(try zStack.flexFrame().maxWidth, .infinity)
             
-            let group = try zStack.find(ViewType.Group.self)
-            let geometryReader = try group.background().find(ViewType.GeometryReader.self)
+            let leftContent = try zStack.view(ColorView.self, 0)
+            let rightContent = try zStack.view(ColorView.self, 1)
+            let mainContent = try zStack.view(ColorView.self, 2)
+
+            let geometryReader = try mainContent.background().find(ViewType.GeometryReader.self)
             XCTAssertEqual(try geometryReader.find(ViewType.Color.self).value(), .clear)
-            
-            let leftContent = try group.view(ColorView.self, 0)
-            let rightContent = try group.view(ColorView.self, 1)
-            let mainContent = try group.view(ColorView.self, 2)
             
             XCTAssertEqual(try leftContent.offset().width, -15)
             XCTAssertEqual(try leftContent.scaleEffect().width, 0.95)
@@ -123,7 +122,7 @@ final class ShuffleStackTests: BaseTestCase {
             let maxSwipeDistance = width * 0.25
             XCTAssertEqual(sut.style, .slide)
             XCTAssertEqual(sut.xPosition, maxSwipeDistance)
-            let group = try sut.inspect().find(ViewType.ZStack.self).find(ViewType.Group.self)
+            let group = try sut.inspect().find(ViewType.ZStack.self)
             let leftContent = try group.view(ColorView.self, 0)
             let rightContent = try group.view(ColorView.self, 1)
             let mainContent = try group.view(ColorView.self, 2)
@@ -164,13 +163,12 @@ final class ShuffleStackTests: BaseTestCase {
             XCTAssertEqual(try zStack.flexFrame().minHeight, 200)
             XCTAssertEqual(try zStack.flexFrame().maxWidth, .infinity)
             
-            let group = try zStack.find(ViewType.Group.self)
-            let geometryReader = try group.background().find(ViewType.GeometryReader.self)
+            let leftContent = try zStack.view(ColorView.self, 0)
+            let rightContent = try zStack.view(ColorView.self, 1)
+            let mainContent = try zStack.view(ColorView.self, 2)
+
+            let geometryReader = try mainContent.background().find(ViewType.GeometryReader.self)
             XCTAssertEqual(try geometryReader.find(ViewType.Color.self).value(), .clear)
-            
-            let leftContent = try group.view(ColorView.self, 0)
-            let rightContent = try group.view(ColorView.self, 1)
-            let mainContent = try group.view(ColorView.self, 2)
             
             XCTAssertEqual(try leftContent.offset().width, -15)
             XCTAssertEqual(try leftContent.scaleEffect().width, 0.95)
@@ -199,10 +197,10 @@ final class ShuffleStackTests: BaseTestCase {
             let maxSwipeDistance = -width * 0.25
             XCTAssertEqual(sut.style, .rotateIn)
             XCTAssertEqual(sut.xPosition, maxSwipeDistance)
-            let group = try sut.inspect().find(ViewType.ZStack.self).find(ViewType.Group.self)
-            let leftContent = try group.view(ColorView.self, 0)
-            let rightContent = try group.view(ColorView.self, 1)
-            let mainContent = try group.view(ColorView.self, 2)
+            let zStack = try sut.inspect().find(ViewType.ZStack.self)
+            let leftContent = try zStack.view(ColorView.self, 0)
+            let rightContent = try zStack.view(ColorView.self, 1)
+            let mainContent = try zStack.view(ColorView.self, 2)
             
             XCTAssertEqual(try leftContent.offset().width, -15)
             XCTAssertEqual(try leftContent.scaleEffect().width, 0.95)
@@ -246,13 +244,12 @@ final class ShuffleStackTests: BaseTestCase {
             XCTAssertEqual(try zStack.flexFrame().minHeight, 200)
             XCTAssertEqual(try zStack.flexFrame().maxWidth, .infinity)
             
-            let group = try zStack.find(ViewType.Group.self)
-            let geometryReader = try group.background().find(ViewType.GeometryReader.self)
+            let leftContent = try zStack.view(ColorView.self, 0)
+            let rightContent = try zStack.view(ColorView.self, 1)
+            let mainContent = try zStack.view(ColorView.self, 2)
+
+            let geometryReader = try mainContent.background().find(ViewType.GeometryReader.self)
             XCTAssertEqual(try geometryReader.find(ViewType.Color.self).value(), .clear)
-            
-            let leftContent = try group.view(ColorView.self, 0)
-            let rightContent = try group.view(ColorView.self, 1)
-            let mainContent = try group.view(ColorView.self, 2)
             
             XCTAssertEqual(try leftContent.offset().width, -15)
             XCTAssertEqual(try leftContent.scaleEffect().width, 0.95)
@@ -281,7 +278,7 @@ final class ShuffleStackTests: BaseTestCase {
             let maxSwipeDistance = -width * 0.25
             XCTAssertEqual(sut.style, .rotateOut)
             XCTAssertEqual(sut.xPosition, maxSwipeDistance)
-            let group = try sut.inspect().find(ViewType.ZStack.self).find(ViewType.Group.self)
+            let group = try sut.inspect().find(ViewType.ZStack.self)
             let leftContent = try group.view(ColorView.self, 0)
             let rightContent = try group.view(ColorView.self, 1)
             let mainContent = try group.view(ColorView.self, 2)
@@ -321,7 +318,7 @@ final class ShuffleStackTests: BaseTestCase {
         let exp = view.inspection.inspect(after: 0.1) { view in
             let sut = try view.actualView()
             XCTAssertEqual(sut.style, .rotateOut)
-            let group = try sut.inspect().find(ViewType.ZStack.self).find(ViewType.Group.self)
+            let group = try sut.inspect().find(ViewType.ZStack.self)
             let mainContent = try group.view(ColorView.self, 2)
             XCTAssertThrowsError(try mainContent.gesture(DragGesture.self))
         }

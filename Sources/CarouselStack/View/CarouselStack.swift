@@ -88,45 +88,18 @@ public struct CarouselStack<Data: RandomAccessCollection, Content: View>: View {
     #endif
     
     public var body: some View {
-        Group {
-            #if os(tvOS)
-            view
-            #else
-            if disabled {
-                view
-            } else {
-                view.gesture(dragGesture)
-            }
-            #endif
-        }
-        .disabled(autoSliding)
-        #if canImport(ViewInspector)
-        .onReceive(inspection.notice) {
-            self.inspection.visit(self, $0)
-        }
-        #endif
-    }
-    
-    private var view: some View {
         ZStack {
-            Group {
-                secondLeftContent
-                leftContent
-                mainContent
-                rightContent
-                secondRightContent
-            }
-            .background {
-                GeometryReader { proxy in
-                    Color.clear
-                        .preference(key: SizePreferenceKey.self, value: proxy.size)
+            secondLeftContent
+            leftContent
+            contentView
+                .background {
+                    GeometryReader { proxy in
+                        Color.clear
+                            .preference(key: SizePreferenceKey.self, value: proxy.size)
+                    }
                 }
-            }
-        }
-        .onChange(of: xPosition) { _ in
-            DispatchQueue.main.async {
-                carouselTranslation?(translation)
-            }
+            rightContent
+            secondRightContent
         }
         .frame(maxWidth: .infinity)
         .padding(.horizontal, padding)
@@ -152,11 +125,35 @@ public struct CarouselStack<Data: RandomAccessCollection, Content: View>: View {
                 performSliding(direction)
             }
         }
+        .onChange(of: xPosition) { _ in
+            DispatchQueue.main.async {
+                carouselTranslation?(translation)
+            }
+        }
+        .disabled(autoSliding)
         .onChange(of: isActiveGesture) { value in
             if !isActiveGesture {
                 performRestoring()
             }
         }
+        #if canImport(ViewInspector)
+        .onReceive(inspection.notice) {
+            self.inspection.visit(self, $0)
+        }
+        #endif
+    }
+
+    @ViewBuilder
+    private var contentView: some View {
+        #if os(tvOS)
+        mainContent
+        #else
+        if disabled {
+            mainContent
+        } else {
+            mainContent.gesture(dragGesture)
+        }
+        #endif
     }
 }
 
