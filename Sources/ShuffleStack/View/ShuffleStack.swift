@@ -91,26 +91,15 @@ public struct ShuffleStack<Data: RandomAccessCollection, StackContent: View>: Vi
     
     public var body: some View {
         ZStack {
-            Group {
-                leftContent
-                rightContent
-                #if os(tvOS)
-                mainContent
-                #else
-                if disabled {
-                    mainContent
-                } else {
-                    mainContent
-                        .gesture(dragGesture)
+            leftContent
+            rightContent
+            contentView
+                .background {
+                    GeometryReader { proxy in
+                        Color.clear
+                            .preference(key: SizePreferenceKey.self, value: proxy.size)
+                    }
                 }
-                #endif
-            }
-            .background {
-                GeometryReader { proxy in
-                    Color.clear
-                        .preference(key: SizePreferenceKey.self, value: proxy.size)
-                }
-            }
         }
         .frame(maxWidth: .infinity)
         .padding(.horizontal, padding + offset)
@@ -140,6 +129,20 @@ public struct ShuffleStack<Data: RandomAccessCollection, StackContent: View>: Vi
         #if canImport(ViewInspector)
         .onReceive(inspection.notice) {
             self.inspection.visit(self, $0)
+        }
+        #endif
+    }
+
+    @ViewBuilder
+    var contentView: some View {
+        #if os(tvOS)
+        mainContent
+        #else
+        if disabled {
+            mainContent
+        } else {
+            mainContent
+                .gesture(dragGesture)
         }
         #endif
     }
