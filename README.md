@@ -59,7 +59,7 @@ var body: some View {
 ```
 <details>
 <summary>Preview</summary>
-<img src="./Assets/Previews/CarouselStack-Preview.gif" alt="CarouselStack-Preview"  width="30%"/>
+<img src="./Assets/Previews/CarouselStack-Preview.gif" alt="CarouselStack-Preview"  height="300px"/>
 </details>
 
 To explore more about **CarouselStack**, check out the [documentation](https://dscyrescotti.github.io/ShuffleIt/documentation/shuffleit/carouselstack/).
@@ -83,7 +83,7 @@ var body: some View {
 ```
 <details>
 <summary>Preview</summary>
-<img src="./Assets/Previews/ShuffleDeck-Preview.gif" alt="ShuffleDeck-Preview" height="250px"/>
+<img src="./Assets/Previews/ShuffleDeck-Preview.gif" alt="ShuffleDeck-Preview" height="300px"/>
 </details>
 
 To explore more about **ShuffleDeck**, check out the [documentation](https://dscyrescotti.github.io/ShuffleIt/documentation/shuffleit/shuffledeck/).
@@ -107,7 +107,7 @@ var body: some View {
 ```
 <details>
 <summary>Preview</summary>
-<img src="./Assets/Previews/ShuffleStack-Preview.gif" alt="ShuffleStack-Preview" height="250px"/>
+<img src="./Assets/Previews/ShuffleStack-Preview.gif" alt="ShuffleStack-Preview" height="300px"/>
 </details>
 
 To explore more about **ShuffleStack**, check out the [documentation](https://dscyrescotti.github.io/ShuffleIt/documentation/shuffleit/shufflestack/).
