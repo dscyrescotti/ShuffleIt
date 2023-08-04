@@ -1,6 +1,6 @@
 import Utils
 import SwiftUI
-#if canImport(ViewInspector)
+#if canImport(UtilsForTest)
 import UtilsForTest
 import ViewInspector
 #endif
@@ -83,7 +83,7 @@ public struct CarouselStack<Data: RandomAccessCollection, Content: View>: View {
     internal let data: Data
     internal let content: (Data.Element, CGFloat) -> Content
     
-    #if canImport(ViewInspector)
+    #if canImport(UtilsForTest)
     internal let inspection = Inspection<Self>()
     #endif
     
@@ -105,8 +105,10 @@ public struct CarouselStack<Data: RandomAccessCollection, Content: View>: View {
         .padding(.horizontal, padding)
         .frame(minHeight: size.height)
         .onPreferenceChange(SizePreferenceKey.self) { size in
-            DispatchQueue.main.async {
-                self.size = size
+            if size != .zero {
+                DispatchQueue.main.async {
+                    self.size = size
+                }
             }
         }
         .onReceive(carouselTrigger) { direction in
@@ -138,7 +140,7 @@ public struct CarouselStack<Data: RandomAccessCollection, Content: View>: View {
                 }
             }
         }
-        #if canImport(ViewInspector)
+        #if canImport(UtilsForTest)
         .onReceive(inspection.notice) {
             self.inspection.visit(self, $0)
         }

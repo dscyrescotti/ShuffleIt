@@ -1,7 +1,7 @@
 import SwiftUI
 import ViewInspector
 
-struct ColorView: View, Inspectable {
+struct ColorView: View {
     let color: Color
     var body: some View {
         color

@@ -1,6 +1,6 @@
 import Utils
 import SwiftUI
-#if canImport(ViewInspector)
+#if canImport(UtilsForTest)
 import UtilsForTest
 import ViewInspector
 #endif
@@ -85,7 +85,7 @@ public struct ShuffleStack<Data: RandomAccessCollection, StackContent: View>: Vi
     internal let data: Data
     internal let stackContent: (Data.Element, CGFloat) -> StackContent
     
-    #if canImport(ViewInspector)
+    #if canImport(UtilsForTest)
     internal let inspection = Inspection<Self>()
     #endif
     
@@ -98,6 +98,9 @@ public struct ShuffleStack<Data: RandomAccessCollection, StackContent: View>: Vi
                     GeometryReader { proxy in
                         Color.clear
                             .preference(key: SizePreferenceKey.self, value: proxy.size)
+                            .onAppear {
+                                self.size = proxy.size
+                            }
                     }
                 }
         }
@@ -105,8 +108,10 @@ public struct ShuffleStack<Data: RandomAccessCollection, StackContent: View>: Vi
         .padding(.horizontal, padding + offset)
         .frame(minHeight: size.height)
         .onPreferenceChange(SizePreferenceKey.self) { size in
-            DispatchQueue.main.async {
-                self.size = size
+            if size != .zero {
+                DispatchQueue.main.async {
+                    self.size = size
+                }
             }
         }
         .onReceive(shuffleTrigger) { direction in
@@ -126,7 +131,7 @@ public struct ShuffleStack<Data: RandomAccessCollection, StackContent: View>: Vi
                 performRestoring()
             }
         }
-        #if canImport(ViewInspector)
+        #if canImport(UtilsForTest)
         .onReceive(inspection.notice) {
             self.inspection.visit(self, $0)
         }
