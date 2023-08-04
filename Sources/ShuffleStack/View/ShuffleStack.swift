@@ -1,10 +1,8 @@
 import Utils
 import SwiftUI
-#if canImport(ViewInspector)
-import ViewInspector
-#endif
 #if canImport(UtilsForTest)
 import UtilsForTest
+import ViewInspector
 #endif
 
 /// A stack view that provides shuffling behaviour to swipe contents to left and right.
@@ -87,7 +85,7 @@ public struct ShuffleStack<Data: RandomAccessCollection, StackContent: View>: Vi
     internal let data: Data
     internal let stackContent: (Data.Element, CGFloat) -> StackContent
     
-    #if canImport(ViewInspector)
+    #if canImport(UtilsForTest)
     internal let inspection = Inspection<Self>()
     #endif
     
@@ -133,7 +131,7 @@ public struct ShuffleStack<Data: RandomAccessCollection, StackContent: View>: Vi
                 performRestoring()
             }
         }
-        #if canImport(ViewInspector)
+        #if canImport(UtilsForTest)
         .onReceive(inspection.notice) {
             self.inspection.visit(self, $0)
         }

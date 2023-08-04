@@ -1,10 +1,8 @@
 import Utils
 import SwiftUI
-#if canImport(ViewInspector)
-import ViewInspector
-#endif
 #if canImport(UtilsForTest)
 import UtilsForTest
+import ViewInspector
 #endif
 
 /// A stack view providing shuffling behaviour to shuffle to left and right like a deck of cards.
@@ -153,7 +151,7 @@ public struct ShuffleDeck<Data: RandomAccessCollection, Content: View>: View {
                 shuffleDeckTranslation?(translation)
             }
         }
-        #if canImport(ViewInspector)
+        #if canImport(UtilsForTest)
         .onReceive(inspection.notice) {
             self.inspection.visit(self, $0)
         }
