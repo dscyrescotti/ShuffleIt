@@ -1,8 +1,10 @@
 import Utils
 import SwiftUI
 #if canImport(ViewInspector)
-import UtilsForTest
 import ViewInspector
+#endif
+#if canImport(UtilsForTest)
+import UtilsForTest
 #endif
 
 /// A stack view providing shuffling behaviour to shuffle to left and right like a deck of cards.
@@ -86,7 +88,7 @@ public struct ShuffleDeck<Data: RandomAccessCollection, Content: View>: View {
     internal let data: Data
     internal let content: (Data.Element, CGFloat) -> Content
 
-    #if canImport(ViewInspector)
+    #if canImport(UtilsForTest)
     internal let inspection = Inspection<Self>()
     #endif
 
@@ -110,13 +112,18 @@ public struct ShuffleDeck<Data: RandomAccessCollection, Content: View>: View {
                     GeometryReader { proxy in
                         Color.clear
                             .preference(key: SizePreferenceKey.self, value: proxy.size)
+                            .onAppear {
+                                self.size = proxy.size
+                            }
                     }
                 }
         }
         .frame(maxWidth: .infinity, minHeight: size.height)
         .onPreferenceChange(SizePreferenceKey.self) { size in
-            DispatchQueue.main.async {
-                self.size = size
+            if size != .zero {
+                DispatchQueue.main.async {
+                    self.size = size
+                }
             }
         }
         .onChange(of: isActiveGesture) { value in

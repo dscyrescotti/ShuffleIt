@@ -1,8 +1,10 @@
 import Utils
 import SwiftUI
 #if canImport(ViewInspector)
-import UtilsForTest
 import ViewInspector
+#endif
+#if canImport(UtilsForTest)
+import UtilsForTest
 #endif
 
 /// A stack view which provides carousel-style sliding behaviour to slide contents to left and right.
@@ -105,8 +107,10 @@ public struct CarouselStack<Data: RandomAccessCollection, Content: View>: View {
         .padding(.horizontal, padding)
         .frame(minHeight: size.height)
         .onPreferenceChange(SizePreferenceKey.self) { size in
-            DispatchQueue.main.async {
-                self.size = size
+            if size != .zero {
+                DispatchQueue.main.async {
+                    self.size = size
+                }
             }
         }
         .onReceive(carouselTrigger) { direction in

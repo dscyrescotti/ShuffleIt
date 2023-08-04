@@ -1,8 +1,10 @@
 import Utils
 import SwiftUI
 #if canImport(ViewInspector)
-import UtilsForTest
 import ViewInspector
+#endif
+#if canImport(UtilsForTest)
+import UtilsForTest
 #endif
 
 /// A stack view that provides shuffling behaviour to swipe contents to left and right.
@@ -98,6 +100,9 @@ public struct ShuffleStack<Data: RandomAccessCollection, StackContent: View>: Vi
                     GeometryReader { proxy in
                         Color.clear
                             .preference(key: SizePreferenceKey.self, value: proxy.size)
+                            .onAppear {
+                                self.size = proxy.size
+                            }
                     }
                 }
         }
@@ -105,8 +110,10 @@ public struct ShuffleStack<Data: RandomAccessCollection, StackContent: View>: Vi
         .padding(.horizontal, padding + offset)
         .frame(minHeight: size.height)
         .onPreferenceChange(SizePreferenceKey.self) { size in
-            DispatchQueue.main.async {
-                self.size = size
+            if size != .zero {
+                DispatchQueue.main.async {
+                    self.size = size
+                }
             }
         }
         .onReceive(shuffleTrigger) { direction in
