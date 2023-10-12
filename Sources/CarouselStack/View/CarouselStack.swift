@@ -88,18 +88,12 @@ public struct CarouselStack<Data: RandomAccessCollection, Content: View>: View {
     #endif
     
     public var body: some View {
-        ZStack {
-            secondLeftContent
-            leftContent
-            contentView
-                .background {
-                    GeometryReader { proxy in
-                        Color.clear
-                            .preference(key: SizePreferenceKey.self, value: proxy.size)
-                    }
-                }
-            rightContent
-            secondRightContent
+        Group {
+            if disabled {
+                contentView
+            } else {
+                contentView.gesture(dragGesture)
+            }
         }
         .frame(maxWidth: .infinity)
         .padding(.horizontal, padding)
@@ -149,15 +143,19 @@ public struct CarouselStack<Data: RandomAccessCollection, Content: View>: View {
 
     @ViewBuilder
     private var contentView: some View {
-        #if os(tvOS)
-        mainContent
-        #else
-        if disabled {
+        ZStack {
+            secondLeftContent
+            leftContent
             mainContent
-        } else {
-            mainContent.gesture(dragGesture)
+                .background {
+                    GeometryReader { proxy in
+                        Color.clear
+                            .preference(key: SizePreferenceKey.self, value: proxy.size)
+                    }
+                }
+            rightContent
+            secondRightContent
         }
-        #endif
     }
 }
 
